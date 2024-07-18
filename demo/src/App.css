@@ -1,38 +1,237 @@
-.App {
+#root {
+  margin: 0 auto;
   text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  /* font-weight:10; */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+@keyframes logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 1vw;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+ #header{
+  /* padding: 0.1rlh; */
+  /* text-align: right; */
+  /* margin: auto; */
+  /* margin:0 auto */
+  position: relative;
+  
+  /* margin-left: 1vw;
+  margin-top:  */
+  background-color: black;
+  height:14.5vh;
+  width:96.5vw;
+  color: white;
+  /* font-size: 0.1rlh; */
+} 
+
+#logInButton{
+  margin:3.5vh 1.4vw;
+  /* padding: 1vw; */
+  float:right;
+  background-color: #000000;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 4vw;
+  font-weight: 500;
+  height: 5.8vh;
+  list-style: none;
+  /* margin: 0; */
+  outline: none;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  /* transition: color 100ms; */
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+#signUpButton{
+  margin:4vh 1vw;
+  float:right;
+  background-color: #FFFFFF;
+  padding-right:10vw;
+  border-radius: 4vw;
+  border-style: none;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 4vw;
+  font-weight: 500;
+  height: 5vh;
+  line-height: 0.5vh;
+  list-style: none;
+  /* margin: 0; */
+  outline: none;
+  padding: 0.5vh 0.5vw;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+#slash{
+  margin:2.8vh 1.5vw;
+  border: none;
+  color: white;
+  float:right; 
+  text-decoration: none;
+  display: inline-block;
+  font-size:4.5vh;
+  cursor: pointer;
+}
+
+#image612{
+  float:left;
+  width:12vh;
+  height:12vh;
+}
+
+#menu{
+  float:left;
+  margin: 5vh 2vw;
+  width:4vh;
+  height:4vh;
+}
+
+#bodypage{
+  background-color: white;
+  width:100%;
+  height:100%;
+}
+
+#firstLogo{
+  margin-top: 30vw;
+  width: 70%;
+  float:center;
+}
+
+#scoutingHead{
+  font-weight: bold;
+  float:center;
+  color:black;
+}
+
+#scoutingHeading2{
+  font-weight: bold;
+  float:center;
+  color:#187FFF;
+  font-style: normal;
+  
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#scoutingParagraphL{
+  float:center;
+  color:black;
+  color:#187FFF;
+  font-family: "Arial", sans-serif;
+  font-weight: 000;
+  font-style: normal;
+
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+}
+
+#scoutingParagraph{
+  float:center;
+  color:black;
+  color:red;
+  font-family: "Arial", sans-serif;
+  font-weight: 000;
+  font-style: normal;
+
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+}
+
+#teamimage{
+  width: 70%;
+  border-width: 10px;
+  border: 4px solid #010000;
+}
+
+#scoutButton{
+  margin:4vh 1vw;
+  float:center;
+  background-color: #5e95f4;
+  padding-right:10vw;
+  border:100;
+  border-radius: 4vw;
+  border-style: none;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 4vw;
+  font-weight: 500;
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  height: 5vh;
+  line-height: 0.5vh;
+  list-style: none;
+  /* margin: 0; */
+  outline: none;
+  padding: 0.5vh 0.5vw;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
