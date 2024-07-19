@@ -1,6 +1,9 @@
-import { useState } from 'react'
+// import { useState } from 'react'
+import { Link } from 'react-router-dom'; // Import Link for navigation
+
 import './App.css'
-import { LoginPage } from './Login'
+
+//import { LoginPage } from './Login'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -39,10 +42,10 @@ function App() {
 
       <h1 id = "slash">|</h1>
 
-      <a>
-      {/* <Link to="/login"> LoginPage </Link> */}
-        <button id = "logInButton">Login</button>
-      </a>
+       {/* Use Link component to navigate to /login */}
+       <Link to="/login">
+            <button id="logInButton">Login</button>
+          </Link>
     </div>
     <div id = "bodypage">
         <img id="firstLogo" src="/src/images/firstR.png" alt="menubar"/>
