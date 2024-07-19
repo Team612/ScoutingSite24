@@ -2,8 +2,6 @@ import { useState } from 'react'
 import {BrowserRouter as Router, Routes, Route, Navigate,} from "react-router-dom";
 import LoginPage from "./Login.jsx"
 import HomePage from "./Home.jsx"
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 
