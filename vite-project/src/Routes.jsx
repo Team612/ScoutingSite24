@@ -3,8 +3,8 @@
  
 // importing components from react-router-dom package
 import {BrowserRouter as Router, Routes, Route, Navigate,} from "react-router-dom";
-import { App } from './App';
-import { LoginPage } from './Login';
+import { App } from '/App';
+import { LoginPage } from '/Login';
 
 
 function Routes() {
