@@ -1,61 +1,26 @@
 import { useState } from 'react'
+import {BrowserRouter as Router, Routes, Route, Navigate,} from "react-router-dom";
+import LoginPage from "./Login.jsx"
+import HomePage from "./Home.jsx"
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-    
-    {/* Montseratt Font: Headings */}
-    <link rel="preconnect" href="https://fonts.googleapis.com"></link>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"></link>
-    {/* Bebas Neue Font: Subheading */}
-    <link rel="preconnect" href="https://fonts.googleapis.com"></link>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"></link>
-    {/* Outfit Font: Paragraph Website Text */}
-    <link rel="preconnect" href="https://fonts.googleapis.com"></link>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Outfit:wght@100..900&display=swap" rel="stylesheet"></link>
-    {/* Josefin Sans: Button Fonts */}
-    <link rel="preconnect" href="https://fonts.googleapis.com"></link>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet"></link>
 
-    <div id = "header">
-
-      <a href="default.asp">
-        {/* Logo Image */}
-        <img id="image612" src="/src/images/logo.jpeg" alt="612 Logo"/> 
-      </a>
-
-      <a>
-        <button id = "signUpButton">Sign Up</button>
-      </a>
-    
-
-      <h1 id = "slash">|</h1>
-
-      <a>
-        <button id = "logInButton">Login</button>
-      </a>
-    </div>
-    <div id = "bodypage">
-        <img id="firstLogo" src="/src/images/firstR.png" alt="menubar"/>
-        <h1 id = "scoutingHead">S C O U T I N G</h1>
-        <h2 id = "scoutingHeading2"><b>Powered By 612 Programming</b></h2>
-        <img id="teamimage" src="/src/images/img.JPG" alt="menubar"/>
-    </div>
-
-
+    <Router>
+      <Routes>
+      <Route exact path="/" element={<HomePage />}/>
+      <Route path="/login" element={<LoginPage />} />
+    </Routes>
+    </Router>
         
-    </>
-  )
+  );
   
-}
+};
 
 export default App
