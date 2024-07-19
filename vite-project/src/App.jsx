@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
@@ -41,7 +39,7 @@ function App() {
       <h1 id = "slash">|</h1>
 
       <a>
-        <button id = "logInButton">Login</button>
+         <button id="logInButton">Login</button>
       </a>
     </div>
     <div id = "bodypage">
