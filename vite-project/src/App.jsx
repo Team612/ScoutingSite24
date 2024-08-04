@@ -2,6 +2,7 @@ import { useState } from 'react'
 import {BrowserRouter as Router, Routes, Route, Navigate,} from "react-router-dom";
 import LoginPage from "./Login.jsx"
 import HomePage from "./Home.jsx"
+import MainScreen from "./MainScreen.jsx"
 import './App.css'
 
 
@@ -14,6 +15,7 @@ function App() {
       <Routes>
       <Route exact path="/" element={<HomePage />}/>
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/mainscreen" element={<MainScreen />} />
     </Routes>
     </Router>
         
