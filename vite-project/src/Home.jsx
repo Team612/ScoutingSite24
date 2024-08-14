@@ -53,6 +53,12 @@ const HomePage = () => {
         <h2 id = "scoutingHeading2"><b>Powered By 612 Programming</b></h2>
         <img id="teamimage" src="/src/images/img.JPG" alt="menubar"/>
     </div>
+    <div id = "bodypage">
+    <button id = "input">Sign Up Page</button>
+    <button id = "input">Pit Scouting Page</button>
+    <button id = "input">Stand Scouting Page</button>
+    <button id = "input">Stats Page</button>
+    </div>
         </>
     );
 };
