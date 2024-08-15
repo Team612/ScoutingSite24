@@ -342,3 +342,42 @@
   margin-top: 3em;
 
 }
+/* for pit scouting page */
+#homebutton {
+  height: 8vh;
+  width: 8vw;
+  border: none;
+  border-radius: 1.5vw;
+  background-color:#0e24a1;
+  margin: 3.25vh 0vw 3.25vh 80vw;
+  color: #fff;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+}
+#inputlabel {
+  margin: 0vh 15.626vw 2.5vh 0vw;
+  display: inline-block;
+  width: 15.626vw;
+  text-align: center;
+  color: #000;
+  font-size: large;
+}
+#textinput {
+  width: 15.626vw;
+  height: fit-content;
+  font-size: medium;
+  border-radius: 1.562vw;
+  border-color: #000;
+  border-width: 0.118vw;
+}
+#savebutton {
+  border: none;
+  margin: 1.25vh 0vw 2.5vh 0vw;
+  height: 6.25vh;
+  width: 15.626vw;
+  border-radius: 0.781vw;
+  padding: 0.313vh 1.563vw;
+  background-color:#0e24a1;
+  color: #fff;
+  font-style: italic;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+}
