@@ -1,7 +1,7 @@
 
 import React from "react";
 import NavLink from "./NavElements.jsx"
-
+import { NavLink as Link } from "react-router-dom";
 const HomePage = () => {
     return ( 
         <>
@@ -57,7 +57,8 @@ const HomePage = () => {
     <button id = "input">Sign Up Page</button>
     <button id = "input">Pit Scouting Page</button>
     <button id = "input">Stand Scouting Page</button>
-    <button id = "input">Stats Page</button>
+    <Link to="/stats"><button id = "input">Stats Page</button></Link>
+    
     </div>
         </>
     );
