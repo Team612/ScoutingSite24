@@ -4,7 +4,7 @@ import styled from "styled-components";
 /* This page should only be for switching between pages / for buttons */
 const Nav = styled(Link)
 `
-margin: ${props => (props.isClassInput ? "3em 0px 3em 0px" : props.isHomeButtonPitScouting ? "3.25vh 0vw 3.25 vh 80vw" : "3.5vh 1.4vw")};
+margin: ${props => (props.isClassInput ? "3em 0px 3em 0px" : props.isHomeButtonPitScouting ? "3.25vh 1.25vw 3.25vh 0vw" : "3.5vh 1.4vw")};
 padding: ${props => (props.isClassInput ? "10px" : "0px")};
 float: ${props => (props.isClassInput ? "none" : "right")};
 background-color: ${props => (props.isClassInput ? "rgb(53, 163, 222)" : props.isHomeButtonPitScouting ? "#0e24a1" : "#000000")};

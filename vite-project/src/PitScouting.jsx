@@ -23,6 +23,7 @@ const PitScoutingPage = () => {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet"></link>
 
+    <div id="wrapper">
     <div id = "header">
         <a href="/">
             {/* Logo Image */}
@@ -86,7 +87,7 @@ const PitScoutingPage = () => {
         </div>
         <button id="savebutton">SAVE</button>
     </div>
-
+    </div>
     </>
     )
 }
