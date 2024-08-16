@@ -358,7 +358,7 @@
   display: inline-block;
   width: 15.626vw;
   text-align: center;
-  color: #000;
+  color: auto;
   font-size: large;
 }
 #textinput {
@@ -366,7 +366,7 @@
   height: fit-content;
   font-size: medium;
   border-radius: 1.562vw;
-  border-color: #000;
+  border-color: auto;
   border-width: 0.118vw;
 }
 #savebutton {

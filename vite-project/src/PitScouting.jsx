@@ -1,5 +1,6 @@
-import { useState } from "react"
+import React from "react"
 import './App.css'
+import NavLink from "./NavElements.jsx"
 
 
 const PitScoutingPage = () => {
@@ -28,8 +29,7 @@ const PitScoutingPage = () => {
             <img id="image612" src="/src/images/logo.jpeg" alt="612 Logo"/> 
         </a>
         <a>
-            {/* <button id = "homebutton">Home</button> */}
-            <NavLink to ="/" activeStyle>
+            <NavLink to ="/mainscreen" isHomeButtonPitScouting>
                 Home
             </NavLink>
         </a>

@@ -57,7 +57,7 @@ const HomePage = () => {
     <button id = "input">Sign Up Page</button>
     <a>
       {/* <button id = "input">Pit Scouting Page</button> */}
-      <NavLink to ="/pitscouting" activeStyle>
+      <NavLink to ="/pitscouting" isClassInput>
         Pit Scouting Page
       </NavLink>
     </a>
