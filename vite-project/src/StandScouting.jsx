@@ -34,7 +34,7 @@ function App() {
       </a>
 
       <a>
-        <button id = "signUpButton">Sign Out</button>
+        <button id = "signUpButton">Log Out</button>
       </a>
   
     </div>
