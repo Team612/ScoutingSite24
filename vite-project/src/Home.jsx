@@ -56,7 +56,9 @@ const HomePage = () => {
     <div id = "bodypage">
     <button id = "input">Sign Up Page</button>
     <button id = "input">Pit Scouting Page</button>
-    <button id = "input">Stand Scouting Page</button>
+    <NavLink id = "input" to="/standscouting" activeStyle>
+    Stand Scouting Page
+        </NavLink>
     <button id = "input">Stats Page</button>
     </div>
         </>
