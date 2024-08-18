@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Routes, Route, Navigate,} from "react-router-do
 import LoginPage from "./Login.jsx"
 import HomePage from "./Home.jsx"
 import MainScreen from "./MainScreen.jsx"
+import StandScouting from "./StandScouting.jsx"
 import './App.css'
 
 
