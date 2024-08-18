@@ -34,12 +34,6 @@ const HomePage = () => {
 
       <a>
         <button id = "signUpButton">Sign Up</button>
-      </a>
-    
-
-      <h1 id = "slash">|</h1>
-
-      <a>
         {/* <button id = "logInButton">Login</button> */}
         <NavLink to="/login" activeStyle>
           Login
@@ -55,14 +49,15 @@ const HomePage = () => {
     </div>
     <div id = "bodypage">
     <button id = "input">Sign Up Page</button>
-      {/* <button id = "input">Pit Scouting Page</button> */}
       <NavLink to ="/pitscouting" isClassInput>
         Pit Scouting Page
       </NavLink>
-    <NavLink id = "input" to="/standscouting" activeStyle>
+    <NavLink to="/standscouting" isClassInput>
     Stand Scouting Page
         </NavLink>
-        <NavLink to="/stats"><button id = "input">Stats Page</button></NavLink>
+      <NavLink to ="/stats" isClassInput> 
+        Stats Page
+      </NavLink>
     </div>
         </>
     );
