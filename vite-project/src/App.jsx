@@ -4,6 +4,7 @@ import LoginPage from "./Login.jsx"
 import HomePage from "./Home.jsx"
 import MainScreen from "./MainScreen.jsx"
 import StandScouting from "./StandScouting.jsx"
+import PitScoutingPage from './PitScouting.jsx';
 import './App.css'
 
 
@@ -18,6 +19,7 @@ function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/mainscreen" element={<MainScreen />} />
       <Route path="/standscouting" element={<StandScouting />} />
+      <Route path="/pitscouting" element={<PitScoutingPage />} />
     </Routes>
     </Router>
         
