@@ -62,7 +62,7 @@ const HomePage = () => {
     <NavLink id = "input" to="/standscouting" activeStyle>
     Stand Scouting Page
         </NavLink>
-    <button id = "input">Stats Page</button>
+        <Link to="/stats"><button id = "input">Stats Page</button></Link>
     </div>
         </>
     );
