@@ -29,8 +29,8 @@ const PitScoutingPage = () => {
             <img id="image612" src="/src/images/logo.jpeg" alt="612 Logo"/> 
         </a>
         <a>
-            <NavLink to ="/mainscreen" isHomeButtonPitScouting>
-                Home
+            <NavLink to="/mainscreen" activeStyle>
+                <img id="imagehome" src="/src/images/home.jpg"/>
             </NavLink>
         </a>
     </div>
