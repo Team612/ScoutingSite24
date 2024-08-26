@@ -1,20 +1,21 @@
 #root {
-  margin: 0 auto;
+  margin: 0;
   text-align: center;
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   /* font-weight:10; */
 }
 
-.button{
-    appearance: button;
+.button1{
+    appearance:  text;
     backface-visibility: hidden;
-    background-color: #405cf5;
-    border-radius: 6px;
+    background-color: white;
+    /* border-radius: 6px; */
     border-width: 0;
-    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
-    box-sizing: border-box;
-    color: #fff;
+
+    /* box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0; */
+    /* box-sizing: border-box; */
+    color: black;
     cursor: pointer;
     font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
     font-size: 100%;
@@ -22,6 +23,115 @@
     padding:3px;
     width:40%;
     margin-top:0px;
+}
+
+.button{
+    border-radius: 20px;
+    appearance: button;
+    backface-visibility: hidden;
+    background-color: #405cf5;
+    /* border-radius: 6px; */
+    border-width: 0;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    font-size: 100%;
+    height: 10vw;
+    /* padding: 100px; */
+    line-height: 1.15;
+    margin: 12px 0 0;
+    outline: none;
+    overflow: hidden;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+    transform: translateZ(0);
+    transition: all .2s,box-shadow .08s ease-in;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 100%;
+}
+
+.button-24 {
+  background: #FF4742;
+  border: 1px solid #FF4742;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+#speakerId{
+  display:inline;
+  /* margin:5px; */
+  /* align:center; */
+  padding-left:15px;
+  padding-right:0px;
+}
+
+.button-25 {
+  margin-left:20px;
+  background: green;
+  border: 1px solid green;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.button2{
+  appearance: button;
+  backface-visibility: hidden;
+  background-color: white;
+  border-radius: 6px;
+  border-width: 0;
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+  box-sizing: border-box;
+  color: black;
+  cursor: pointer;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+  font-size: 100%;
+  margin: 5%;
+  padding:3px;
+  width:40%;
+  border-color:black;
+  margin-top:0px;
 }
 
 #footer{
@@ -77,7 +187,6 @@
   margin-top:0px;
 }
 
-
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -122,12 +231,17 @@
   /* margin: auto; */
   /* margin:0 auto */
   position: relative;
+  margin: auto;
+  width: 95%;
+  border: 3px solid black;
+  padding: 10px;
   
   /* margin-left: 1vw;
   margin-top:  */
   background-color: black;
   height:14.5vh;
-  width:96.5vw;
+  /* width:98.5vw; */
+  /* margin:0; */
   color: white;
   /* font-size: 0.1rlh; */
 } 
@@ -138,6 +252,7 @@
   float:right;
   background-color: #000000;
   border-style: none;
+  border-radius: 10px;
   box-sizing: border-box;
   color: #FFFFFF;
   cursor: pointer;
@@ -160,11 +275,11 @@
 }
 
 #signUpButton{
-  margin:4vh 1vw;
+  margin:3.5vh 1.4vw;
+  /* padding: 1vw; */
+  border-radius: 20px;
   float:right;
   background-color: #FFFFFF;
-  padding-right:10vw;
-  border-radius: 4vw;
   border-style: none;
   box-sizing: border-box;
   color: #000000;
@@ -173,20 +288,74 @@
   font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 4vw;
   font-weight: 500;
-  height: 5vh;
-  line-height: 0.5vh;
+  height: 5vw;
   list-style: none;
   /* margin: 0; */
   outline: none;
-  padding: 0.5vh 0.5vw;
   position: relative;
   text-align: center;
   text-decoration: none;
-  transition: color 100ms;
+  /* transition: color 100ms; */
   vertical-align: baseline;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+}
+
+@media only screen and (max-width: 937px) {
+  #logInButton{
+    margin:3.5vh 1.4vw;
+    /* padding: 1vw; */
+    float:right;
+    background-color: #000000;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 4vw;
+    font-weight: 500;
+    height: 5.8vh;
+    list-style: none;
+    /* margin: 0; */
+    outline: none;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    /* transition: color 100ms; */
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  #signUpButton{
+    margin:3.5vh 1.4vw;
+    /* padding: 1vw; */
+    float:right;
+    background-color: #FFFFFF;
+    border-style: none;
+    box-sizing: border-box;
+    color: #000000;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 4vw;
+    font-weight: 500;
+    height: 5.8vh;
+    list-style: none;
+    /* margin: 0; */
+    outline: none;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    /* transition: color 100ms; */
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
 }
 
 #slash{
@@ -206,12 +375,6 @@
   height:12vh;
 }
 
-#imagehome{
-  float: left;
-  width: 10vh;
-  height: 10vh;
-}
-
 #menu{
   float:left;
   margin: 5vh 2vw;
@@ -226,7 +389,7 @@
 }
 
 #firstLogo{
-  margin-top: 10%;
+  margin-top: 30vw;
   width: 70%;
   float:center;
 }
@@ -340,79 +503,5 @@
   width: 20vh;
   margin-bottom: 3em;
   margin-top: 3em;
-}
 
-/* for pit scouting page */
-#homebutton {
-  height: 8vh;
-  width: 8vw;
-  border: none;
-  border-radius: 1.5vw;
-  background-color:#0e24a1;
-  margin: 3.25vh 0vw 3.25vh 80vw;
-  color: #fff;
-  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
-}
-#inputlabel {
-  margin: 0vh 15.626vw 2.5vh 0vw;
-  display: inline-block;
-  width: 15.626vw;
-  text-align: center;
-  color: auto;
-  font-size: large;
-}
-#textinput {
-  width: 15.626vw;
-  height: fit-content;
-  font-size: medium;
-  border-radius: 1.562vw;
-  border-color: auto;
-  border-width: 0.118vw;
-}
-#savebutton {
-  border: none;
-  margin: 1.25vh 0vw 2.5vh 0vw;
-  height: 6.25vh;
-  width: 15.626vw;
-  border-radius: 0.781vw;
-  padding: 0.313vh 1.563vw;
-  background-color:#0e24a1;
-  color: #fff;
-  font-style: italic;
-  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
-}
-
-/* for stats page*/
-#statspage{
-  background-color: white;
-  position: center;
-  margin-top: 10vh;
-  height:100vh;
-  width:96.5vw;
-  color: black;
-}
-#searchbar{
-  border: black;
-  border-radius: 20px;
-  border-style: solid;
-  height: 25px;
-  width: 250px;
-  margin-left:3em;
-}
-.statsbutton{
-  background-color:#187FFF;
-  text-align: center;
-  color: white;
-  width:30.5vw;
-  align-items: center;
-  border-radius: 300px;
-}
-.button-container {
-  display: grid;
-  grid-template-columns: repeat(1, 3fr); /* Adjust the number of columns as needed */
-  gap: 30px; 
-  margin-left: 35vw;
-}
-#buttonspacing{
-  margin-top: 100px;
 }
