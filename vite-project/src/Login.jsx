@@ -27,7 +27,9 @@ const LoginPage = () => {
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet"></link>
 
     <div id="pageheader">
-    <img id="image612" src="/src/images/logo.jpeg" alt="612 Logo"/>
+      <a href="/">
+        <img id="image612" src="/src/images/logo.jpeg" alt="612 Logo"/>
+      </a>
     </div>
 
     <div id = "loginpage">

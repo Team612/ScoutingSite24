@@ -13,7 +13,7 @@ box-sizing: ${props => (props.isClassInput ? "content-box" : props.isHomeButtonP
 color: #FFFFFF;
 cursor: pointer;
 display: inline-block;
-font-family: ${props => (props.isClassInput ? "'Montserrat', sans-serif" : props.isHomeButtonPitScouting ? "-apple-system,system-ui,'Segoe UI',Roboto,'Helvetica Neue',Ubuntu,sans-serif" : "'Haas Grot Text R Web', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'")};
+font-family: 'Josefin Sans';
 font-size: ${props => (props.isClassInput ? "100%" : props.isHomeButtonPitScouting ? "200%" : "4vw")};
 font-weight: 500;
 height: ${props => (props.isClassInput ? "auto" : props.isHomeButtonPitScouting ? "8vh" : "5.8vh")};

@@ -27,7 +27,7 @@ function App() {
 
     <div id = "header">
 
-      <a href="default.asp">
+      <a href="/">
         {/* Logo Image */}
         <img id="image612" src="/src/images/logo.jpeg" alt="612 Logo"/> 
       </a>
