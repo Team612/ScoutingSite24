@@ -27,9 +27,9 @@ const HomePage = () => {
       <a href="default.asp">
         {/* Logo Image */}
         <img id="image612" src="/src/images/logo.jpeg" alt="612 Logo"/> 
-        <NavLink to="/mainscreen" activeStyle>
+        {/* <NavLink to="/mainscreen" activeStyle>
             <img id="imagehome" src="/src/images/home.jpg"/>
-        </NavLink>
+        </NavLink> */}
       </a>
 
       <a>
