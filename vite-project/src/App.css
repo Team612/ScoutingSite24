@@ -1,7 +1,7 @@
 #root {
   margin: 0;
   text-align: center;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   font-optical-sizing: auto;
   /* font-weight:10; */
 }
@@ -53,7 +53,28 @@
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    width: 100%;
+    width: 50%;
+}
+
+#textinput{
+  appearance: button;
+  backface-visibility: hidden;
+  background-color: white;
+  border-radius: 6px;
+  border-width: 0;
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+  box-sizing: border-box;
+  color: black;
+  cursor: pointer;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+  font-size: 100%;
+  margin: 5%;
+  /* padding:3px; */
+  width:80%;
+  border-color:black;
+  /* margin-top:40vw; */
+  height:20vw;
+  /* display:inline-block; */
 }
 
 .button-24 {
@@ -161,7 +182,8 @@
   font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
   font-size: 100%;
   margin: 5%;
-  padding:3px;
+  /* height:1%; */
+  padding:0px;
   width:40%;
   margin-top:0px;
 }
@@ -257,7 +279,7 @@
   color: #FFFFFF;
   cursor: pointer;
   display: inline-block;
-  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif; */
   font-size: 4vw;
   font-weight: 500;
   height: 5.8vh;
@@ -285,7 +307,7 @@
   color: #000000;
   cursor: pointer;
   display: inline-block;
-  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif; */
   font-size: 4vw;
   font-weight: 500;
   height: 5vw;
@@ -313,7 +335,7 @@
     color: #FFFFFF;
     cursor: pointer;
     display: inline-block;
-    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /* font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif; */
     font-size: 4vw;
     font-weight: 500;
     height: 5.8vh;
@@ -340,7 +362,7 @@
     color: #000000;
     cursor: pointer;
     display: inline-block;
-    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /* font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif; */
     font-size: 4vw;
     font-weight: 500;
     height: 5.8vh;
@@ -394,10 +416,16 @@
   float:center;
 }
 
+.specialel{
+  padding:0;
+  font-size:25px;
+}
+
 #scoutingHead{
   font-weight: bold;
   float:center;
   color:black;
+  font-family: "Monseratt", sans-serif;
 }
 
 #scoutingHeading2{
@@ -405,21 +433,22 @@
   float:center;
   color:#187FFF;
   font-style: normal;
-  
-  font-family: "Bebas Neue", sans-serif;
+  /*  */
+  /* font-family: "Josefin Sans", sans-serif; */
   font-weight: 400;
   font-style: normal;
+  /* font-family: "Monseratt", sans-serif; */
 }
 
 #scoutingParagraphL{
   float:center;
   color:black;
   color:#187FFF;
-  font-family: "Arial", sans-serif;
+  /* font-family: "Arial", sans-serif; */
   font-weight: 000;
   font-style: normal;
 
-  font-family: "Outfit", sans-serif;
+  /* font-family: "Outfit", sans-serif; */
   font-optical-sizing: auto;
 }
 
@@ -427,11 +456,11 @@
   float:center;
   color:black;
   color:red;
-  font-family: "Arial", sans-serif;
+  /* font-family: "Arial", sans-serif; */
   font-weight: 000;
   font-style: normal;
 
-  font-family: "Outfit", sans-serif;
+  /* font-family: "Outfit", sans-serif; */
   font-optical-sizing: auto;
 }
 
@@ -453,7 +482,7 @@
   color: white;
   cursor: pointer;
   display: inline-block;
-  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif; */
   font-size: 4vw;
   font-weight: 500;
   font-family: "Josefin Sans", sans-serif;
@@ -494,6 +523,10 @@
   color: black;
 }
 
+#inputlabel{
+  /* display:inline-block; */
+  /* width:1; */
+}
 #input{
   border: none;
   border-radius: 10px;
