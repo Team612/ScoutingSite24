@@ -1,20 +1,21 @@
 #root {
-  margin: 0 auto;
+  margin: 0;
   text-align: center;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   font-optical-sizing: auto;
   /* font-weight:10; */
 }
 
-.button{
-    appearance: button;
+.button1{
+    appearance:  text;
     backface-visibility: hidden;
-    background-color: #405cf5;
-    border-radius: 6px;
+    background-color: white;
+    /* border-radius: 6px; */
     border-width: 0;
-    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
-    box-sizing: border-box;
-    color: #fff;
+
+    /* box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0; */
+    /* box-sizing: border-box; */
+    color: black;
     cursor: pointer;
     font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
     font-size: 100%;
@@ -22,6 +23,136 @@
     padding:3px;
     width:40%;
     margin-top:0px;
+}
+
+.button{
+    border-radius: 20px;
+    appearance: button;
+    backface-visibility: hidden;
+    background-color: #405cf5;
+    /* border-radius: 6px; */
+    border-width: 0;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    font-size: 100%;
+    height: 10vw;
+    /* padding: 100px; */
+    line-height: 1.15;
+    margin: 12px 0 0;
+    outline: none;
+    overflow: hidden;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+    transform: translateZ(0);
+    transition: all .2s,box-shadow .08s ease-in;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 50%;
+}
+
+#textinput{
+  appearance: button;
+  backface-visibility: hidden;
+  background-color: white;
+  border-radius: 6px;
+  border-width: 0;
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+  box-sizing: border-box;
+  color: black;
+  cursor: pointer;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+  font-size: 100%;
+  margin: 5%;
+  /* padding:3px; */
+  width:80%;
+  border-color:black;
+  /* margin-top:40vw; */
+  height:20vw;
+  /* display:inline-block; */
+}
+
+.button-24 {
+  background: #FF4742;
+  border: 1px solid #FF4742;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+#speakerId{
+  display:inline;
+  /* margin:5px; */
+  /* align:center; */
+  padding-left:15px;
+  padding-right:0px;
+}
+
+.button-25 {
+  margin-left:20px;
+  background: green;
+  border: 1px solid green;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.button2{
+  appearance: button;
+  backface-visibility: hidden;
+  background-color: white;
+  border-radius: 6px;
+  border-width: 0;
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+  box-sizing: border-box;
+  color: black;
+  cursor: pointer;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+  font-size: 100%;
+  margin: 5%;
+  padding:3px;
+  width:40%;
+  border-color:black;
+  margin-top:0px;
 }
 
 #footer{
@@ -51,7 +182,8 @@
   font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
   font-size: 100%;
   margin: 5%;
-  padding:3px;
+  /* height:1%; */
+  padding:0px;
   width:40%;
   margin-top:0px;
 }
@@ -76,7 +208,6 @@
   width:80%;
   margin-top:0px;
 }
-
 
 .logo {
   height: 6em;
@@ -122,12 +253,17 @@
   /* margin: auto; */
   /* margin:0 auto */
   position: relative;
+  margin: auto;
+  width: 95%;
+  border: 3px solid black;
+  padding: 10px;
   
   /* margin-left: 1vw;
   margin-top:  */
   background-color: black;
   height:14.5vh;
-  width:96.5vw;
+  /* width:98.5vw; */
+  /* margin:0; */
   color: white;
   /* font-size: 0.1rlh; */
 } 
@@ -138,11 +274,12 @@
   float:right;
   background-color: #000000;
   border-style: none;
+  border-radius: 10px;
   box-sizing: border-box;
   color: #FFFFFF;
   cursor: pointer;
   display: inline-block;
-  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif; */
   font-size: 4vw;
   font-weight: 500;
   height: 5.8vh;
@@ -160,33 +297,87 @@
 }
 
 #signUpButton{
-  margin:4vh 1vw;
-  float: right;
+  margin:3.5vh 1.4vw;
+  /* padding: 1vw; */
+  border-radius: 20px;
+  float:right;
   background-color: #FFFFFF;
-  padding-right:10vw;
-  border-radius: 4vw;
   border-style: none;
   box-sizing: border-box;
   color: #000000;
   cursor: pointer;
   display: inline-block;
-  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif; */
   font-size: 4vw;
   font-weight: 500;
-  height: 5vh;
-  line-height: 0.5vh;
+  height: 5vw;
   list-style: none;
   /* margin: 0; */
   outline: none;
-  padding: 0.5vh 0.5vw;
   position: relative;
   text-align: center;
   text-decoration: none;
-  transition: color 100ms;
+  /* transition: color 100ms; */
   vertical-align: baseline;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+}
+
+@media only screen and (max-width: 937px) {
+  #logInButton{
+    margin:3.5vh 1.4vw;
+    /* padding: 1vw; */
+    float:right;
+    background-color: #000000;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    /* font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif; */
+    font-size: 4vw;
+    font-weight: 500;
+    height: 5.8vh;
+    list-style: none;
+    /* margin: 0; */
+    outline: none;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    /* transition: color 100ms; */
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  #signUpButton{
+    margin:3.5vh 1.4vw;
+    /* padding: 1vw; */
+    float:right;
+    background-color: #FFFFFF;
+    border-style: none;
+    box-sizing: border-box;
+    color: #000000;
+    cursor: pointer;
+    display: inline-block;
+    /* font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif; */
+    font-size: 4vw;
+    font-weight: 500;
+    height: 5.8vh;
+    list-style: none;
+    /* margin: 0; */
+    outline: none;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    /* transition: color 100ms; */
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
 }
 
 #slash{
@@ -206,12 +397,6 @@
   height:12vh;
 }
 
-#imagehome{
-  float: left;
-  width: 10vh;
-  height: 10vh;
-}
-
 #menu{
   float:left;
   margin: 5vh 2vw;
@@ -226,15 +411,21 @@
 }
 
 #firstLogo{
-  margin-top: 10%;
+  margin-top: 30vw;
   width: 70%;
   float:center;
+}
+
+.specialel{
+  padding:0;
+  font-size:25px;
 }
 
 #scoutingHead{
   font-weight: bold;
   float:center;
   color:black;
+  font-family: "Monseratt", sans-serif;
 }
 
 #scoutingHeading2{
@@ -242,21 +433,22 @@
   float:center;
   color:#187FFF;
   font-style: normal;
-  
-  font-family: "Bebas Neue", sans-serif;
+  /*  */
+  /* font-family: "Josefin Sans", sans-serif; */
   font-weight: 400;
   font-style: normal;
+  /* font-family: "Monseratt", sans-serif; */
 }
 
 #scoutingParagraphL{
   float:center;
   color:black;
   color:#187FFF;
-  font-family: "Arial", sans-serif;
+  /* font-family: "Arial", sans-serif; */
   font-weight: 000;
   font-style: normal;
 
-  font-family: "Outfit", sans-serif;
+  /* font-family: "Outfit", sans-serif; */
   font-optical-sizing: auto;
 }
 
@@ -264,11 +456,11 @@
   float:center;
   color:black;
   color:red;
-  font-family: "Arial", sans-serif;
+  /* font-family: "Arial", sans-serif; */
   font-weight: 000;
   font-style: normal;
 
-  font-family: "Outfit", sans-serif;
+  /* font-family: "Outfit", sans-serif; */
   font-optical-sizing: auto;
 }
 
@@ -290,7 +482,7 @@
   color: white;
   cursor: pointer;
   display: inline-block;
-  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif; */
   font-size: 4vw;
   font-weight: 500;
   font-family: "Josefin Sans", sans-serif;
@@ -331,6 +523,10 @@
   color: black;
 }
 
+#inputlabel{
+  /* display:inline-block; */
+  /* width:1; */
+}
 #input{
   border: none;
   border-radius: 10px;
@@ -340,18 +536,7 @@
   width: 20vh;
   margin-bottom: 3em;
   margin-top: 3em;
-}
 
-/* for pit scouting page */
-#homebutton {
-  height: 8vh;
-  width: 8vw;
-  border: none;
-  border-radius: 1.5vw;
-  background-color:#0e24a1;
-  margin: 3.25vh 0vw 3.25vh 80vw;
-  color: #fff;
-  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
 }
 #inputlabel {
   margin: 0vh 15.626vw 2.5vh 0vw;

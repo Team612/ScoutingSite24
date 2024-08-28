@@ -1,6 +1,6 @@
 import React from "react"
 import './App.css'
-import NavLink from "./NavElements.jsx"
+// import NavLink from "./NavElements.jsx"
 
 
 const PitScoutingPage = () => {
@@ -35,56 +35,56 @@ const PitScoutingPage = () => {
         </a>
     </div>
     <div id="pitscoutingpage">
-        <h1 id="pitscoutingheader">Pit Scouting</h1>
+        <h1 id="scoutingHead">Pit Scouting</h1>
         <div id="teamnumber">
             <p id="inputlabel">Team #:</p>
-            <input type="text" id="textinput" />
+            <textarea type="text" id="textinput"/>
         </div>
         <div id="intake">
             <p id="inputlabel">Intake:</p>
-            <input type="text" id="textinput" />
+            <textarea type="text" id="textinput" />
         </div>
         <div id="drivetrain">
             <p id="inputlabel">Drive Train:</p>
-            <input type="text" id="textinput" />
+            <textarea type="text" id="textinput"/>
         </div>
         <div id="climb">
             <p id="inputlabel">Climb:</p>
-            <input type="text" id="textinput" />
+            <textarea type="text" id="textinput"/>
         </div>
         <div id="autonomous">
             <p id="inputlabel">Autonomous:</p>
-            <input type="text" id="textinput" />
+            <textarea type="text" id="textinput"/>
         </div>
         <div id="speaker">
             <p id="inputlabel">Speaker:</p>
-            <input type="text" id="textinput" />
+            <textarea type="text" id="textinput"/>
         </div>
         <div id="amp">
             <p id="inputlabel">Amp:</p>
-            <input type="text" id="textinput" />
+            <textarea type="text" id="textinput"/>
         </div>
         <div id="trap">
             <p id="inputlabel">Trap:</p>
-            <input type="text" id="textinput" />
+            <textarea type="text" id="textinput"/>
         </div>
         <div id="drivingskill">
             <p id="inputlabel">Driving Skill:</p>
-            <input type="text" id="textinput" />
+            <textarea type="text" id="textinput"/>
         </div>
         <div id="weight">
             <p id="inputlabel">{"Weight (lbs):"}</p>
-            <input type="text" id="textinput" />
+            <textarea type="text" id="textinput"/>
         </div>
         <div id="cycletime">
             <p id="inputlabel">{"Cycle Time (sec):"}</p>
-            <input type="text" id="textinput" />
+            <textarea type="text" id="textinput"/>
         </div>
         <div id="other">
             <p id="inputlabel">Other:</p>
-            <input type="text" id="textinput" />
+            <textarea type="text" id="textinput"/>
         </div>
-        <button id="savebutton">SAVE</button>
+        <button class="button">SAVE</button>
     </div>
 
     </>
