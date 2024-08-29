@@ -1,7 +1,7 @@
-import React from "react";
-import NavLink from "./NavElements.jsx";
+import { useState } from "react";
+import "./App.css";
 
-const HomePage = () => {
+const SignUpPage = () => {
   return (
     <>
       {/* Montseratt Font: Headings */}
@@ -49,47 +49,37 @@ const HomePage = () => {
         rel="stylesheet"
       ></link>
 
-      <div id="header">
+      <div id="pageheader">
         <a href="/">
-          {/* Logo Image */}
           <img id="image612" src="/src/images/logo.jpeg" alt="612 Logo" />
-          {/* <NavLink to="/mainscreen" activeStyle>
-            <img id="imagehome" src="/src/images/home.jpg"/>
-        </NavLink> */}
         </a>
+      </div>
 
-        <a>
-          {/* <button id = "logInButton">Login</button> */}
-          <NavLink to="/login" activeStyle>
-            Login
-          </NavLink>
-          <NavLink to="/signup" activeStyle>
-            Sign Up
-          </NavLink>
-        </a>
-      </div>
-      <div id="bodypage">
-        <img id="firstLogo" src="/src/images/firstR.png" alt="menubar" />
-        <h1 id="scoutingHead">S C O U T I N G</h1>
-        <h2 id="scoutingHeading2">
-          <b>Powered By 612 Programming</b>
-        </h2>
-        <img id="teamimage" src="/src/images/img.JPG" alt="menubar" />
-      </div>
-      <div id="bodypage">
-        <button id="input">Sign Up Page</button>
-        <NavLink to="/pitscouting" isClassInput>
-          Pit Scouting Page
-        </NavLink>
-        <NavLink to="/standscouting" isClassInput>
-          Stand Scouting Page
-        </NavLink>
-        <NavLink to="/stats" isClassInput>
-          Stats Page
-        </NavLink>
+      <div id="signuppage">
+        <h1>SignUp</h1>
+        <div class="signup">
+          <h2>Create Team ID: </h2>
+          <input type="text" id="input" placeholder="Team ID #" />
+        </div>
+        <div class="signup">
+          <h2>Create Password: </h2>
+          <input type="password" id="input" placeholder="Password" />
+        </div>
+        <div class="signup">
+          <h2>Retype Password: </h2>
+          <input type="password" id="input" placeholder="Password" />
+        </div>
+        <p>
+          DO NOT MAKE AN ACCOUNT FOR A TEAM YOU ARE NOT A PART OF, IF YOUR
+          TEAM’s ACCOUNT IS ALREADY TAKEN, COntact us at xxx@email.com to get
+          your account back. Until then, you may use any combination of letters
+          in your team number in place of your team number.
+        </p>
+        <button id="submitButton">Submit</button>
+        <div id="forgotPassword">Forgot Password?</div>
       </div>
     </>
   );
 };
 
-export default HomePage;
+export default SignUpPage;
