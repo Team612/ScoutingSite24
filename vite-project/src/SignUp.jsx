@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import NavLink from "./NavElements.jsx";
 
 const SignUpPage = () => {
   return (
@@ -49,9 +50,14 @@ const SignUpPage = () => {
         rel="stylesheet"
       ></link>
 
-      <div id="pageheader">
+      <div id="header">
         <a href="/">
           <img id="image612" src="/src/images/logo.jpeg" alt="612 Logo" />
+        </a>
+        <a>
+            <NavLink to="/mainscreen" activeStyle id="imageHome">
+                <img id="imagehome" src="/src/images/home.jpg"/>
+            </NavLink>
         </a>
       </div>
 
@@ -71,7 +77,7 @@ const SignUpPage = () => {
         </div>
         <p>
           DO NOT MAKE AN ACCOUNT FOR A TEAM YOU ARE NOT A PART OF, IF YOUR
-          TEAM’s ACCOUNT IS ALREADY TAKEN, COntact us at xxx@email.com to get
+          TEAM’s ACCOUNT IS ALREADY TAKEN, Contact us at xxx@email.com to get
           your account back. Until then, you may use any combination of letters
           in your team number in place of your team number.
         </p>

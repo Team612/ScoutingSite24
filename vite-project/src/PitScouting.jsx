@@ -1,4 +1,5 @@
 import React from "react"
+import NavLink from "./NavElements.jsx";
 import './App.css'
 // import NavLink from "./NavElements.jsx"
 
@@ -29,7 +30,7 @@ const PitScoutingPage = () => {
             <img id="image612" src="/src/images/logo.jpeg" alt="612 Logo"/> 
         </a>
         <a>
-            <NavLink to="/mainscreen" activeStyle>
+            <NavLink to="/mainscreen" activeStyle id="imageHome">
                 <img id="imagehome" src="/src/images/home.jpg"/>
             </NavLink>
         </a>

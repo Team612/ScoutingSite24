@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import NavLink from "./NavElements.jsx";
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -25,25 +26,18 @@ function App() {
     <link rel="preconnect" href="https://fonts.googleapis.com"></link>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet"></link>
-    <div id = "header">
 
+    <div id="header">
       <a href="/">
-        {/* Logo Image */}
-        <img id="image612" src="/src/images/logo.jpeg" alt="612 Logo"/> 
-        {/* <NavLink to="/mainscreen" activeStyle> */}
-            {/* <img id="imagehome" src="/src/images/home.jpg"/> */}
-        {/* </NavLink> */}
+        <img id="image612" src="/src/images/logo.jpeg" alt="612 Logo"/>
       </a>
-
       <a>
-        <button id = "signUpButton">Sign Up</button>
-        <button id = "logInButton">Login</button>
-        {/* <NavLink to="/login" activeStyle> */}
-        {/* </NavLink> */}
-        
-      </a>
+            <NavLink to="/mainscreen" activeStyle id="imageHome">
+                <img id="imagehome" src="/src/images/home.jpg"/>
+            </NavLink>
+        </a>
     </div>
-    <div id = "bodypage">
+    <div id = "standscoutingpage">
         <h1 id = "scoutingHead">STAND SCOUTING</h1>
         <div>
             <button class = "button1">Match Number</button>

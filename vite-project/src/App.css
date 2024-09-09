@@ -252,22 +252,66 @@
   /* text-align: right; */
   /* margin: auto; */
   /* margin:0 auto */
-  position: relative;
-  margin: auto;
-  width: 95%;
-  border: 3px solid black;
-  padding: 10px;
+  position: absolute;
+  /* margin-bottom: 10px; */
+  top: 0;
+  width: 100%;
+  /* border: 3px solid black; */
+  padding-bottom: 20px;
   
   /* margin-left: 1vw;
   margin-top:  */
   background-color: black;
-  height:14.5vh;
+  height:calc(10vh+10vw);
   /* width:98.5vw; */
   /* margin:0; */
   color: white;
   /* font-size: 0.1rlh; */
 } 
 
+#homeNavBar {
+  position:relative;
+  display:block;
+  background-color: rgb(53, 163, 222);
+  width: 100%;
+  height: calc(4vh + 4vw);
+  align-items: center;
+  margin-top:15vh;
+  justify-content: center;
+  
+}
+
+#homeNavBarButtonsGroup {
+  position:relative;
+  width: auto;
+  margin: auto;
+  padding: 0;
+  justify-content: center;
+  height: calc(4vh + 4vw);
+
+
+  display: block;
+}
+
+#homebarButtons {
+  border-radius: 0px;
+  font-size: calc(1vw + 1vh);
+  text-align:center;
+  background-color:blue;
+  width: calc(20vw);
+  height: calc(5vh);
+  padding: 0px;
+  margin: 0px;
+  margin-top: calc(1vw + 1vh);
+
+}
+
+li {
+
+  display: inline;
+  margin: 0px;
+  padding: 0px;
+}
 #logInButton{
   margin:3.5vh 1.4vw;
   /* padding: 1vw; */
@@ -294,6 +338,12 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+}
+
+#signuppage {
+  position: relative;
+  margin-top: 150px;
+  align-content: center;
 }
 
 #signUpButton{
@@ -392,10 +442,24 @@
 }
 
 #image612{
+  margin-top: 5px;
   float:left;
   width:12vh;
   height:12vh;
 }
+
+#pitscoutingpage, #standscoutingpage, #statspage, #navigationpage{
+  font-size: calc(1vw+ 1vh);
+  position:relative;
+  margin-top:150px;
+  width: 98vw;
+  height: 100%;
+  justify-content: center;
+}
+
+
+
+
 
 #menu{
   float:left;
@@ -408,10 +472,11 @@
   background-color: white;
   width:100%;
   height:100%;
+  
 }
 
 #firstLogo{
-  margin-top: 30vw;
+  margin-top: 10vw;
   width: 70%;
   float:center;
 }
@@ -470,6 +535,10 @@
   border: 4px solid #010000;
 }
 
+#imagehome {
+  float:right;
+  height: 8vh;
+}
 #scoutButton{
   margin:4vh 1vw;
   float:center;
@@ -515,9 +584,9 @@
 }
 
 #loginpage{
+  position:relative;
   background-color: white;
-  position: center;
-  margin-top: 10vh;
+  margin-top: 150px;
   height:100vh;
   width:96.5vw;
   color: black;
@@ -568,14 +637,7 @@
 }
 
 /* for stats page*/
-#statspage{
-  background-color: white;
-  position: center;
-  margin-top: 10vh;
-  height:100vh;
-  width:96.5vw;
-  color: black;
-}
+
 #searchbar{
   border: black;
   border-radius: 20px;

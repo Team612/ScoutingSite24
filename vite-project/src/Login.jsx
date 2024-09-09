@@ -2,6 +2,7 @@ import { useState } from 'react'
 //import LoginPage from './Login'
 // import { Link } from 'react-router-dom'; // Import Link for navigation
 import './App.css'
+import NavLink from "./NavElements.jsx";
 
   
 
@@ -26,10 +27,15 @@ const LoginPage = () => {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet"></link>
 
-    <div id="pageheader">
+    <div id="header">
       <a href="/">
         <img id="image612" src="/src/images/logo.jpeg" alt="612 Logo"/>
       </a>
+      <a>
+            <NavLink to="/mainscreen" activeStyle id="imageHome">
+                <img id="imagehome" src="/src/images/home.jpg"/>
+            </NavLink>
+        </a>
     </div>
 
     <div id = "loginpage">

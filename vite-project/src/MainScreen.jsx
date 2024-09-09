@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import NavLink from "./NavElements.jsx";
 import './App.css'
 
 const MainScreen = () => {
@@ -23,18 +24,26 @@ const MainScreen = () => {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet"></link>
 
-    <div id = "header">
+    <div id="header">
+        <a href="/">
+          {/* Logo Image */}
+          <img id="image612" src="/src/images/logo.jpeg" alt="612 Logo" />
+          {/* <NavLink to="/mainscreen" activeStyle>
+            <img id="imagehome" src="/src/images/home.jpg"/>
+        </NavLink> */}
+        </a>
 
-      <a href="/">
-        {/* Logo Image */}
-        <img id="image612" src="/src/images/logo.jpeg" alt="612 Logo"/> 
-      </a>
-      <a>
-        <button id = "signUpButton">Sign Out</button>
-      </a>
-  
-    </div>
-    <div id = "bodypage">
+        <a>
+          {/* <button id = "logInButton">Login</button> */}
+          <NavLink to="/login" activeStyle>
+            Login
+          </NavLink>
+          <NavLink to="/signup" activeStyle>
+            Sign Up
+          </NavLink>
+        </a>
+      </div>
+    <div id = "navigationpage">
         <h1 id = "scoutingHead">WELCOME, XXXX</h1>
         <h2 id = "scoutingHeading2"><b>Choose a function</b></h2>
         <div>
