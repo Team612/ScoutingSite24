@@ -62,7 +62,7 @@ const SignUpPage = () => {
       </div>
 
       <div id="signuppage">
-        <h1>SignUp</h1>
+        <h1>Sign Up</h1>
         <div class="signup">
           <h2 id="signUph2">Create Team ID:</h2>
           <input type="text" id="signUpInput" placeholder="Team ID #" />
