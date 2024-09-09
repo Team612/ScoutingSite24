@@ -6,7 +6,7 @@
   /* font-weight:10; */
 }
 
-.submitButton{
+#submitButton{
   border-radius: 20px;
   appearance: button;
   backface-visibility: hidden;
