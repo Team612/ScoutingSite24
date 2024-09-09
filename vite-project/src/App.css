@@ -596,7 +596,7 @@ li {
   /* display:inline-block; */
   /* width:1; */
 }
-#input{
+#input {
   border: none;
   border-radius: 10px;
   padding: 10px;
@@ -616,6 +616,7 @@ li {
   font-size: large;
 }
 #textinput {
+  display: inline-block;
   width: 15.626vw;
   height: fit-content;
   font-size: medium;
@@ -662,4 +663,20 @@ li {
 }
 #buttonspacing{
   margin-top: 100px;
+}
+/* Sign up page */
+#signUpInput {
+  display: inline-block;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: rgb(53, 163, 222);
+  color: white;
+  width: 30vh;
+  margin-bottom: 3em;
+  margin-top: 3em;
+  margin-left: 2vw;
+}
+#signUph2 {
+  display: inline-block;
 }

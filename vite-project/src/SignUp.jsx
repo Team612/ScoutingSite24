@@ -64,24 +64,24 @@ const SignUpPage = () => {
       <div id="signuppage">
         <h1>SignUp</h1>
         <div class="signup">
-          <h2>Create Team ID: </h2>
-          <input type="text" id="input" placeholder="Team ID #" />
+          <h2 id="signUph2">Create Team ID:</h2>
+          <input type="text" id="signUpInput" placeholder="Team ID #" />
         </div>
         <div class="signup">
-          <h2>Create Password: </h2>
-          <input type="password" id="input" placeholder="Password" />
+          <h2 id="signUph2">Create Password:</h2>
+          <input type="password" id="signUpInput" placeholder="Password" />
         </div>
         <div class="signup">
-          <h2>Retype Password: </h2>
-          <input type="password" id="input" placeholder="Password" />
+          <h2 id="signUph2">Retype Password:</h2>
+          <input type="password" id="signUpInput" placeholder="Password" />
         </div>
         <p>
           DO NOT MAKE AN ACCOUNT FOR A TEAM YOU ARE NOT A PART OF, IF YOUR
-          TEAM’s ACCOUNT IS ALREADY TAKEN, Contact us at xxx@email.com to get
+          TEAM’s ACCOUNT IS ALREADY TAKEN, Contact us at chantilly.612@gmail.com to get
           your account back. Until then, you may use any combination of letters
           in your team number in place of your team number.
         </p>
-        <button id="submitButton">Submit</button>
+        <button id="submitButton">Sign Up</button>
         <div id="forgotPassword">Forgot Password?</div>
       </div>
     </>
