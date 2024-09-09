@@ -32,21 +32,21 @@ const LoginPage = () => {
         <img id="image612" src="/src/images/logo.jpeg" alt="612 Logo"/>
       </a>
       <a>
-            <NavLink to="/mainscreen" activeStyle id="imageHome">
-                <img id="imagehome" src="/src/images/home.jpg"/>
-            </NavLink>
+            {/* <NavLink to="/mainscreen" activeStyle id="imageHome"> */}
+                {/* <img id="imagehome" src="/src/images/home.jpg"/> */}
+            {/* </NavLink> */}
         </a>
     </div>
 
     <div id = "loginpage">
       <h1>Login</h1>
       <div id="login">
-        <h2>Team ID:    </h2>
-          <input type="text" id="input" placeholder="Team ID #" />
+        <h2 id="signUph2">Team ID:    </h2>
+          <input type="text" id="button2" placeholder="Team ID #" />
       </div>
       <div id="login">
-      <h2>Password:   </h2>
-          <input type="password" id="input" placeholder="Password" />
+      <h2 id="signUph2">Password:   </h2>
+          <input type="password" id="button2" placeholder="Password" />
         </div>
         <button id="submitButton">Submit</button>
         <div id="forgotPassword">Forgot Password?</div>

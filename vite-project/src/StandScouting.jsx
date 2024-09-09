@@ -38,54 +38,54 @@ function App() {
         </a>
     </div>
     <div id = "standscoutingpage">
-        <h1 id = "scoutingHead">STAND SCOUTING</h1>
+        <h1 id = "scoutingHead">Stand Scouting</h1>
         <div>
-            <button class = "button1">Match Number</button>
-            <input type = "text" class = "button2"></input>
+            <button id="button1">Match Number</button>
+            <input type = "text" id = "button2"></input>
         </div>
         <div>
-          <button class = "button1">Team Number</button>
-            <input type = "text" class = "button2"></input>
+          <button id="button1">Team Number</button>
+            <input type = "text" id = "button2"></input>
         </div>
         <div>
-        <button class = "button1">(Auto) Leave Zone</button>
-            <button class = "button-24">No</button>
-            <button class = "button-25">Yes</button>
+        <button id="button1">(Auto) Leave Zone</button>
+            <button id="button-24">No</button>
+            <button id="button-25">Yes</button>
         </div>
         <div>
-        <button class = "button1">(Auto) Amp</button>
-        <button class = "button-24">-1</button>
+        <button id="button1">(Auto) Amp</button>
+        <button id="button-24">-1</button>
            <p id = "speakerId">0</p>
-            <button class = "button-25">+1</button>
+            <button id="button-25">+1</button>
         </div>
         <div>
-           <button class = "button1">(Auto) Speaker</button>
-           <button class = "button-24">-1</button>
+           <button id="button1">(Auto) Speaker</button>
+           <button id="button-24">-1</button>
            <p id = "speakerId">0</p>
-            <button class = "button-25">+1</button>
+            <button id="button-25">+1</button>
         </div>
         <div>
-           <button class = "button1">(Teleop/Engame) Amp</button>
-           <button class = "button-24">-1</button>
+           <button id="button1">(Teleop/Engame) Amp</button>
+           <button id="button-24">-1</button>
            <p id = "speakerId">0</p>
-            <button class = "button-25">+1</button>
+            <button id="button-25">+1</button>
         </div>
         <div>
-           <button class = "button1">(Teleop/Endgame) Speaker</button>
-           <button class = "button-24">-1</button>
+           <button id="button1">(Teleop/Endgame) Speaker</button>
+           <button id="button-24">-1</button>
            <p id = "speakerId">0</p>
-            <button class = "button-25">+1</button>
+            <button id="button-25">+1</button>
         </div>
         <div>
-           <button class = "button1">Climb</button>
-           <button class = "button-24">No</button>
-            <button class = "button-25">Yes</button>
+           <button id="button1">Climb</button>
+           <button id="button-24">No</button>
+            <button id="button-25">Yes</button>
         </div>
         <div>
-           <button class = "button1">Trap</button>
-           <button class = "button-24">-1</button>
+           <button id="button1">Trap</button>
+           <button id="button-24">-1</button>
            <p id = "speakerId">0</p>
-            <button class = "button-25">+1</button>
+            <button id="button-25">+1</button>
         </div>
         <div>
             <button class = "button">SAVE!</button>

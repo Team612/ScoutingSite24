@@ -33,7 +33,7 @@ const StatsPage = () => {
         </a>
     </div>
     <div id="statspage">
-        <h1>Stats</h1>
+        <h1 id="scoutingHead">Stats</h1>
         <h2>Search: <input type="text" id="searchbar" placeholder="Search" /></h2>
         <div className="button-container">
             <button className="statsbutton">Match 1</button>

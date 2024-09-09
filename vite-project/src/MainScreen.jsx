@@ -34,12 +34,9 @@ const MainScreen = () => {
         </a>
 
         <a>
-          {/* <button id = "logInButton">Login</button> */}
+          {/* <button id = "logInButton">Log</button> */}
           <NavLink to="/login" activeStyle>
-            Login
-          </NavLink>
-          <NavLink to="/signup" activeStyle>
-            Sign Up
+            Log out
           </NavLink>
         </a>
       </div>

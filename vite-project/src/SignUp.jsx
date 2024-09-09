@@ -62,18 +62,18 @@ const SignUpPage = () => {
       </div>
 
       <div id="signuppage">
-        <h1>Sign Up</h1>
+        <h1 id="scoutingHead">Sign Up</h1>
         <div class="signup">
           <h2 id="signUph2">Create Team ID:</h2>
-          <input type="text" id="signUpInput" placeholder="Team ID #" />
+          <input type="text" id="button2" placeholder="Team ID #" />
         </div>
         <div class="signup">
           <h2 id="signUph2">Create Password:</h2>
-          <input type="password" id="signUpInput" placeholder="Password" />
+          <input type="password" id="button2" placeholder="Password" />
         </div>
         <div class="signup">
           <h2 id="signUph2">Retype Password:</h2>
-          <input type="password" id="signUpInput" placeholder="Password" />
+          <input type="password" id="button2" placeholder="Password" />
         </div>
         <p>
           DO NOT MAKE AN ACCOUNT FOR A TEAM YOU ARE NOT A PART OF, IF YOUR
