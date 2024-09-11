@@ -84,6 +84,7 @@ const SignUpPage = () => {
         <button id="submitButton">Sign Up</button>
         <div id="forgotPassword">Forgot Password?</div>
       </div>
+      {/* <div id = "footer">Contact us at Chantilly.612@gmail.com for help!</div> */}
     </>
   );
 };

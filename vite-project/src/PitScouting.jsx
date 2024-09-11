@@ -87,6 +87,7 @@ const PitScoutingPage = () => {
         </div>
         <button class="button">SAVE</button>
     </div>
+    {/* <div id = "footer">Contact us at Chantilly.612@gmail.com for help!</div> */}
 
     </>
     )

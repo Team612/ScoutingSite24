@@ -42,7 +42,7 @@ const StatsPage = () => {
             <button className="statsbutton">Average Performance Statistics</button>
         </div>
     </div>
-    
+    {/* <div id = "footer">Contact us at Chantilly.612@gmail.com for help!</div> */}
     </>
     )
 }

@@ -89,12 +89,10 @@ function App() {
         </div>
         <div>
             <button class = "button">SAVE!</button>
+        </div>    
+            {/* <div id = "footer">Contact us at Chantilly.612@gmail.com for help!</div> */}
         </div>
-        <div id = "footer">Contact us at XXX@email.com for help!</div>
-    </div>
 
-
-        
     </>
   )
   

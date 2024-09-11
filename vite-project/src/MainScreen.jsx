@@ -44,23 +44,23 @@ const MainScreen = () => {
         <h1 id = "scoutingHead">WELCOME, XXXX</h1>
         <h2 id = "scoutingHeading2"><b>Choose a function</b></h2>
         <div>
-            <button class = "button">Pit Scouting</button>
-            <button class = "button">Stand Scouting</button>
+            <button id = "submitButton2">Pit Scouting</button>
+            <button id = "submitButton2">Stand Scouting</button>
         </div>
         <div>
             <p class = "text">Add pit-based data</p>
             <p class = "text">Add stand-based data</p>
         </div>
         <div>
-            <button class = "button">Stats</button>
-            <button class = "button">Info</button>
+            <button id = "submitButton2">Stats</button>
+            <button id = "submitButton2">Info</button>
         </div>
         <div>
             <p class = "text">Look at app data</p>
             <p class = "text">Learn about the app</p>
         </div>
         <div>
-            <button class = "button">About Us!</button>
+            <button id = "submitButton2">About Us!</button>
         </div>
         <div>
             <p class = "textor">Learn about 612 Robotics and our mission</p>
