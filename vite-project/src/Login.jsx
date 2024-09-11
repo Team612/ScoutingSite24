@@ -1,10 +1,18 @@
-import { useState } from 'react'
+import { useState } from 'react';
 //import LoginPage from './Login'
 // import { Link } from 'react-router-dom'; // Import Link for navigation
-import './App.css'
+import './App.css';
+import { initializeApp } from 'firebase/app';
 import NavLink from "./NavElements.jsx";
 
-  
+const firebaseConfig = {
+  apiKey: "AIzaSyAmnVQ0fKgFbjrzKSkaAi_mHBV0Xf5tDkg",
+  authDomain: "scoutingsite-9ed91.firebaseapp.com",
+  projectId: "scoutingsite-9ed91",
+  storageBucket: "scoutingsite-9ed91.appspot.com",
+  messagingSenderId: "707000861764",
+  appId: "1:707000861764:web:8494cda0b57782c5cf2811"
+};
 
 const LoginPage = () => {
   return (

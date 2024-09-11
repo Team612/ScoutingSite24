@@ -1,5 +1,6 @@
 import React from "react";
 import NavLink from "./NavElements.jsx";
+// import { initializeApp } from "firebase/app";
 
 const HomePage = () => {
   return (

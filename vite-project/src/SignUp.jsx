@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./App.css";
 import NavLink from "./NavElements.jsx";
+import { initializeApp } from "firebase/app";
+
 
 const SignUpPage = () => {
   return (
