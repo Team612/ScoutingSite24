@@ -4,6 +4,7 @@ import { useState } from 'react';
 import './App.css';
 import { initializeApp } from 'firebase/app';
 import NavLink from "./NavElements.jsx";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAmnVQ0fKgFbjrzKSkaAi_mHBV0Xf5tDkg",
@@ -13,7 +14,21 @@ const firebaseConfig = {
   messagingSenderId: "707000861764",
   appId: "1:707000861764:web:8494cda0b57782c5cf2811"
 };
-
+var inputValue;
+var logInData = ["",""];
+async function LogInDataGet(teamID, password) {
+  // const docRef = doc(db, teamID, password);
+  console.log("Team ID:", teamID, "Password", password);
+  return [teamID, password];
+}
+function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const formData = new FormData(form);
+  fetch('/some-api', { method: form.method, body: formData });
+  const formJson = Object.fromEntries(formData.entries());
+  console.log(formJson);
+}
 const LoginPage = () => {
   return (
     <>
@@ -48,15 +63,17 @@ const LoginPage = () => {
 
     <div id = "loginpage">
       <h1>Login</h1>
+      {/* <form onSubmit={handleSubmit}> */}
       <div id="login">
         <h2 id="signUph2">Team ID:    </h2>
-          <input type="text" id="button2" placeholder="Team ID #" />
+          <input value = {inputValue} onChange={(event) => setInputValue(event.target.value)} type="text" class="button2" placeholder="Team ID #" />
       </div>
       <div id="login">
       <h2 id="signUph2">Password:   </h2>
-          <input type="password" id="button2" placeholder="Password" />
+          <input value = {inputValue} onChange={(event) => setInputValue2(event.target.value)} type="text" class="button2" placeholder="Password" />
         </div>
-        <button id="submitButton">Submit</button>
+        <button id="submitButton" onClick={() => LogInDataGet()}>Submit</button>
+        <p id="p"></p>
         <div id="forgotPassword">Forgot Password?</div>
     </div>
     </>

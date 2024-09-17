@@ -41,11 +41,11 @@ function App() {
         <h1 id = "scoutingHead">Stand Scouting</h1>
         <div>
             <button id="button1">Match Number</button>
-            <input type = "text" id = "button2"></input>
+            <input type = "text" class = "button2"></input>
         </div>
         <div>
           <button id="button1">Team Number</button>
-            <input type = "text" id = "button2"></input>
+            <input type = "text" class = "button2"></input>
         </div>
         <div>
         <button id="button1">(Auto) Leave Zone</button>

@@ -195,7 +195,7 @@
   vertical-align: middle;
 }
 
-#button2{
+.button2{
   appearance: button;
   backface-visibility: hidden;
   background-color: white;
