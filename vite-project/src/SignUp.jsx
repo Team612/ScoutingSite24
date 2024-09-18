@@ -5,6 +5,10 @@ import { initializeApp } from "firebase/app";
 import { doc, setDoc } from "firebase/firestore"; 
 // import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import Cookies from 'js-cookie';
+
+Cookies.set('Log', "none");
+console.log(Cookies.get("Log"));
 
 const firebaseConfig = {
   apiKey: "AIzaSyAmnVQ0fKgFbjrzKSkaAi_mHBV0Xf5tDkg",
@@ -16,17 +20,26 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-var signUpDatas = ["sample", "sample", "sample"];
+var signUpDatas = ["sample", "sample", "sam/ple"];
 
+// function CallDaCookie(){
+//   var language = Cookies.get("Log");
+//   console.log(language);
+// }
 
-
-async function SignUpDataAdd() {
+async function SignUpDataAdd(a, b) {
   // Assign pass and teamID here to the database
-  // await setDoc(doc(db, teamID, "Information"), {
+  await setDoc(doc(db, a, "Information"), {
     // console.log(val1);
-  //   Team_Number: teamID,
-  //   Password: pass
-  // });
+    Team_Number: a,
+    Password: b
+  });
+  // console.log("About to" + a);
+  // console.log(b);
+
+  Cookies.set('Log', a);
+  
+  // CallDaCookie();
 }
 
 function handleSubmit(e) {
@@ -35,7 +48,14 @@ function handleSubmit(e) {
     const formData = new FormData(form);
     fetch('/some-api', { method: form.method, body: formData });
     const formJson = Object.fromEntries(formData.entries());
-    console.log(formJson);
+    if (formJson["myInput2"] == formJson["myInput3"]){
+      SignUpDataAdd(formJson["myInput1"], formJson["myInput3"])
+    }
+    else{
+
+    }
+    // console.log(a);
+    // console.log(b);
 }
 
 const SignUpPage = () => {
@@ -102,17 +122,17 @@ const SignUpPage = () => {
             <h1 id="scoutingHead">Sign Up</h1>
             <div class="signup">
               <h2 id="signUph2">Create Team ID:</h2>
-              <input name = "myInput" type="text" class="button2" placeholder="Team ID #" />
+              <input name = "myInput1" type="text" class="button2" placeholder="Team ID #" />
             </div>
         
             
             <div class="signup">
               <h2 id="signUph2">Create Password:</h2>
-              <input name = "myInput" type="password" class="button2" placeholder="Password" />
+              <input name = "myInput2" type="password" class="button2" placeholder="Password" />
             </div>
             <div class="signup">
               <h2 id="signUph2">Retype Password:</h2>
-              <input name = "myInput" type="password" class="button2" placeholder="Password" />
+              <input name = "myInput3" type="password" class="button2" placeholder="Password" />
             </div>
             <p>
               DO NOT MAKE AN ACCOUNT FOR A TEAM YOU ARE NOT A PART OF, IF YOUR
@@ -120,7 +140,9 @@ const SignUpPage = () => {
               your account back. Until then, you may use any combination of letters
               in your team number in place of your team number.
             </p>
-            <button id="submitButton" class = "FirebaseAdd" onClick={() =>SignUpDataAdd()}>Sign Up</button>
+            <NavLink to="/mainscreen">
+              <button id="submitButton" class = "FirebaseAdd" onClick={() =>SignUpDataAdd()}>Sign Up</button>
+            </NavLink>
         </form>
         <div id="forgotPassword">Forgot Password?</div>
       </div>

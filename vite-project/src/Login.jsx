@@ -5,6 +5,8 @@ import './App.css';
 import { initializeApp } from 'firebase/app';
 import NavLink from "./NavElements.jsx";
 import { getFirestore } from "firebase/firestore";
+import {doc, getDoc} from "firebase/firestore";
+import Cookies from 'js-cookie';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAmnVQ0fKgFbjrzKSkaAi_mHBV0Xf5tDkg",
@@ -14,12 +16,29 @@ const firebaseConfig = {
   messagingSenderId: "707000861764",
   appId: "1:707000861764:web:8494cda0b57782c5cf2811"
 };
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+var cont;
 var inputValue;
-var logInData = ["",""];
 async function LogInDataGet(teamID, password) {
-  // const docRef = doc(db, teamID, password);
-  console.log("Team ID:", teamID, "Password", password);
-  return [teamID, password];
+  // console.log("Team ID:", teamID, "Password", password);
+  const docRef = doc(db, teamID, "Information");
+  const docSnap = await getDoc(docRef);
+  if (docSnap.exists()) {
+    // if (doc);
+  } else {
+    console.log("No such document!");
+  }
+  console.log(docSnap.data()["Password"])
+  if(docSnap.data()["Password"] == password){
+    cont = true;
+    Cookies.set('Log', teamID);
+  }
+  else{
+    cont = false;
+    Cookies.set('Log', "none");
+  }
+
 }
 function handleSubmit(e) {
   e.preventDefault();
@@ -27,7 +46,7 @@ function handleSubmit(e) {
   const formData = new FormData(form);
   fetch('/some-api', { method: form.method, body: formData });
   const formJson = Object.fromEntries(formData.entries());
-  console.log(formJson);
+  LogInDataGet(formJson["teamID"], formJson["password"]);
 }
 const LoginPage = () => {
   return (
@@ -62,19 +81,21 @@ const LoginPage = () => {
     </div>
 
     <div id = "loginpage">
+    <form onSubmit={handleSubmit}>
       <h1>Login</h1>
       {/* <form onSubmit={handleSubmit}> */}
       <div id="login">
         <h2 id="signUph2">Team ID:    </h2>
-          <input value = {inputValue} onChange={(event) => setInputValue(event.target.value)} type="text" class="button2" placeholder="Team ID #" />
+          <input name="teamID" value = {inputValue} type="text" class="button2" placeholder="Team ID #" />
       </div>
       <div id="login">
       <h2 id="signUph2">Password:   </h2>
-          <input value = {inputValue} onChange={(event) => setInputValue2(event.target.value)} type="text" class="button2" placeholder="Password" />
+          <input name="password" value = {inputValue} type="text" class="button2" placeholder="Password" />
         </div>
-        <button id="submitButton" onClick={() => LogInDataGet()}>Submit</button>
+        <button id="submitButton">Submit</button>
         <p id="p"></p>
         <div id="forgotPassword">Forgot Password?</div>
+    </form>
     </div>
     </>
   )
