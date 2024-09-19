@@ -36,7 +36,7 @@ async function LogInDataGet(teamID, password) {
   }
   else{
     cont = false;
-    Cookies.set('Log', "none");
+    Cookies.set('Log', null);
   }
 
 }
