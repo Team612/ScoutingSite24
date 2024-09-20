@@ -140,9 +140,9 @@ const SignUpPage = () => {
               your account back. Until then, you may use any combination of letters
               in your team number in place of your team number.
             </p>
-            <NavLink to="/mainscreen">
+            {/* <NavLink to="/mainscreen"> */}
               <button id="submitButton" class = "FirebaseAdd" onClick={() =>SignUpDataAdd()}>Sign Up</button>
-            </NavLink>
+            {/* </NavLink> */}
         </form>
         <div id="forgotPassword">Forgot Password?</div>
       </div>

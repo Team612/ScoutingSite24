@@ -25,20 +25,32 @@ async function LogInDataGet(teamID, password) {
   const docRef = doc(db, teamID, "Information");
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
-    // if (doc);
+    // console.log(window.location.pathname);
+    // console.log(docSnap.data());
   } else {
     console.log("No such document!");
   }
-  console.log(docSnap.data()["Password"])
-  if(docSnap.data()["Password"] == password){
+  console.log(docSnap.data()["Password"]);
+  if(docSnap.data()["Password"] == password) {
     cont = true;
     Cookies.set('Log', teamID);
   }
-  else{
+  else {
     cont = false;
     Cookies.set('Log', "none");
   }
-
+  let href = window.location.href;
+  console.log(typeof href);
+  let hrefsplit = href.split("/");
+  console.log(hrefsplit);
+  hrefsplit.pop();
+  hrefsplit.shift();
+  hrefsplit.push("mainscreen");
+  console.log(hrefsplit);
+  hrefsplit = hrefsplit.join("/").split("");
+  console.log(hrefsplit);
+  hrefsplit.shift();
+  window.location.href = hrefsplit.join();
 }
 function handleSubmit(e) {
   e.preventDefault();

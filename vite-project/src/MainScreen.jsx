@@ -2,9 +2,12 @@ import { useState } from 'react'
 import NavLink from "./NavElements.jsx";
 import './App.css'
 
+async function backend() {
+  console.log(Cookies.get('Log'));
+  this.setState({header: 'WELCOME, Team ' + Cookies.get('Log')});
+}
 
 const MainScreen = () => {
-
   return (
     <>
     
@@ -42,7 +45,7 @@ const MainScreen = () => {
         </a>
       </div>
     <div id = "navigationpage">
-        <h1 id = "scoutingHead">WELCOME, XXXX</h1>
+        <h1 id = "scoutingHead">{this.state.header}</h1>
         <h2 id = "scoutingHeading2"><b>Choose a function</b></h2>
         <div>
             <button id = "submitButton2">Pit Scouting</button>
