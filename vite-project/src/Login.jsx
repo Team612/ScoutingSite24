@@ -37,7 +37,7 @@ async function LogInDataGet(teamID, password) {
   }
   else {
     cont = false;
-    Cookies.set('Log', "none");
+    Cookies.set('Log', null);
   }
   let href = window.location.href;
   console.log(typeof href);
