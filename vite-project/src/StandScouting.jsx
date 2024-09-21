@@ -28,7 +28,7 @@ const db = getFirestore(app);
 function App() {
     async function SignUpDataAdd(a,b,c) {
         // // Assign pass and teamID here to the database
-        await setDoc(doc(db, a, "ScoutData" + b + climb), {
+        await setDoc(doc(db, a, "ScoutData"), {
           "Match": c,
           "Team": b,
           ALeave: ALeave,
