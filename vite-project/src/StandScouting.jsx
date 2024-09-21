@@ -25,7 +25,7 @@ const db = getFirestore(app);
 function App() {
     async function SignUpDataAdd(a,b,c) {
         // // Assign pass and teamID here to the database
-        await setDoc(doc(db, a, "ScoutData" + "  " + b), {
+        await setDoc(doc(db, a, "ScoutData_" + b + "_" +  c), {
           "Match": c,
           "Team": b,
           ALeave: ALeave,
@@ -51,6 +51,7 @@ function App() {
         const formData = new FormData(form);
         fetch('/some-api', { method: form.method, body: formData });
         const formJson = Object.fromEntries(formData.entries());
+        console.log(formJson);
         SignUpDataAdd(Cookies.get('Log'), formJson["team number"], formJson["match"]);
     }
 

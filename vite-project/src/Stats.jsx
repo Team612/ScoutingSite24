@@ -13,67 +13,87 @@ const firebaseConfig = {
     storageBucket: "scoutingsite-9ed91.appspot.com",
     messagingSenderId: "707000861764",
     appId: "1:707000861764:web:8494cda0b57782c5cf2811"
-  };
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-  var pitdata = "No data";
-  
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+var pitdata = "No data";
+var match1data = "No data";
+var match2data = "No data";
+var avgperformancestatistics = [];
 const StatsPage = () => {
-    var [pit1, setPit1] = useState("No data");
-    var [pit2, setPit2] = useState("No data");
-    var [pit3, setPit3] = useState("No data");
-    var [pit4, setPit4] = useState("No data");
-    var [pit5, setPit5] = useState("No data");
-    var [pit6, setPit6] = useState("No data");
-    var [pit7, setPit7] = useState("No data");
-    var [pit8, setPit8] = useState("No data");
-    var [pit9, setPit9] = useState("No data");
-    var [pit10, setPit10] = useState("No data");
-    var [pit11, setPit11] = useState("No data");
-    var [pit12, setPit12] = useState("No data");
-
-    var match1data = "No data";
-    var match2data = "No data";
+    const [pit, setPit] = useState("No data");
+    const [match1, setmatch1] = useState("No data");
+    const [match2, setmatch2] = useState("No data");
+    const [avgstatistcs, setavgstatistics] = useState("No data");
+    async function StatsMatchesGet(query, match) {
+        // console.log("Team ID:", teamID, "Password", password);
+        const docRef = doc(db, Cookies.get('Log'), "ScoutData_" + query + "_" + match);
+        console.log(Cookies.get('Log'));
+        console.log("ScoutData " + query + " " + match);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                // console.log(window.location.pathname);
+                console.log(docSnap);
+            } else {
+                console.log("No such document!");
+                return false;
+            }
+            console.log(docSnap.data()["AAmp"]);
+            let data = docSnap.data();
+            console.log(data);
+            return "Autonomous Amp: " + data["AAmp"] + "\nLeft Zone: " + data["ALeave"] + "\nAutonomous Speaker: " + data["ASpeaker"] + "\nMatch: " + data["Match"] + "\nTeleop Amp: " + data["TAmp"] + "\nTeleop Speaker: " + data["TSpeaker"] + "\nTeam #: " + data["Team"] + "\nTrap: " + data["trap"] + "\nClimb: " + data["climb"];
+    }
     async function StatsPitDataGet(query) {
-        const docRef = doc(db, Cookies.get('Log'), "PitData 9072");
+        // console.log("Team ID:", teamID, "Password", password);
+        const docRef = doc(db, Cookies.get('Log'), "PitData_" + query);
         const docSnap = await getDoc(docRef);
-        console.log(docSnap.data());
-        var data = docSnap.data()
-        var Amp = data["Amp"]
-        var Autonomous = data["Autonomous"]
-        var Climb = data["Climb"]
-        var Cycle_Time = data["Cycle Time"]
-        var Drivetrain = data["Drivetrain"]
-        var Driving_Skill = data["Driving Skill"]
-        var Intake = data["Intake"]
-        var other = data["Other"]
-        var Speaker = data["Speaker"]
-        var Team = data["Team"]
-        var Trap = data["Trap"]
-        var weight = data["Weight"]
-        setPit1("Speaker: " + Speaker)
-        setPit2("Amp: " + Amp)
-        setPit3("Auto: " + Autonomous)
-        setPit4("Climb: " + Climb)
-        setPit5("Cycle: " + Cycle_Time)
-        setPit6("Intake: " + Intake)
-        setPit7("Skill: " + Driving_Skill)
-        setPit8("Other: " + other)
-        setPit9("Team: " + Team)
-        setPit10("Trap: " + Trap)
-        setPit11( "Weight: " + weight)
-        setPit12("Drivetrain: " + Drivetrain);
+        if (docSnap.exists()) {
+          // console.log(window.location.pathname);
+          // console.log(docSnap.data());
+        } else {
+          console.log("No such document!");
+          return false;
+        }
+        console.log(docSnap.data()["Amp"]);
+        let data = docSnap.data();
+        console.log(data);
+        pitdata = "Amp: " + data["Amp"] + "\nAutonomous: " + data["Autonomous"] + "\nClimb: " + data["Climb"] + "\nCycle Time: " + data["Cycle Time"] + " lbs\nDrivetrain: " + data["Drivetrain"] + "\nDriving Skill: " + data["Driving Skill"] + "\nIntake: " + data["Intake"] + "\nOther: " + data["Other"] + "\nSpeaker: " + data["Speaker"] + "\nTeam #: " + data["Team"] + "\nTrap: " + data["Trap"] + "\nWeight: " + data["Weight"] + " lbs";
+        console.log(pitdata);
+        setPit(pitdata);
+        console.log(pit);
     }
-
-    function handleSubmit(e){
-      e.preventDefault();
-      const form = e.target;
-      const formData = new FormData(form);
-      fetch('/some-api', { method: form.method, body: formData });
-      const formJson = Object.fromEntries(formData.entries());
-      StatsPitDataGet(formJson["query"]);
-    }
-    
+    async function handleSubmit(e) {
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
+        fetch('/some-api', { method: form.method, body: formData });
+        const formJson = Object.fromEntries(formData.entries());
+        await StatsPitDataGet(formJson["query"]);
+        for (var i = 0; i <=50; i++) {
+            var matches = await StatsMatchesGet(formJson["query"], i);
+            if (!matches) {
+                continue;
+            } else {
+                if (match1data != "No data") {
+                    match2data = matches;
+                } else {
+                    match1data = matches;
+                }
+            }
+            console.log(matches);
+            console.log(match1data, match2data);
+            setmatch1(match1data);
+            setmatch2(match2data);
+        }
+        avgperformancestatistics = [];
+        avgperformancestatistics.push((Number(match1data.split("\n")[0].split(": ")[1]) + Number(match2data.split("\n")[0].split(": ")[1]))/2);
+        avgperformancestatistics.push((Number(match1data.split("\n")[2].split(": ")[1]) + Number(match2data.split("\n")[2].split(": ")[1]))/2);
+        avgperformancestatistics.push((Number(match1data.split("\n")[4].split(": ")[1]) + Number(match2data.split("\n")[4].split(": ")[1]))/2);
+        avgperformancestatistics.push((Number(match1data.split("\n")[5].split(": ")[1]) + Number(match2data.split("\n")[5].split(": ")[1]))/2);
+        avgperformancestatistics.push((Number(match1data.split("\n")[7].split(": ")[1]) + Number(match2data.split("\n")[7].split(": ")[1]))/2);
+        console.log(avgperformancestatistics);
+        setavgstatistics("Autonomous Amp: " + avgperformancestatistics[0] + "\nAutonoumous Speaker: " + avgperformancestatistics[1] + "\nTeleop Amp: " + avgperformancestatistics[2] + "\nTeleop Speaker: " + avgperformancestatistics[3] + "\nTrap: " + avgperformancestatistics[4]);
+      }
     return (
     <>
     
@@ -107,30 +127,37 @@ const StatsPage = () => {
     <div id="statspage">
         <h1 id="scoutingHead">Stats</h1>
         <form onSubmit={handleSubmit}>
-          <h2>Search: <input type="text" id="searchbar" placeholder="Search" name="query"/></h2>
-          <button>Go!</button>
+        <h2>Search: <input type="text" id="searchbar" placeholder="Search" name="query"/></h2>
         </form>
         <div className="button-container">
             <button className="statsbutton">Match 1</button>
-            <p>{match1data}</p>
+            <p>{match1.split('\n').map((line, index) => (
+                <React.Fragment key={index}>
+                {line}
+                <br />
+                </React.Fragment>
+      ))}</p>
             <button className="statsbutton">Match 2</button>
-            <p>{match2data}</p>
-            <button className="statsbutton">Other Matches</button>
+            <p>{match2.split('\n').map((line, index) => (
+                <React.Fragment key={index}>
+                {line}
+                <br />
+                </React.Fragment>
+      ))}</p>
             <button className="statsbutton" id="buttonspacing">Pit Data</button>
-            <p class = "c">{pit1}</p>
-            <p class = "c">{pit2}</p>
-            <p class = "c">{pit3}</p>
-            <p class = "c">{pit4}</p>
-            <p class = "c">{pit5}</p>
-            <p class = "c">{pit6}</p>
-            <p class = "c">{pit7}</p>
-            <p class = "c">{pit8}</p>
-            <p class = "c">{pit9}</p>
-            <p class = "c">{pit10}</p>
-            <p class = "c">{pit11}</p>
-            <p class = "c">{pit12}</p>
+            <p>{pit.split('\n').map((line, index) => (
+                <React.Fragment key={index}>
+                {line}
+                <br />
+                </React.Fragment>
+      ))}</p>
             <button className="statsbutton">Average Performance Statistics</button>
-            <p></p>
+            <p>{avgstatistcs.split('\n').map((line, index) => (
+                <React.Fragment key={index}>
+                {line}
+                <br />
+                </React.Fragment>
+      ))}</p>
         </div>
     </div>
     {/* <div id = "footer">Contact us at Chantilly.612@gmail.com for help!</div> */}
