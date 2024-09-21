@@ -127,7 +127,7 @@ const StatsPage = () => {
     <div id="statspage">
         <h1 id="scoutingHead">Stats</h1>
         <form onSubmit={handleSubmit}>
-        <h2>Search: <input type="text" id="searchbar" placeholder="Search" name="query"/></h2>
+            <h2>Search: <input type="text" id="searchbar" placeholder="Search" name="query"/></h2>
         </form>
         <div className="button-container">
             <button className="statsbutton">Match 1</button>
