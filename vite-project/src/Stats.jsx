@@ -21,10 +21,22 @@ var match1data = "No data";
 var match2data = "No data";
 var avgperformancestatistics = [];
 const StatsPage = () => {
-    const [pit, setPit] = useState("No data");
     const [match1, setmatch1] = useState("No data");
     const [match2, setmatch2] = useState("No data");
     const [avgstatistcs, setavgstatistics] = useState("No data");
+    var [pit1, setPit1] = useState("No data");
+    var [pit2, setPit2] = useState("No data");
+    var [pit3, setPit3] = useState("No data");
+    var [pit4, setPit4] = useState("No data");
+    var [pit5, setPit5] = useState("No data");
+    var [pit6, setPit6] = useState("No data");
+    var [pit7, setPit7] = useState("No data");
+    var [pit8, setPit8] = useState("No data");
+    var [pit9, setPit9] = useState("No data");
+    var [pit10, setPit10] = useState("No data");
+    var [pit11, setPit11] = useState("No data");
+    var [pit12, setPit12] = useState("No data");
+
     async function StatsMatchesGet(query, match) {
         // console.log("Team ID:", teamID, "Password", password);
         const docRef = doc(db, Cookies.get('Log'), "ScoutData_" + query + "_" + match);
@@ -56,11 +68,30 @@ const StatsPage = () => {
         }
         console.log(docSnap.data()["Amp"]);
         let data = docSnap.data();
-        console.log(data);
-        pitdata = "Amp: " + data["Amp"] + "\nAutonomous: " + data["Autonomous"] + "\nClimb: " + data["Climb"] + "\nCycle Time: " + data["Cycle Time"] + " lbs\nDrivetrain: " + data["Drivetrain"] + "\nDriving Skill: " + data["Driving Skill"] + "\nIntake: " + data["Intake"] + "\nOther: " + data["Other"] + "\nSpeaker: " + data["Speaker"] + "\nTeam #: " + data["Team"] + "\nTrap: " + data["Trap"] + "\nWeight: " + data["Weight"] + " lbs";
-        console.log(pitdata);
-        setPit(pitdata);
-        console.log(pit);
+        var Amp = data["Amp"]
+        var Autonomous = data["Autonomous"]
+        var Climb = data["Climb"]
+        var Cycle_Time = data["Cycle Time"]
+        var Drivetrain = data["Drivetrain"]
+        var Driving_Skill = data["Driving Skill"]
+        var Intake = data["Intake"]
+        var other = data["Other"]
+        var Speaker = data["Speaker"]
+        var Team = data["Team"]
+        var Trap = data["Trap"]
+        var weight = data["Weight"]
+        setPit1("Speaker: " + Speaker)
+        setPit2("Amp: " + Amp)
+        setPit3("Auto: " + Autonomous)
+        setPit4("Climb: " + Climb)
+        setPit5("Cycle: " + Cycle_Time)
+        setPit6("Intake: " + Intake)
+        setPit7("Skill: " + Driving_Skill)
+        setPit8("Other: " + other)
+        setPit9("Team: " + Team)
+        setPit10("Trap: " + Trap)
+        setPit11( "Weight: " + weight)
+        setPit12("Drivetrain: " + Drivetrain);
     }
     async function handleSubmit(e) {
         e.preventDefault();
@@ -144,13 +175,20 @@ const StatsPage = () => {
                 <br />
                 </React.Fragment>
       ))}</p>
+            <button className="statsbutton">Other Matches</button>
             <button className="statsbutton" id="buttonspacing">Pit Data</button>
-            <p>{pit.split('\n').map((line, index) => (
-                <React.Fragment key={index}>
-                {line}
-                <br />
-                </React.Fragment>
-      ))}</p>
+                <p class = "c">{pit1}</p>
+                <p class = "c">{pit2}</p>
+                <p class = "c">{pit3}</p>
+                <p class = "c">{pit4}</p>
+                <p class = "c">{pit5}</p>
+                <p class = "c">{pit6}</p>
+                <p class = "c">{pit7}</p>
+                <p class = "c">{pit8}</p>
+                <p class = "c">{pit9}</p>
+                <p class = "c">{pit10}</p>
+                <p class = "c">{pit11}</p>
+                <p class = "c">{pit12}</p>
             <button className="statsbutton">Average Performance Statistics</button>
             <p>{avgstatistcs.split('\n').map((line, index) => (
                 <React.Fragment key={index}>
@@ -164,4 +202,5 @@ const StatsPage = () => {
     </>
     )
 }
+
 export default StatsPage;
