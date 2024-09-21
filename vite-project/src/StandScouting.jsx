@@ -22,13 +22,10 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 
-
-
-
 function App() {
     async function SignUpDataAdd(a,b,c) {
         // // Assign pass and teamID here to the database
-        await setDoc(doc(db, a, "ScoutData"), {
+        await setDoc(doc(db, a, "ScoutData" + "  " + b), {
           "Match": c,
           "Team": b,
           ALeave: ALeave,
@@ -58,7 +55,6 @@ function App() {
     }
 
     
-
   const [count, setCount] = useState(0)
   var [trap, setTrap] = useState(0)
   function AddOneTrap(){

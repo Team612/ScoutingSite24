@@ -45,6 +45,7 @@ const PitScoutingPage = () => {
         console.log("FormJson" + formJson["Team"]);
         PitScoutingDataAdd(formJson);
     }
+    
     return (
     <>
     {/* Montseratt Font: Headings */}
