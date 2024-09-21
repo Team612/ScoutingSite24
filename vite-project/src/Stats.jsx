@@ -29,7 +29,7 @@ const StatsPage = () => {
         // console.log("Team ID:", teamID, "Password", password);
         const docRef = doc(db, Cookies.get('Log'), "ScoutData_" + query + "_" + match);
         console.log(Cookies.get('Log'));
-        console.log("ScoutData " + query + " " + match);
+        console.log("ScoutData_" + query + "_" + match);
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
                 // console.log(window.location.pathname);
