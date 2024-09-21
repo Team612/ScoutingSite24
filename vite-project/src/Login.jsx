@@ -7,6 +7,7 @@ import NavLink from "./NavElements.jsx";
 import { getFirestore } from "firebase/firestore";
 import {doc, getDoc} from "firebase/firestore";
 import Cookies from 'js-cookie';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAmnVQ0fKgFbjrzKSkaAi_mHBV0Xf5tDkg",
@@ -20,47 +21,39 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 var cont;
 var inputValue;
-async function LogInDataGet(teamID, password) {
-  // console.log("Team ID:", teamID, "Password", password);
-  const docRef = doc(db, teamID, "Information");
-  const docSnap = await getDoc(docRef);
-  if (docSnap.exists()) {
-    // console.log(window.location.pathname);
-    // console.log(docSnap.data());
-  } else {
-    console.log("No such document!");
-  }
-  console.log(docSnap.data()["Password"]);
-  if(docSnap.data()["Password"] == password) {
-    cont = true;
-    Cookies.set('Log', teamID);
-  }
-  else {
-    cont = false;
-    Cookies.set('Log', null);
-  }
-  let href = window.location.href;
-  console.log(typeof href);
-  let hrefsplit = href.split("/");
-  console.log(hrefsplit);
-  hrefsplit.pop();
-  hrefsplit.shift();
-  hrefsplit.push("mainscreen");
-  console.log(hrefsplit);
-  hrefsplit = hrefsplit.join("/").split("");
-  console.log(hrefsplit);
-  hrefsplit.shift();
-  window.location.href = hrefsplit.join();
-}
-function handleSubmit(e) {
-  e.preventDefault();
-  const form = e.target;
-  const formData = new FormData(form);
-  fetch('/some-api', { method: form.method, body: formData });
-  const formJson = Object.fromEntries(formData.entries());
-  LogInDataGet(formJson["teamID"], formJson["password"]);
-}
 const LoginPage = () => {
+  const navigate = useNavigate();
+  async function LogInDataGet(teamID, password) {
+    // console.log("Team ID:", teamID, "Password", password);
+    const docRef = doc(db, teamID, "Information");
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      // console.log(window.location.pathname);
+      // console.log(docSnap.data());
+    } else {
+      console.log("No such document!");
+    }
+    console.log(docSnap.data()["Password"]);
+    if(docSnap.data()["Password"] == password) {
+      cont = true;
+      console.log('Log');
+      Cookies.set('Log', teamID);
+    }
+    else {
+      cont = false;
+      console.log('Not Log')
+      Cookies.set('Log', null);
+    }
+    navigate('/mainscreen');
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    fetch('/some-api', { method: form.method, body: formData });
+    const formJson = Object.fromEntries(formData.entries());
+    LogInDataGet(formJson["teamID"], formJson["password"]);
+  }
   return (
     <>
     
@@ -102,9 +95,9 @@ const LoginPage = () => {
       </div>
       <div id="login">
       <h2 id="signUph2">Password:   </h2>
-          <input name="password" value = {inputValue} type="text" class="button2" placeholder="Password" />
+          <input name="password" value = {inputValue} type="password" class="button2" placeholder="Password" />
         </div>
-        <button id="submitButton">Submit</button>
+        <button id="submitButton" >Submit</button>
         <p id="p"></p>
         <div id="forgotPassword">Forgot Password?</div>
     </form>

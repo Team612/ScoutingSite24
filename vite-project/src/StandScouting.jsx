@@ -47,7 +47,7 @@ function App() {
         console.log(TSpeaker);
         console.log(climb);
         console.log(trap);
-        SignUpDataAdd("612", "f");
+        SignUpDataAdd(Cookies.get('Log'), "f");
     }
 
     

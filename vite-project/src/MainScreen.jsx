@@ -1,13 +1,19 @@
 import { useState } from 'react'
 import NavLink from "./NavElements.jsx";
-import './App.css'
+import './App.css';
+import Cookies from 'js-cookie';
+import { Navigate, useNavigate } from 'react-router-dom';
 
-async function backend() {
-  console.log(Cookies.get('Log'));
-  this.setState({header: 'WELCOME, Team ' + Cookies.get('Log')});
-}
 
 const MainScreen = () => {
+  var header = "Welcome, Team " + Cookies.get('Log');
+  const navigate = useNavigate();
+  function toPitScouting() {
+    navigate('/pitscouting');
+  }
+  function toStandScouting() {
+    navigate('/standscouting');
+  }
   return (
     <>
     
@@ -45,11 +51,11 @@ const MainScreen = () => {
         </a>
       </div>
     <div id = "navigationpage">
-        <h1 id = "scoutingHead">{this.state.header}</h1>
+        <h1 id = "scoutingHead">{header}</h1>
         <h2 id = "scoutingHeading2"><b>Choose a function</b></h2>
         <div>
-            <button id = "submitButton2">Pit Scouting</button>
-            <button id = "submitButton2">Stand Scouting</button>
+            <button id = "submitButton2" onClick={toPitScouting}>Pit Scouting</button>
+            <button id = "submitButton2" onClick={toStandScouting}>Stand Scouting</button>
         </div>
         <div>
             <p class = "text">Add pit-based data</p>

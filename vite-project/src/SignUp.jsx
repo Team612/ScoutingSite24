@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import "./App.css";
 import NavLink from "./NavElements.jsx";
 import { initializeApp } from "firebase/app";
-import { doc, setDoc } from "firebase/firestore"; 
+import { doc, setDoc, getDoc } from "firebase/firestore"; 
 // import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import Cookies from 'js-cookie';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 Cookies.set('Log', "none");
 console.log(Cookies.get("Log"));
@@ -27,38 +28,47 @@ var signUpDatas = ["sample", "sample", "sam/ple"];
 //   console.log(language);
 // }
 
-async function SignUpDataAdd(a, b) {
-  // Assign pass and teamID here to the database
-  await setDoc(doc(db, a, "Information"), {
-    // console.log(val1);
-    Team_Number: a,
-    Password: b
-  });
-  // console.log("About to" + a);
-  // console.log(b);
-
-  Cookies.set('Log', a);
-  
-  // CallDaCookie();
-}
-
-function handleSubmit(e) {
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
-    fetch('/some-api', { method: form.method, body: formData });
-    const formJson = Object.fromEntries(formData.entries());
-    if (formJson["myInput2"] == formJson["myInput3"]){
-      SignUpDataAdd(formJson["myInput1"], formJson["myInput3"])
-    }
-    else{
-
-    }
-    // console.log(a);
-    // console.log(b);
-}
-
 const SignUpPage = () => {
+  const navigate = useNavigate();
+  async function SignUpDataAdd(a, b) {
+    // Assign pass and teamID here to the database
+    const docSnap = await getDoc(doc(db, a, "Information"));
+    if (!docSnap.exists()) {
+      await setDoc(doc(db, a, "Information"), {
+        // console.log(val1);
+        Team_Number: a,
+        Password: b
+      });
+      Cookies.set('Log', a);
+      navigate('/mainscreen');
+    } else {
+      navigate('/login');
+    }
+    
+    // console.log("About to" + a);
+    // console.log(b);
+  
+   
+    
+    // CallDaCookie();
+  }
+  
+  function handleSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const formData = new FormData(form);
+      fetch('/some-api', { method: form.method, body: formData });
+      const formJson = Object.fromEntries(formData.entries());
+      if (formJson["myInput2"] == formJson["myInput3"]){
+        SignUpDataAdd(formJson["myInput1"], formJson["myInput3"])
+      }
+      else{
+  
+      }
+      // console.log(a);
+      // console.log(b);
+  }
+  
   return (
     <>
       {/* Montseratt Font: Headings */}
