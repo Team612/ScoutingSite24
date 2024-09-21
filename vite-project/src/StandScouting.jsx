@@ -26,9 +26,11 @@ const db = getFirestore(app);
 
 
 function App() {
-    async function SignUpDataAdd(a,b) {
+    async function SignUpDataAdd(a,b,c) {
         // // Assign pass and teamID here to the database
-        await setDoc(doc(db, a, "ScoutData"), {
+        await setDoc(doc(db, a, "ScoutData" + b + climb), {
+          "Match": c,
+          "Team": b,
           ALeave: ALeave,
           AAmp: AAmp,
           ASpeaker: ASpeaker,
@@ -39,7 +41,7 @@ function App() {
         });
     }
 
-    function SaveSS() {
+    function SaveSS(e) {
         console.log(ALeave);
         console.log(AAmp);
         console.log(ASpeaker);
@@ -47,7 +49,12 @@ function App() {
         console.log(TSpeaker);
         console.log(climb);
         console.log(trap);
-        SignUpDataAdd(Cookies.get('Log'), "f");
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
+        fetch('/some-api', { method: form.method, body: formData });
+        const formJson = Object.fromEntries(formData.entries());
+        SignUpDataAdd(Cookies.get('Log'), formJson["team number"], formJson["match"]);
     }
 
     
@@ -143,13 +150,14 @@ function App() {
     <div id = "standscoutingpage">
     {/* <form> */}
         <h1 id = "scoutingHead">Stand Scouting</h1>
+        <form onSubmit={SaveSS}>
         <div>
             <button id="button1">Match Number</button>
-            <input type = "text" class = "button2"></input>
+            <input type = "text" class = "button2" name="match"></input>
         </div>
         <div>
           <button id="button1">Team Number</button>
-            <input type = "text" class = "button2"></input>
+            <input type = "text" class = "button2" name="team number"></input>
         </div>
         <div>
         <button id="button1">(Auto) Leave Zone</button>
@@ -193,8 +201,9 @@ function App() {
         </div>
 
         <div>
-            <button type = "submit" class = "button" onClick={() =>SaveSS()}>SAVE!</button>
+            <button type = "submit" class = "button">SAVE!</button>
         </div>
+        </form>
     {/* </form>     */}
             {/* <div id = "footer">Contact us at Chantilly.612@gmail.com for help!</div> */}
         </div>

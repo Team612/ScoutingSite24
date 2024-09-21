@@ -14,6 +14,12 @@ const MainScreen = () => {
   function toStandScouting() {
     navigate('/standscouting');
   }
+  function toStats() {
+    navigate('/stats');
+  }
+  function toInfo() {
+    navigate('/info');
+  }
   return (
     <>
     
@@ -62,8 +68,8 @@ const MainScreen = () => {
             <p class = "text">Add stand-based data</p>
         </div>
         <div>
-            <button id = "submitButton2">Stats</button>
-            <button id = "submitButton2">Info</button>
+            <button id = "submitButton2" onClick={toStats}>Stats</button>
+            <button id = "submitButton2" onClick={toInfo}>Info</button>
         </div>
         <div>
             <p class = "text">Look at app data</p>

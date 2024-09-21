@@ -20,7 +20,7 @@ const db = getFirestore(app);
 const PitScoutingPage = () => {
     async function PitScoutingDataAdd(array1) {
         console.log(Cookies.get('Log'));
-        await setDoc(doc(db, Cookies.get('Log'), "PitData"), {
+        await setDoc(doc(db, Cookies.get('Log'), "PitData" + array1["Team"]), {
             "Team" : array1["Team"],
             "Intake": array1["Intake"],
             "Drivetrain": array1["Drivetrain"],

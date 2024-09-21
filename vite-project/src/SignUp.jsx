@@ -121,9 +121,6 @@ const SignUpPage = () => {
           <img id="image612" src="/src/images/logo.jpeg" alt="612 Logo" />
         </a>
         <a>
-            <NavLink to="/mainscreen" activeStyle id="imageHome">
-                <img id="imagehome" src="/src/images/home.jpg"/>
-            </NavLink>
         </a>
       </div>
 
