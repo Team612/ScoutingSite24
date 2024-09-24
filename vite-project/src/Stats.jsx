@@ -6,6 +6,7 @@ import {doc, getDoc} from "firebase/firestore";
 import './App.css';
 import Cookies from 'js-cookie';
 import { useState } from "react";
+import { Navigate, useNavigate } from 'react-router-dom';
 const firebaseConfig = {
     apiKey: "AIzaSyAmnVQ0fKgFbjrzKSkaAi_mHBV0Xf5tDkg",
     authDomain: "scoutingsite-9ed91.firebaseapp.com",
@@ -21,6 +22,13 @@ var match1data = "No data";
 var match2data = "No data";
 var avgperformancestatistics = [];
 const StatsPage = () => {
+    const navigate = useNavigate();
+    function toStandScouting() {
+        navigate('/standscouting');
+    }
+    function toPitScouting() {
+        navigate('/pitscouting');
+    }
     const [pit, setPit] = useState("No data");
     const [match1, setmatch1] = useState("No data");
     const [match2, setmatch2] = useState("No data");
@@ -131,21 +139,21 @@ const StatsPage = () => {
         <h2>Search: <input type="text" id="searchbar" placeholder="Search" name="query"/></h2>
         </form>
         <div className="button-container">
-            <button className="statsbutton">Match 1</button>
-            <p>{match1.split('\n').map((line, index) => (
-                <React.Fragment key={index}>
+            <button className="statsbutton" onClick={toStandScouting}>Match 1</button>
+            <p id="c">{match1.split('\n').map((line, index) => (
+                <div key={index} style={{textAlign:"center"}}>
                 {line}
                 <br />
-                </React.Fragment>
+                </div>
       ))}</p>
-            <button className="statsbutton">Match 2</button>
+            <button className="statsbutton" onClick={toStandScouting}>Match 2</button>
             <p>{match2.split('\n').map((line, index) => (
                 <React.Fragment key={index}>
                 {line}
                 <br />
                 </React.Fragment>
       ))}</p>
-            <button className="statsbutton" id="buttonspacing">Pit Data</button>
+            <button className="statsbutton" id="buttonspacing" onClick={toPitScouting}>Pit Data</button>
             <p>{pit.split('\n').map((line, index) => (
                 <React.Fragment key={index}>
                 {line}
