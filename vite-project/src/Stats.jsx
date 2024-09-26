@@ -73,6 +73,10 @@ const StatsPage = () => {
     }
     async function handleSubmit(e) {
         e.preventDefault();
+        setmatch1("Loading...");
+        setmatch2('Loading...');
+        setPit('Loading...');
+        setavgstatistics('Loading...');
         const form = e.target;
         const formData = new FormData(form);
         fetch('/some-api', { method: form.method, body: formData });
@@ -140,33 +144,37 @@ const StatsPage = () => {
         </form>
         <div className="button-container">
             <button className="statsbutton" onClick={toStandScouting}>Match 1</button>
-            <p id="c">{match1.split('\n').map((line, index) => (
-                <div key={index} style={{textAlign:"center"}}>
-                {line}
-                <br />
+            <p> {match1.split("\n").map((line, index) => (
+                <div key={index} className="c">
+                    {line}
+                    <br />
                 </div>
-      ))}</p>
+                ))}
+            </p>
             <button className="statsbutton" onClick={toStandScouting}>Match 2</button>
-            <p>{match2.split('\n').map((line, index) => (
-                <React.Fragment key={index}>
-                {line}
-                <br />
-                </React.Fragment>
-      ))}</p>
-            <button className="statsbutton" id="buttonspacing" onClick={toPitScouting}>Pit Data</button>
-            <p>{pit.split('\n').map((line, index) => (
-                <React.Fragment key={index}>
-                {line}
-                <br />
-                </React.Fragment>
-      ))}</p>
+            <p> {match2.split("\n").map((line, index) => (
+                <div key={index} className="c">
+                    {line}
+                    <br />
+                </div>
+                ))}
+            </p>
+            <button className="statsbutton" onClick={toPitScouting}>Pit Data</button>
+            <p> {pit.split("\n").map((line, index) => (
+                <div key={index} className="c">
+                    {line}
+                    <br />
+                </div>
+                ))}
+            </p>
             <button className="statsbutton">Average Performance Statistics</button>
-            <p>{avgstatistcs.split('\n').map((line, index) => (
-                <React.Fragment key={index}>
-                {line}
-                <br />
-                </React.Fragment>
-      ))}</p>
+            <p> {avgstatistcs.split("\n").map((line, index) => (
+                <div key={index} className="c">
+                    {line}
+                    <br />
+                </div>
+                ))}
+            </p>
         </div>
     </div>
     {/* <div id = "footer">Contact us at Chantilly.612@gmail.com for help!</div> */}

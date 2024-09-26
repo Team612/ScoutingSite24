@@ -20,6 +20,9 @@ const MainScreen = () => {
   function toInfo() {
     navigate('/info');
   }
+  function logOut() {
+    Cookies.set('Log', null);
+  }
   return (
     <>
     
@@ -51,7 +54,7 @@ const MainScreen = () => {
 
         <a>
           {/* <button id = "logInButton">Log</button> */}
-          <NavLink to="/login" activeStyle>
+          <NavLink to="/login" activeStyle onClick={logOut}>
             Log out
           </NavLink>
         </a>

@@ -746,6 +746,7 @@ li {
 #signUph2 {
   display: inline-block;
 }
-#c {
+.c {
   text-align: center;
+  width: 30.5vw;
 }
