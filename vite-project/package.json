@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage" : "https://team612.github.io/ScoutingSite24/vite-project/src/Home.jsx",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
