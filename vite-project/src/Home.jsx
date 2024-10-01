@@ -1,7 +1,11 @@
 import React from "react";
 import NavLink from "./NavElements.jsx";
+import App from "./App";
 // import { initializeApp } from "firebase/app";
-
+import { createRoot } from 'react-dom/client';
+const rootElement = document.getElementById('root');
+const root = createRoot(rootElement);
+root.render(<App/>);
 const HomePage = () => {
   return (
     <>
