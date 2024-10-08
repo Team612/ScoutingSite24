@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import NavLink from "./NavElements.jsx";
 import './App.css';
-import Cookies from 'js-cookie';
+import  {Cookies as api} from 'js-cookie';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 

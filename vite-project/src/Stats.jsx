@@ -4,7 +4,7 @@ import NavLink from "./NavElements.jsx";
 import { getFirestore } from "firebase/firestore";
 import {doc, getDoc} from "firebase/firestore";
 import './App.css';
-import Cookies from 'js-cookie';
+import  {Cookies as api} from 'js-cookie';
 import { useState } from "react";
 import { Navigate, useNavigate } from 'react-router-dom';
 const firebaseConfig = {

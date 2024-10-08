@@ -5,7 +5,7 @@ import { initializeApp } from "firebase/app";
 import { doc, setDoc, getDoc } from "firebase/firestore"; 
 // import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import Cookies from 'js-cookie';
+import  {Cookies as api} from 'js-cookie';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 Cookies.set('Log', "none");

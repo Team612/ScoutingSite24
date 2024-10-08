@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage" : "https://team612.github.io/ScoutingSite24/vite-project/src/Home.jsx",
+  "homepage": "https://team612.github.io/ScoutingSite24/vite-project/src/Home.jsx",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -13,6 +13,9 @@
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
+    "cookie": "^0.7.2",
+    "firebase": "^10.14.0",
+    "js-cookie": "^3.0.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.25.1",

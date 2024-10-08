@@ -7,7 +7,7 @@ import { initializeApp } from "firebase/app";
 import { doc, setDoc } from "firebase/firestore"; 
 // import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import Cookies from 'js-cookie';
+import  {Cookies as api} from 'js-cookie';
 
 
 const firebaseConfig = {

@@ -4,7 +4,7 @@ import './App.css';
 import { getFirestore } from "firebase/firestore";
 import { initializeApp } from 'firebase/app';
 import {doc, getDoc, setDoc} from "firebase/firestore";
-import Cookies from 'js-cookie';
+import  {Cookies as api} from 'js-cookie';
 // import NavLink from "./NavElements.jsx"
 
 const firebaseConfig = {
