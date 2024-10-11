@@ -5,7 +5,7 @@ import App from "./App";
 import { createRoot } from 'react-dom/client';
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
-root.render(<App/>);
+//root.render(<App/>);
 const HomePage = () => {
   return (
     <>
@@ -57,9 +57,9 @@ const HomePage = () => {
       <div id="header">
         <a href="/">
           {/* Logo Image */}
-          <img id="image612" src="/src/images/logo.jpeg" alt="612 Logo" />
+          <img id="image612" src="/images/logo.jpeg" alt="612 Logo" />
           {/* <NavLink to="/mainscreen" activeStyle>
-            <img id="imagehome" src="/src/images/home.jpg"/>
+            <img id="imagehome" src="/images/home.jpg"/>
         </NavLink> */}
         </a>
 
@@ -90,12 +90,12 @@ const HomePage = () => {
         </ul>
       </div>
       <div id="bodypage">
-        <img id="firstLogo" src="/src/images/firstR.png" alt="menubar" />
+        <img id="firstLogo" src="/images/firstR.png" alt="menubar" />
         <h1 id="scoutingHead">S C O U T I N G</h1>
         <h2 id="scoutingHeading2">
           <b>Powered By 612 Programming</b>
         </h2>
-        <img id="teamimage" src="/src/images/img.JPG" alt="menubar" />
+        <img id="teamimage" src="/images/img.JPG" alt="menubar" />
       </div>
     </>
   );
