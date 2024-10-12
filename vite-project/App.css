@@ -1,0 +1,752 @@
+#root {
+  margin: 0;
+  text-align: center;
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  /* font-weight:10; */
+}
+
+#submitButton{
+  border-radius: 20px;
+  appearance: button;
+  backface-visibility: hidden;
+  background-color: #405cf5;
+  /* border-radius: 6px; */
+  border-width: 0;
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+  font-size: 100%;
+  height: 3vw;
+  /* padding: 100px; */
+  line-height: 1.15;
+  margin: 12px 0 0;
+  outline: none;
+  overflow: hidden;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transform: translateZ(0);
+  transition: all .2s,box-shadow .08s ease-in;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-bottom:2vw;
+  width: 10%;
+}
+
+#submitButton2{
+  border-radius: 20px;
+  appearance: button;
+  backface-visibility: hidden;
+  background-color: #405cf5;
+  /* border-radius: 6px; */
+  border-width: 0;
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+  font-size: 100%;
+  height: 5vw;
+  /* padding: 100px; */
+  line-height: 1.15;
+  /* margin: 12px 0 0; */
+  outline: none;
+  overflow: hidden;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transform: translateZ(0);
+  transition: all .2s,box-shadow .08s ease-in;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-bottom:2vw;
+  width: 40%;
+}
+
+#button1{
+    appearance:  text;
+    backface-visibility: hidden;
+    background-color: white;
+    /* border-radius: 6px; */
+    border-width: 0;
+    /* box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0; */
+    /* box-sizing: border-box; */
+    color: black;
+    cursor: pointer;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    font-size: 100%;
+    margin: 5%;
+    padding:3px;
+    width:40%;
+    margin-left:0;
+    margin-top:0px;
+}
+
+#button{
+    border-radius: 20px;
+    appearance: button;
+    backface-visibility: hidden;
+    background-color: #405cf5;
+    /* border-radius: 6px; */
+    border-width: 0;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    font-size: 100%;
+    height: 10vw;
+    /* padding: 100px; */
+    line-height: 1.15;
+    margin: 0px 0 0;
+    outline: none;
+    overflow: hidden;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+    transform: translateZ(0);
+    transition: all .2s,box-shadow .08s ease-in;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 50%;
+}
+
+#textinput{
+  backface-visibility: hidden;
+  background-color: white;
+  border-width: 0;
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+  box-sizing: border-box;
+  color: black;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+  font-size: 20px;
+  /* padding:3px; */
+  width:80%;
+  border-color:black;
+  /* margin-top:40vw; */
+  /* display:inline-block; */
+}
+
+#button-24 {
+  background: #FF4742;
+  border: 1px solid #FF4742;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+#speakerId{
+  display:inline;
+  /* margin:5px; */
+  /* align:center; */
+  padding-left:15px;
+  padding-right:0px;
+}
+
+#button-25 {
+  margin-left:20px;
+  background: green;
+  border: 1px solid green;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.c{
+  text-align:center;
+  margin-right:1vw;
+  /* color:red; */
+}
+
+.button2{
+  appearance: button;
+  backface-visibility: hidden;
+  background-color: white;
+  border-radius: 6px;
+  border-width: 1px;
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+  box-sizing: border-box;
+  color: black;
+  cursor: pointer;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+  font-size: 100%;
+  margin: 5%;
+  padding:3px;
+  width:35%;
+  border-color:black;
+  margin-top:0px;
+}
+
+#footer{
+  position: fixed;
+  /* align-items:bottom; */
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  margin:0;
+  margin-top:3vw;
+  height:5%;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+.text{
+  display:inline;
+  font-size: 10px;
+  /* margin:11.5%; */
+  appearance: button;
+  /* backface-visibility: hidden; */
+  background-color: white;
+  /* border-radius: 6px; */
+  border-width: 10;
+  /* box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0; */
+  box-sizing: border-box;
+  color: black;
+  cursor: pointer;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+  font-size: 100%;
+  margin: 5%;
+  /* height:1%; */
+  padding:0px;
+  width:20%;
+  margin-top:0px;
+}
+
+.textor{
+  display:inline;
+  font-size: 10px;
+  /* margin:11.5%; */
+  appearance: button;
+  /* backface-visibility: hidden; */
+  background-color: white;
+  /* border-radius: 6px; */
+  border-width: 0;
+  /* box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0; */
+  box-sizing: border-box;
+  color: black;
+  cursor: pointer;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+  font-size: 100%;
+  margin: 5%;
+  padding:3px;
+  width:80%;
+  margin-top:0px;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 1vw;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+ #header{
+  /* padding: 0.1rlh; */
+  /* text-align: right; */
+  /* margin: auto; */
+  /* margin:0 auto */
+  position: absolute;
+  /* margin-bottom: 10px; */
+  top: 0;
+  width: 100%;
+  /* border: 3px solid black; */
+  padding-bottom: 20px;
+  
+  /* margin-left: 1vw;
+  margin-top:  */
+  background-color: black;
+  height:calc(10vh+10vw);
+  /* width:98.5vw; */
+  /* margin:0; */
+  color: white;
+  /* font-size: 0.1rlh; */
+} 
+
+#homeNavBar {
+  position:relative;
+  display:block;
+  background-color: rgb(53, 163, 222);
+  width: 100%;
+  height: calc(4vh + 4vw);
+  align-items: center;
+  margin-top:15vh;
+  justify-content: center;
+  
+}
+
+#homeNavBarButtonsGroup {
+  position:relative;
+  width: auto;
+  margin: auto;
+  padding: 0;
+  justify-content: center;
+  height: calc(4vh + 4vw);
+
+
+  display: block;
+}
+
+#homebarButtons {
+  border-radius: 0px;
+  font-size: calc(1vw + 1vh);
+  text-align:center;
+  background-color:blue;
+  width: calc(20vw);
+  height: calc(5vh);
+  padding: 0px;
+  margin: 0px;
+  margin-top: calc(1vw + 1vh);
+
+}
+
+li {
+
+  display: inline;
+  margin: 0px;
+  padding: 0px;
+}
+#logInButton{
+  margin:3.5vh 1.4vw;
+  /* padding: 1vw; */
+  float:right;
+  background-color: #000000;
+  border-style: none;
+  border-radius: 10px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  /* font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif; */
+  font-size: 4vw;
+  font-weight: 500;
+  height: 5.8vh;
+  list-style: none;
+  /* margin: 0; */
+  outline: none;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  /* transition: color 100ms; */
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+#signuppage {
+  position: relative;
+  margin-top: 150px;
+  align-content: center;
+}
+
+#signUpButton{
+  margin:3.5vh 1.4vw;
+  /* padding: 1vw; */
+  border-radius: 20px;
+  float:right;
+  background-color: #FFFFFF;
+  border-style: none;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  /* font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif; */
+  font-size: 4vw;
+  font-weight: 500;
+  height: 5vw;
+  list-style: none;
+  /* margin: 0; */
+  outline: none;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  /* transition: color 100ms; */
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+@media only screen and (max-width: 937px) {
+  #logInButton{
+    margin:3.5vh 1.4vw;
+    /* padding: 1vw; */
+    float:right;
+    background-color: #000000;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    /* font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif; */
+    font-size: 4vw;
+    font-weight: 500;
+    height: 5.8vh;
+    list-style: none;
+    /* margin: 0; */
+    outline: none;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    /* transition: color 100ms; */
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  #signUpButton{
+    margin:3.5vh 1.4vw;
+    /* padding: 1vw; */
+    float:right;
+    background-color: #FFFFFF;
+    border-style: none;
+    box-sizing: border-box;
+    color: #000000;
+    cursor: pointer;
+    display: inline-block;
+    /* font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif; */
+    font-size: 4vw;
+    font-weight: 500;
+    height: 5.8vh;
+    list-style: none;
+    /* margin: 0; */
+    outline: none;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    /* transition: color 100ms; */
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+}
+
+#slash{
+  margin:2.8vh 1.5vw;
+  border: none;
+  color: white;
+  float:right; 
+  text-decoration: none;
+  display: inline-block;
+  font-size:4.5vh;
+  cursor: pointer;
+}
+
+#image612{
+  margin-top: 5px;
+  float:left;
+  width:12vh;
+  height:12vh;
+}
+
+#pitscoutingpage, #standscoutingpage, #statspage, #navigationpage{
+  font-size: calc(1vw+ 1vh);
+  position:relative;
+  margin-top:150px;
+  width: 98vw;
+  height: 110%;
+  justify-content: center;
+}
+
+
+
+
+
+#menu{
+  float:left;
+  margin: 5vh 2vw;
+  width:4vh;
+  height:4vh;
+}
+
+#bodypage{
+  background-color: white;
+  width:100%;
+  height:100%;
+  
+}
+
+#firstLogo{
+  margin-top: 10vw;
+  width: 70%;
+  float:center;
+}
+
+.specialel{
+  padding:0;
+  font-size:25px;
+}
+
+#scoutingHead{
+  font-weight: bold;
+  float:center;
+  color:black;
+  font-family: "Monseratt", sans-serif;
+}
+
+#scoutingHeading2{
+  font-weight: bold;
+  float:center;
+  color:#187FFF;
+  /*  */
+  /* font-family: "Josefin Sans", sans-serif; */
+  font-weight: 400;
+  font-style: normal;
+  /* font-family: "Monseratt", sans-serif; */
+}
+
+#scoutingParagraphL{
+  float:center;
+  color:black;
+  color:#187FFF;
+  /* font-family: "Arial", sans-serif; */
+  font-weight: 000;
+  font-style: normal;
+
+  /* font-family: "Outfit", sans-serif; */
+  font-optical-sizing: auto;
+}
+
+#scoutingParagraph{
+  float:center;
+  color:black;
+  color:red;
+  /* font-family: "Arial", sans-serif; */
+  font-weight: 000;
+  font-style: normal;
+
+  /* font-family: "Outfit", sans-serif; */
+  font-optical-sizing: auto;
+}
+
+#teamimage{
+  width: 70%;
+  border-width: 10px;
+  border: 4px solid #010000;
+}
+
+#imagehome {
+  float:right;
+  height: 8vh;
+}
+#scoutButton{
+  margin:4vh 1vw;
+  float:center;
+  background-color: #5e95f4;
+  padding-right:10vw;
+  border:100;
+  border-radius: 4vw;
+  border-style: none;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  /* font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif; */
+  font-size: 4vw;
+  font-weight: 500;
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  height: 5vh;
+  line-height: 0.5vh;
+  list-style: none;
+  /* margin: 0; */
+  outline: none;
+  padding: 0.5vh 0.5vw;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+/* for login page*/
+#pageheader{
+  position: relative;
+  /* margin-left: 1vw;
+  margin-top:  */
+  background-color: black;
+  height:5.5vh;
+  width:96.5vw;
+  color: white;
+}
+
+#loginpage{
+  position:relative;
+  background-color: white;
+  margin-top: 150px;
+  height:100vh;
+  width:96.5vw;
+  color: black;
+}
+
+#input {
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: rgb(53, 163, 222);
+  color: white;
+  width: 20vh;
+  margin-bottom: 3em;
+  margin-top: 3em;
+
+}
+#inputlabel {
+  margin: 0vh 15.626vw 2.5vh 0vw;
+  display: inline-block;
+  width: 15.626vw;
+  text-align: center;
+  padding-bottom: 1em;
+  color: auto;
+  font-size: large;
+}
+#textinput {
+  display: inline-block;
+  width: 15.626vw;
+  height: 5vh;
+  font-size: medium;
+  border-radius: 0.8vw;
+  border-color: auto;
+  border-width: 0.118vw;
+}
+#savebutton {
+  border: none;
+  margin: 1.25vh 0vw 2.5vh 0vw;
+  height: 6.25vh;
+  width: 15.626vw;
+  border-radius: 0.781vw;
+  padding: 0.313vh 1.563vw;
+  background-color:#405cf5;
+  color: #fff;
+  font-weight: 750;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+}
+
+/* for stats page*/
+
+#searchbar{
+  border: black;
+  border-radius: 20px;
+  border-style: solid;
+  height: 25px;
+  width: 250px;
+  margin-left:3em;
+}
+.statsbutton{
+  background-color:#187FFF;
+  text-align: center;
+  color: white;
+  width:30.5vw;
+  align-items: center;
+  border-radius: 300px;
+}
+.button-container {
+  display: grid;
+  grid-template-columns: repeat(1, 3fr); /* Adjust the number of columns as needed */
+  gap: 30px; 
+  margin-left: 35vw;
+}
+#buttonspacing{
+  margin-top: 100px;
+}
+/* Sign up page */
+#signUpInput {
+  display: inline-block;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: rgb(53, 163, 222);
+  color: white;
+  border-color: #000000;
+  border-width: 1px;
+  width: 30vh;
+  margin-bottom: 3em;
+  height: 1.5em;
+  margin-top: 3em;
+  margin-left: 2vw;
+}
+#signUph2 {
+  display: inline-block;
+}
+.c {
+  text-align: center;
+  width: 30.5vw;
+}

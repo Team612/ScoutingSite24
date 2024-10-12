@@ -6,6 +6,7 @@ import {doc, getDoc} from "firebase/firestore";
 import './App.css';
 import Cookies from 'js-cookie';
 import { useState } from "react";
+import { Navigate, useNavigate } from 'react-router-dom';
 const firebaseConfig = {
     apiKey: "AIzaSyAmnVQ0fKgFbjrzKSkaAi_mHBV0Xf5tDkg",
     authDomain: "scoutingsite-9ed91.firebaseapp.com",
@@ -21,22 +22,17 @@ var match1data = "No data";
 var match2data = "No data";
 var avgperformancestatistics = [];
 const StatsPage = () => {
+    const navigate = useNavigate();
+    function toStandScouting() {
+        navigate('/standscouting');
+    }
+    function toPitScouting() {
+        navigate('/pitscouting');
+    }
+    const [pit, setPit] = useState("No data");
     const [match1, setmatch1] = useState("No data");
     const [match2, setmatch2] = useState("No data");
     const [avgstatistcs, setavgstatistics] = useState("No data");
-    var [pit1, setPit1] = useState("No data");
-    var [pit2, setPit2] = useState("No data");
-    var [pit3, setPit3] = useState("No data");
-    var [pit4, setPit4] = useState("No data");
-    var [pit5, setPit5] = useState("No data");
-    var [pit6, setPit6] = useState("No data");
-    var [pit7, setPit7] = useState("No data");
-    var [pit8, setPit8] = useState("No data");
-    var [pit9, setPit9] = useState("No data");
-    var [pit10, setPit10] = useState("No data");
-    var [pit11, setPit11] = useState("No data");
-    var [pit12, setPit12] = useState("No data");
-
     async function StatsMatchesGet(query, match) {
         // console.log("Team ID:", teamID, "Password", password);
         const docRef = doc(db, Cookies.get('Log'), "ScoutData_" + query + "_" + match);
@@ -64,37 +60,23 @@ const StatsPage = () => {
           // console.log(docSnap.data());
         } else {
           console.log("No such document!");
+          pitdata = "No data";
           return false;
         }
         console.log(docSnap.data()["Amp"]);
         let data = docSnap.data();
-        var Amp = data["Amp"]
-        var Autonomous = data["Autonomous"]
-        var Climb = data["Climb"]
-        var Cycle_Time = data["Cycle Time"]
-        var Drivetrain = data["Drivetrain"]
-        var Driving_Skill = data["Driving Skill"]
-        var Intake = data["Intake"]
-        var other = data["Other"]
-        var Speaker = data["Speaker"]
-        var Team = data["Team"]
-        var Trap = data["Trap"]
-        var weight = data["Weight"]
-        setPit1("Speaker: " + Speaker)
-        setPit2("Amp: " + Amp)
-        setPit3("Auto: " + Autonomous)
-        setPit4("Climb: " + Climb)
-        setPit5("Cycle: " + Cycle_Time)
-        setPit6("Intake: " + Intake)
-        setPit7("Skill: " + Driving_Skill)
-        setPit8("Other: " + other)
-        setPit9("Team: " + Team)
-        setPit10("Trap: " + Trap)
-        setPit11( "Weight: " + weight)
-        setPit12("Drivetrain: " + Drivetrain);
+        console.log(data);
+        pitdata = "Amp: " + data["Amp"] + "\nAutonomous: " + data["Autonomous"] + "\nClimb: " + data["Climb"] + "\nCycle Time: " + data["Cycle Time"] + " lbs\nDrivetrain: " + data["Drivetrain"] + "\nDriving Skill: " + data["Driving Skill"] + "\nIntake: " + data["Intake"] + "\nOther: " + data["Other"] + "\nSpeaker: " + data["Speaker"] + "\nTeam #: " + data["Team"] + "\nTrap: " + data["Trap"] + "\nWeight: " + data["Weight"] + " lbs";
+        console.log(pitdata);
+        setPit(pitdata);
+        console.log(pit);
     }
     async function handleSubmit(e) {
         e.preventDefault();
+        setmatch1("Loading...");
+        setmatch2('Loading...');
+        setPit('Loading...');
+        setavgstatistics('Loading...');
         const form = e.target;
         const formData = new FormData(form);
         fetch('/some-api', { method: form.method, body: formData });
@@ -147,60 +129,56 @@ const StatsPage = () => {
 
     <div id="header">
       <a href="/">
-        <img id="image612" src="/src/images/logo.jpeg" alt="612 Logo"/>
+        <img id="image612" src="/images/logo.jpeg" alt="612 Logo"/>
       </a>
       <a>
             <NavLink to="/mainscreen" activeStyle id="imageHome">
-                <img id="imagehome" src="/src/images/home.jpg"/>
+                <img id="imagehome" src="/images/home.jpg"/>
             </NavLink>
         </a>
     </div>
     <div id="statspage">
         <h1 id="scoutingHead">Stats</h1>
         <form onSubmit={handleSubmit}>
-            <h2>Search: <input type="text" id="searchbar" placeholder="Search" name="query"/></h2>
+        <h2>Search: <input type="text" id="searchbar" placeholder="Search" name="query"/></h2>
         </form>
         <div className="button-container">
-            <button className="statsbutton">Match 1</button>
-            <p>{match1.split('\n').map((line, index) => (
-                <React.Fragment key={index}>
-                {line}
-                <br />
-                </React.Fragment>
-      ))}</p>
-            <button className="statsbutton">Match 2</button>
-            <p>{match2.split('\n').map((line, index) => (
-                <React.Fragment key={index}>
-                {line}
-                <br />
-                </React.Fragment>
-      ))}</p>
-            <button className="statsbutton">Other Matches</button>
-            <button className="statsbutton" id="buttonspacing">Pit Data</button>
-                <p class = "c">{pit1}</p>
-                <p class = "c">{pit2}</p>
-                <p class = "c">{pit3}</p>
-                <p class = "c">{pit4}</p>
-                <p class = "c">{pit5}</p>
-                <p class = "c">{pit6}</p>
-                <p class = "c">{pit7}</p>
-                <p class = "c">{pit8}</p>
-                <p class = "c">{pit9}</p>
-                <p class = "c">{pit10}</p>
-                <p class = "c">{pit11}</p>
-                <p class = "c">{pit12}</p>
+            <button className="statsbutton" onClick={toStandScouting}>Match 1</button>
+            <p> {match1.split("\n").map((line, index) => (
+                <div key={index} className="c">
+                    {line}
+                    <br />
+                </div>
+                ))}
+            </p>
+            <button className="statsbutton" onClick={toStandScouting}>Match 2</button>
+            <p> {match2.split("\n").map((line, index) => (
+                <div key={index} className="c">
+                    {line}
+                    <br />
+                </div>
+                ))}
+            </p>
+            <button className="statsbutton" onClick={toPitScouting}>Pit Data</button>
+            <p> {pit.split("\n").map((line, index) => (
+                <div key={index} className="c">
+                    {line}
+                    <br />
+                </div>
+                ))}
+            </p>
             <button className="statsbutton">Average Performance Statistics</button>
-            <p>{avgstatistcs.split('\n').map((line, index) => (
-                <React.Fragment key={index}>
-                {line}
-                <br />
-                </React.Fragment>
-      ))}</p>
+            <p> {avgstatistcs.split("\n").map((line, index) => (
+                <div key={index} className="c">
+                    {line}
+                    <br />
+                </div>
+                ))}
+            </p>
         </div>
     </div>
     {/* <div id = "footer">Contact us at Chantilly.612@gmail.com for help!</div> */}
     </>
     )
 }
-
 export default StatsPage;

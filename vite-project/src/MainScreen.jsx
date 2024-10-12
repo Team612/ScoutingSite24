@@ -20,6 +20,9 @@ const MainScreen = () => {
   function toInfo() {
     navigate('/info');
   }
+  function logOut() {
+    Cookies.set('Log', null);
+  }
   return (
     <>
     
@@ -43,15 +46,15 @@ const MainScreen = () => {
     <div id="header">
         <a href="/">
           {/* Logo Image */}
-          <img id="image612" src="/src/images/logo.jpeg" alt="612 Logo" />
+          <img id="image612" src="/images/logo.jpeg" alt="612 Logo" />
           {/* <NavLink to="/mainscreen" activeStyle>
-            <img id="imagehome" src="/src/images/home.jpg"/>
+            <img id="imagehome" src="/images/home.jpg"/>
         </NavLink> */}
         </a>
 
         <a>
           {/* <button id = "logInButton">Log</button> */}
-          <NavLink to="/login" activeStyle>
+          <NavLink to="/login" activeStyle onClick={logOut}>
             Log out
           </NavLink>
         </a>
