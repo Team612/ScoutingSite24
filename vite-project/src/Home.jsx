@@ -73,22 +73,6 @@ const HomePage = () => {
           </NavLink>
         </a>
       </div>
-      <div id="homeNavBar">
-        <ul id ="homeNavBarButtonsGroup">
-        <li><NavLink to="/signup" isClassInput id="homebarButtons">
-          Sign Up
-        </NavLink></li>
-        <li><NavLink to="/pitscouting" isClassInput id="homebarButtons">
-          Pit Scouting Page
-        </NavLink></li>
-        <li><NavLink to="/standscouting" isClassInput id="homebarButtons">
-          Stand Scouting Page
-        </NavLink></li>
-        <li><NavLink to="/stats" isClassInput id="homebarButtons">
-          Stats Page
-        </NavLink></li>
-        </ul>
-      </div>
       <div id="bodypage">
         <img id="firstLogo" src="/images/firstR.png" alt="menubar" />
         <h1 id="scoutingHead">S C O U T I N G</h1>
