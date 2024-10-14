@@ -10,5 +10,9 @@
       "**/.*",
       "**/node_modules/**"
     ]
+  },
+   "rules": {
+      ".read": true,
+      ".write": true
   }
 }
