@@ -44,8 +44,12 @@ const PitScoutingPage = () => {
         const formJson = Object.fromEntries(formData.entries());
         console.log("FormJson" + formJson["Team"]);
         PitScoutingDataAdd(formJson);
+        // alert("Saved! Go back to main page.");
     }
     
+    function SaveAlert(){
+        alert("Saved");
+    }
     return (
     <>
     {/* Montseratt Font: Headings */}
@@ -127,7 +131,7 @@ const PitScoutingPage = () => {
             <p id="inputlabel">Other:</p>
             <textarea type="text" id="textinput" name="Other"/>
         </div>
-        <button class="button">SAVE</button>
+        <button class="button" onClick={() =>SaveAlert()}>SAVE</button>
         </form>
     </div>
     {/* <div id = "footer">Contact us at Chantilly.612@gmail.com for help!</div> */}

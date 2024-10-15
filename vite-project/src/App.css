@@ -168,6 +168,7 @@
     /* align:center; */
     padding-left:15px;
     padding-right:0px;
+    color: black;
   }
   
   #button-25 {
@@ -413,6 +414,7 @@
     position: relative;
     margin-top: 150px;
     align-content: center;
+    background-color: white;
   }
   
   #signUpButton{
@@ -524,6 +526,7 @@
     width: 98vw;
     height: 110%;
     justify-content: center;
+    background-color: white;
   }
   
   
@@ -677,7 +680,7 @@
     width: 15.626vw;
     text-align: center;
     padding-bottom: 1em;
-    color: auto;
+    color: black;
     font-size: large;
   }
   #textinput {
@@ -724,6 +727,7 @@
     display: grid;
     grid-template-columns: repeat(1, 3fr); /* Adjust the number of columns as needed */
     gap: 30px; 
+    align-items:left;
     margin-left: 35vw;
   }
   #buttonspacing{
@@ -750,4 +754,14 @@
   .c {
     text-align: center;
     width: 30.5vw;
+  }
+  #sE {
+    color: black;
+  }
+
+  .statsData{
+    color:black;
+    text-align:left;
+    align-items: left;
+    /* color:red; */
   }

@@ -53,6 +53,7 @@ function App() {
         const formJson = Object.fromEntries(formData.entries());
         console.log(formJson);
         SignUpDataAdd(Cookies.get('Log'), formJson["team number"], formJson["match"]);
+        // alert("Saved! Go back to main page.");
     }
 
     
@@ -67,9 +68,11 @@ function App() {
 
   var [climb, setClimb] = useState(false)
   function YesClimb(){
+    alert("Selected Yes");
     setClimb(true)
   }
   function NoClimb(){
+    alert("Selected No");
     setClimb(false)
   }
 
@@ -107,12 +110,17 @@ function App() {
 
   var [ALeave, setALeave] = useState(false)
   function YesLeave(){
+    alert("Selected Yes");
     setALeave(true)
   }
   function NoLeave(){
+    alert("Selected No");
     setALeave(false)
   }
 
+  function SaveAlert(){
+    alert("Saved");
+  }
 
   return (
     <>
@@ -198,7 +206,7 @@ function App() {
         </div>
 
         <div>
-            <button type = "submit" class = "button">SAVE!</button>
+            <button type = "submit" class = "button" onClick={() =>SaveAlert()}>SAVE!</button>
         </div>
         </form>
     {/* </form>     */}

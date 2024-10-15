@@ -72,14 +72,6 @@ const MainScreen = () => {
         </div>
         <div>
             <button id = "submitButton2" onClick={toStats}>Stats</button>
-            <button id = "submitButton2" onClick={toInfo}>Info</button>
-        </div>
-        <div>
-            <p class = "text">Look at app data</p>
-            <p class = "text">Learn about the app</p>
-        </div>
-        <div>
-            <button id = "submitButton2">About Us!</button>
         </div>
         <div>
             <p class = "textor">Learn about 612 Robotics and our mission</p>
