@@ -83,6 +83,8 @@ const StatsPage = () => {
         const formJson = Object.fromEntries(formData.entries());
         await StatsPitDataGet(formJson["query"]);
         await StatsStandDataGet(formJson["query"],formJson["query2"]);
+        print(match1);
+        print(pit);
        }
     return (
     <>
@@ -118,7 +120,7 @@ const StatsPage = () => {
         <h1 id="scoutingHead">Stats</h1>
         <form onSubmit={handleSubmit}>
         <h2 id = "sE">Search: <input type="text" id="searchbar" placeholder="Search" name="query"/></h2>
-        <h2 id = "matchSearch">Match Search: <input type="text" id="matchSearchbar" placeholder="Search" name="query2"/></h2>
+        <h2 id = "sE">Match Search: <input type="text" id="searchbar" placeholder="Search" name="query2"/></h2>
         </form>
         <div className="button-container">
             <button className="statsbutton" onClick={toStandScouting}>Stand Data (In the Match)</button>
@@ -144,3 +146,5 @@ const StatsPage = () => {
     )
 }
 export default StatsPage;
+
+
