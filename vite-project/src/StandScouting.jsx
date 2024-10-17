@@ -157,11 +157,7 @@ function App() {
         <h1 id = "scoutingHead">Stand Scouting</h1>
         <form onSubmit={SaveSS}>
         <div>
-            <button id="button1">Match Number</button>
-            <input type = "text" class = "button2" name="match"></input>
-        </div>
-        <div>
-          <button id="button1">Team Number</button>
+          <button id="button1">Match Number & Team Number (EX: "2_612")</button>
             <input type = "text" class = "button2" name="team number"></input>
         </div>
         <div>
