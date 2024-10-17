@@ -131,16 +131,8 @@ const StatsPage = () => {
         <button type = "submit">Search</button>
         </form>
         <div className="button-container">
-            <button className="statsbutton">Match 1</button>
+            <button className="statsbutton">Matches Data</button>
             <p class = "lopop"> {match1.split("\n").map((line, index) => (
-                <div key={index} className="c">
-                    {line}
-                    <br />
-                </div>
-                ))}
-            </p>
-            <button className="statsbutton">Match 2</button>
-            <p class = "lopop"> {match2.split("\n").map((line, index) => (
                 <div key={index} className="c">
                     {line}
                     <br />
