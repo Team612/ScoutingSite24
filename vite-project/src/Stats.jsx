@@ -72,6 +72,12 @@ const StatsPage = () => {
         console.log(pit);
     }
     async function handleSubmit(e) {
+        // if (formJson["query"] == "" || formJson["query"] == null){
+        //     return 1;
+        // }
+        // if (formJson["query2"] == "" || formJson["query2"] == null){
+        //     return 2;
+        // }
         e.preventDefault();
         setmatch1("Loading...");
         setmatch2('Loading...');
