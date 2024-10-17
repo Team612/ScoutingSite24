@@ -82,22 +82,8 @@ const StatsPage = () => {
         fetch('/some-api', { method: form.method, body: formData });
         const formJson = Object.fromEntries(formData.entries());
         await StatsPitDataGet(formJson["query"]);
-        for (var i = 0; i <=50; i++) {
-            var matches = await StatsMatchesGet(formJson["query"], i);
-            if (!matches) {
-                continue;
-            } else {
-                if (match1data != "No data") {
-                    match2data = matches;
-                } else {
-                    match1data = matches;
-                }
-            }
-            console.log(matches);
-            console.log(match1data, match2data);
-            setmatch1(match1data);
-            setmatch2(match2data);
-        }
+        var matches = await StatsMatchesGet(formJson["query"], formJson["query2"]);
+        setmatch1(matches);
         avgperformancestatistics = [];
         avgperformancestatistics.push((Number(match1data.split("\n")[0].split(": ")[1]) + Number(match2data.split("\n")[0].split(": ")[1]))/2);
         avgperformancestatistics.push((Number(match1data.split("\n")[2].split(": ")[1]) + Number(match2data.split("\n")[2].split(": ")[1]))/2);
@@ -140,41 +126,43 @@ const StatsPage = () => {
     <div id="statspage">
         <h1 id="scoutingHead">Stats</h1>
         <form onSubmit={handleSubmit}>
-        <h2>Search: <input type="text" id="searchbar" placeholder="Search" name="query"/></h2>
+        <h2 class = "lopop">Search: <input type="text" id="searchbar" placeholder="Search" name="query"/></h2>
+        <h2 class = "lopop">Match Search: <input type="text" id="searchbar" placeholder="Search" name="query2"/></h2>
+        <button type = "submit">Search</button>
         </form>
         <div className="button-container">
-            <button className="statsbutton" onClick={toStandScouting}>Match 1</button>
-            <p> {match1.split("\n").map((line, index) => (
+            <button className="statsbutton">Match 1</button>
+            <p class = "lopop"> {match1.split("\n").map((line, index) => (
                 <div key={index} className="c">
                     {line}
                     <br />
                 </div>
                 ))}
             </p>
-            <button className="statsbutton" onClick={toStandScouting}>Match 2</button>
-            <p> {match2.split("\n").map((line, index) => (
+            <button className="statsbutton">Match 2</button>
+            <p class = "lopop"> {match2.split("\n").map((line, index) => (
                 <div key={index} className="c">
                     {line}
                     <br />
                 </div>
                 ))}
             </p>
-            <button className="statsbutton" onClick={toPitScouting}>Pit Data</button>
-            <p> {pit.split("\n").map((line, index) => (
+            <button className="statsbutton">Pit Data</button>
+            <p class = "lopop"> {pit.split("\n").map((line, index) => (
                 <div key={index} className="c">
                     {line}
                     <br />
                 </div>
                 ))}
             </p>
-            <button className="statsbutton">Average Performance Statistics</button>
+            {/* <button className="statsbutton">Average Performance Statistics</button>
             <p> {avgstatistcs.split("\n").map((line, index) => (
                 <div key={index} className="c">
                     {line}
                     <br />
                 </div>
                 ))}
-            </p>
+            </p> */}
         </div>
     </div>
     {/* <div id = "footer">Contact us at Chantilly.612@gmail.com for help!</div> */}
