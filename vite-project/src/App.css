@@ -754,8 +754,17 @@
     margin-top: 3em;
     margin-left: 2vw;
   }
+
+  .koholo{
+    color:black;
+  }
+
   #signUph2 {
     display: inline-block;
+    color:black;
+  }
+  .butoj{
+    margin-bottom: 1vw;
   }
   .c {
     text-align: center;

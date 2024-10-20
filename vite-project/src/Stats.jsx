@@ -131,10 +131,11 @@ const StatsPage = () => {
     </div>
     <div id="statspage">
         <h1 id="scoutingHead">Stats</h1>
+        <p class = "koholo">Please enter both a valid match and a team number when you search.</p>
         <form onSubmit={handleSubmit}>
         <h2 class = "lopop">Search: <input type="text" id="searchbar" placeholder="Search" name="query"/></h2>
         <h2 class = "lopop">Match Search: <input type="text" id="searchbar" placeholder="Search" name="query2"/></h2>
-        <button type = "submit">Search</button>
+        <button type = "submit" class = "butoj">Search</button>
         </form>
         <div className="button-container">
             <button className="statsbutton">Matches Data</button>
