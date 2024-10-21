@@ -21,6 +21,7 @@ var pitdata = "No data";
 var match1data = "No data";
 var match2data = "No data";
 var avgperformancestatistics = [];
+var number = "";
 const StatsPage = () => {
     const navigate = useNavigate();
     function toStandScouting() {
@@ -33,6 +34,7 @@ const StatsPage = () => {
     const [match1, setmatch1] = useState("No data");
     const [match2, setmatch2] = useState("No data");
     const [avgstatistcs, setavgstatistics] = useState("No data");
+    const [num, setnum] = useState("#");
     async function StatsMatchesGet(query, match) {
         // console.log("Team ID:", teamID, "Password", password);
         const docRef = doc(db, Cookies.get('Log'), "ScoutData_" + query + "_" + match);
@@ -90,6 +92,8 @@ const StatsPage = () => {
         await StatsPitDataGet(formJson["query"]);
         if (formJson["match"] != "") {
             var matches = await StatsMatchesGet(formJson["query"], formJson["match"]);
+            setnum(formJson["match"]);
+            setmatch1(matches);
         } else {
             setmatch1("No match number given.");
         }
@@ -142,7 +146,7 @@ const StatsPage = () => {
         <button type = "submit" class = "butoj">Search</button>
         </form>
         <div className="button-container">
-            <button className="statsbutton">Matches Data</button>
+            <button className="statsbutton">Match {num}</button>
             <p class = "lopop"> {match1.split("\n").map((line, index) => (
                 <div key={index} className="c">
                     {line}
