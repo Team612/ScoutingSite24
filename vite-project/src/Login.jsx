@@ -27,11 +27,9 @@ const LoginPage = () => {
     // console.log("Team ID:", teamID, "Password", password);
     const docRef = doc(db, teamID, "Information");
     const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      // console.log(window.location.pathname);
-      // console.log(docSnap.data());
-    } else {
-      console.log("No such document!");
+    if (!docSnap.exists()) {
+      cont = false;
+      navigate('/signup');
     }
     console.log(docSnap.data()["Password"]);
     if(docSnap.data()["Password"] == password) {
@@ -44,7 +42,9 @@ const LoginPage = () => {
       console.log('Not Log')
       Cookies.set('Log', null);
     }
-    navigate('/mainscreen');
+    if (cont) {
+      navigate('/mainscreen');
+    }
   }
   function handleSubmit(e) {
     e.preventDefault();
