@@ -88,16 +88,20 @@ const StatsPage = () => {
         fetch('/some-api', { method: form.method, body: formData });
         const formJson = Object.fromEntries(formData.entries());
         await StatsPitDataGet(formJson["query"]);
-        var matches = await StatsMatchesGet(formJson["query"], formJson["query2"]);
-        setmatch1(matches);
-        avgperformancestatistics = [];
-        avgperformancestatistics.push((Number(match1data.split("\n")[0].split(": ")[1]) + Number(match2data.split("\n")[0].split(": ")[1]))/2);
-        avgperformancestatistics.push((Number(match1data.split("\n")[2].split(": ")[1]) + Number(match2data.split("\n")[2].split(": ")[1]))/2);
-        avgperformancestatistics.push((Number(match1data.split("\n")[4].split(": ")[1]) + Number(match2data.split("\n")[4].split(": ")[1]))/2);
-        avgperformancestatistics.push((Number(match1data.split("\n")[5].split(": ")[1]) + Number(match2data.split("\n")[5].split(": ")[1]))/2);
-        avgperformancestatistics.push((Number(match1data.split("\n")[7].split(": ")[1]) + Number(match2data.split("\n")[7].split(": ")[1]))/2);
-        console.log(avgperformancestatistics);
-        setavgstatistics("Autonomous Amp: " + avgperformancestatistics[0] + "\nAutonoumous Speaker: " + avgperformancestatistics[1] + "\nTeleop Amp: " + avgperformancestatistics[2] + "\nTeleop Speaker: " + avgperformancestatistics[3] + "\nTrap: " + avgperformancestatistics[4]);
+        if (formJson["match"] != "") {
+            var matches = await StatsMatchesGet(formJson["query"], formJson["match"]);
+        } else {
+            setmatch1("No match number given.");
+        }
+        // setmatch1(matches);
+        // avgperformancestatistics = [];
+        // avgperformancestatistics.push((Number(match1data.split("\n")[0].split(": ")[1]) + Number(match2data.split("\n")[0].split(": ")[1]))/2);
+        // avgperformancestatistics.push((Number(match1data.split("\n")[2].split(": ")[1]) + Number(match2data.split("\n")[2].split(": ")[1]))/2);
+        // avgperformancestatistics.push((Number(match1data.split("\n")[4].split(": ")[1]) + Number(match2data.split("\n")[4].split(": ")[1]))/2);
+        // avgperformancestatistics.push((Number(match1data.split("\n")[5].split(": ")[1]) + Number(match2data.split("\n")[5].split(": ")[1]))/2);
+        // avgperformancestatistics.push((Number(match1data.split("\n")[7].split(": ")[1]) + Number(match2data.split("\n")[7].split(": ")[1]))/2);
+        // console.log(avgperformancestatistics);
+        // setavgstatistics("Autonomous Amp: " + avgperformancestatistics[0] + "\nAutonoumous Speaker: " + avgperformancestatistics[1] + "\nTeleop Amp: " + avgperformancestatistics[2] + "\nTeleop Speaker: " + avgperformancestatistics[3] + "\nTrap: " + avgperformancestatistics[4]);
       }
     return (
     <>
@@ -134,7 +138,7 @@ const StatsPage = () => {
         <p class = "koholo">Please enter both a valid match and a team number when you search.</p>
         <form onSubmit={handleSubmit}>
         <h2 class = "lopop">Search: <input type="text" id="searchbar" placeholder="Search" name="query"/></h2>
-        <h2 class = "lopop">Match Search: <input type="text" id="searchbar" placeholder="Search" name="query2"/></h2>
+        <h2 class = "lopop">Match Search: <input type="text" id="searchbar" placeholder="Search" name="match"/></h2>
         <button type = "submit" class = "butoj">Search</button>
         </form>
         <div className="button-container">
