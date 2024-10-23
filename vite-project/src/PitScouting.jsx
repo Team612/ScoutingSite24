@@ -115,10 +115,6 @@ const PitScoutingPage = () => {
             <p id="inputlabel">Trap:</p>
             <textarea type="text" id="textinput" name="Trap"/>
         </div>
-        <div id="drivingskill">
-            <p id="inputlabel">Driving Skill:</p>
-            <textarea type="text" id="textinput" name="Driving Skill"/>
-        </div>
         <div id="weight">
             <p id="inputlabel">{"Weight (lbs):"}</p>
             <textarea type="text" id="textinput" name="Weight"/>

@@ -34,7 +34,8 @@ function App() {
           TAmp: TAmp,
           TSpeaker: TSpeaker,
           climb: climb,
-          trap:trap
+          trap:trap,
+          skill: skill
         });
     }
 
@@ -46,6 +47,7 @@ function App() {
         console.log(TSpeaker);
         console.log(climb);
         console.log(trap);
+        console.log(skill);
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
@@ -59,6 +61,14 @@ function App() {
     
   const [count, setCount] = useState(0)
   var [trap, setTrap] = useState(0)
+  var [skill, setSkill] = useState(0)
+  function AddOneSkill(){
+    setSkill(skill+1)
+  }
+  function MinusOneSkill(){
+    setSkill(skill-1)
+  }
+
   function AddOneTrap(){
     setTrap(trap+1)
   }
@@ -204,7 +214,12 @@ function App() {
            <p id = "speakerId">{trap}</p>
             <button id="button-25" onClick={() =>AddOneTrap()}>+1</button>
         </div>
-
+        <div>
+           <button id="button1">Driving Skill (X/10)</button>
+           <button id="button-24" onClick={() =>MinusOneSkill()}>-1</button>
+           <p id = "speakerId">{skill}/10</p>
+            <button id="button-25" onClick={() =>AddOneSkill()}>+1</button>
+        </div>
         <div>
             <button type = "submit" class = "button" onClick={() =>SaveAlert()}>SAVE!</button>
         </div>
