@@ -23,7 +23,7 @@ const db = getFirestore(app);
 
 
 function App() {
-    async function SignUpDataAdd(a,b,c) {
+    async function SignUpDataAdd(a,b,c,d) {
         // // Assign pass and teamID here to the database
         await setDoc(doc(db, a, "ScoutData_" + b + "_" +  c), {
           "Match": c,
@@ -35,7 +35,8 @@ function App() {
           TSpeaker: TSpeaker,
           climb: climb,
           trap:trap,
-          skill: skill
+          skill: skill,
+          other: d
         });
     }
 
@@ -54,7 +55,7 @@ function App() {
         fetch('/some-api', { method: form.method, body: formData });
         const formJson = Object.fromEntries(formData.entries());
         console.log(formJson);
-        SignUpDataAdd(Cookies.get('Log'), formJson["team number"], formJson["match"]);
+        SignUpDataAdd(Cookies.get('Log'), formJson["team number"], formJson["match"], formJson["otherBox"]);
         // alert("Saved! Go back to main page.");
     }
 
@@ -219,6 +220,10 @@ function App() {
            <button id="button-24" onClick={() =>MinusOneSkill()}>-1</button>
            <p id = "speakerId">{skill}/10</p>
             <button id="button-25" onClick={() =>AddOneSkill()}>+1</button>
+        </div>
+        <div>
+        <button id="button1">Other (Robot Died, etc.)</button>
+        <input type = "text" class = "button2" name="otherBox"></input>
         </div>
         <div>
             <button type = "submit" class = "button" onClick={() =>SaveAlert()}>SAVE!</button>
