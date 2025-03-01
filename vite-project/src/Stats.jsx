@@ -35,6 +35,7 @@ const StatsPage = () => {
     const [match2, setmatch2] = useState("No data");
     const [avgstatistcs, setavgstatistics] = useState("No data");
     const [num, setnum] = useState("#");
+    const [q, setq] = useState("");
     async function StatsMatchesGet(query, match) {
         // console.log("Team ID:", teamID, "Password", password);
         const docRef = doc(db, Cookies.get('Log'), "ScoutData_" + query + "_" + match);
@@ -89,9 +90,18 @@ const StatsPage = () => {
         const formData = new FormData(form);
         fetch('/some-api', { method: form.method, body: formData });
         const formJson = Object.fromEntries(formData.entries());
+        if (formJson["query"] == "") {
+            setq("\nThere is no team to search for.");
+            return false;
+        }
+        setq("");
         await StatsPitDataGet(formJson["query"]);
         if (formJson["match"] != "") {
             var matches = await StatsMatchesGet(formJson["query"], formJson["match"]);
+            if (!matches) {
+                setmatch1("The team did not play in this match.");
+                return false;
+            }
             setnum(formJson["match"]);
             setmatch1(matches);
         } else {
@@ -139,7 +149,12 @@ const StatsPage = () => {
     </div>
     <div id="statspage">
         <h1 id="scoutingHead">Stats</h1>
-        <p class = "koholo">Please enter both a valid match and a team number when you search.</p>
+        <p class = "koholo">Please enter both a valid match and a team number when you search. {q.split("\n").map((line, index) => (
+            <div style={{color: "red"}}>
+                {line}
+                <br/>
+            </div>
+        ))}</p>
         <form onSubmit={handleSubmit}>
         <h2 class = "lopop">Search: <input type="text" id="searchbar" placeholder="Search" name="query"/></h2>
         <h2 class = "lopop">Match Search: <input type="text" id="searchbar" placeholder="Search" name="match"/></h2>
