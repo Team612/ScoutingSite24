@@ -76,7 +76,7 @@ const MainScreen = () => {
         <div>
             <p class = "textor">Learn about 612 Robotics and our mission</p>
         </div>
-        <div id = "footer">Contact us at XXX@email.com for help!</div>
+        <div id = "footer">Contact us at chantilly.612@gmail.com for help!</div>
     </div>
 
 

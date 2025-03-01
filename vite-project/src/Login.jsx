@@ -99,7 +99,7 @@ const LoginPage = () => {
         </div>
         <button id="submitButton" >Submit</button>
         <p id="p"></p>
-        <div id="forgotPassword">Forgot Password?</div>
+        <div id="forgotPassword">Forgot Password? Email chantilly.612@gmail.com.</div>
     </form>
     </div>
     </>
