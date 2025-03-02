@@ -668,6 +668,11 @@
     width:96.5vw;
     color: black;
   }
+
+  .lopop{
+    color:black;
+    /* text-align:left; */
+  }
   
   #input {
     border: none;

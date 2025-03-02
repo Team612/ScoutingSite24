@@ -27,10 +27,9 @@ const PitScoutingPage = () => {
             "Drivetrain": array1["Drivetrain"],
             "Climb": array1["Climb"],
             "Autonomous": array1["Autonomous"],
-            "Speaker": array1["Speaker"],
-            "Amp":array1["Amp"],
-            "Trap": array1["Trap"],
-            "Driving Skill": array1["Driving Skill"],
+            "C": array1["C"],
+            "Al":array1["Al"],
+            "AS": array1["AS"],
             "Weight": array1["Weight"],
             "Cycle Time": array1["Cycle Time"],
             "Other": array1["Other"]
@@ -104,16 +103,16 @@ const PitScoutingPage = () => {
             <textarea type="text" id="textinput" name="Autonomous"/>
         </div>
         <div id="speaker">
-            <p id="inputlabel">Speaker:</p>
-            <textarea type="text" id="textinput" name="Speaker"/>
+            <p id="inputlabel">Coral Capability:</p>
+            <textarea type="text" id="textinput" name="C"/>
         </div>
         <div id="amp">
-            <p id="inputlabel">Amp:</p>
-            <textarea type="text" id="textinput" name="Amp"/>
+            <p id="inputlabel">Algae Removal:</p>
+            <textarea type="text" id="textinput" name="Al"/>
         </div>
         <div id="trap">
-            <p id="inputlabel">Trap:</p>
-            <textarea type="text" id="textinput" name="Trap"/>
+            <p id="inputlabel">Algae Scoring:</p>
+            <textarea type="text" id="textinput" name="AS"/>
         </div>
         <div id="weight">
             <p id="inputlabel">{"Weight (lbs):"}</p>

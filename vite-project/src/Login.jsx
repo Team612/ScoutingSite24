@@ -5,7 +5,7 @@ import './App.css';
 import { initializeApp } from 'firebase/app';
 import NavLink from "./NavElements.jsx";
 import { getFirestore } from "firebase/firestore";
-import {doc, getDoc, setDoc} from "firebase/firestore";
+import {doc, getDoc} from "firebase/firestore";
 import Cookies from 'js-cookie';
 import { Navigate, useNavigate } from 'react-router-dom';
 
@@ -21,63 +21,45 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 var cont;
 var inputValue;
-const LoginPage = () => {
+const LoginPage = () => { 
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState("");
+
   async function LogInDataGet(teamID, password) {
     // console.log("Team ID:", teamID, "Password", password);
     const docRef = doc(db, teamID, "Information");
     const docSnap = await getDoc(docRef);
     if (!docSnap.exists()) {
       cont = false;
-      navigate('/signup');
+      setErrorMessage("Incorrect Team ID or Password");
+      return;
     }
     console.log(docSnap.data()["Password"]);
     if(docSnap.data()["Password"] == password) {
       cont = true;
       console.log('Log');
       Cookies.set('Log', teamID);
+      setErrorMessage("");
     }
     else {
       cont = false;
       console.log('Not Log')
       Cookies.set('Log', null);
+      setErrorMessage("Incorrect Team ID or Password");
     }
     if (cont) {
       navigate('/mainscreen');
     }
+    
   }
-  async function NewDataAdd(a, b) {
-      // Assign pass and teamID here to the database
-      const docSnap = await getDoc(doc(db, a, "Information"));
-      if (docSnap.exists()) {
-        await setDoc(doc(db, a, "Information"), {
-          // console.log(val1);
-          Team_Number: a,
-          Password: b
-        });
-        Cookies.set('Log', a);
-        navigate('/mainscreen');
-      } else {
-        navigate('/signup');
-      }
-    }
-  function handleSubmit(e, b) {
+  function handleSubmit(e) {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
     fetch('/some-api', { method: form.method, body: formData });
     const formJson = Object.fromEntries(formData.entries());
-    if (!b) {
-      LogInDataGet(formJson["teamID"], formJson["password"]);
-    } else {
-      if (formJson["password"] != formJson["confirm"]) {
-        console.log(formJson);
-        return false;
-      }
-      NewDataAdd(formJson["teamID"], formJson["password"]);
-    }
+    LogInDataGet(formJson["teamID"], formJson["password"]);
   }
-  const [b, setb] = useState(false);
   return (
     <>
     
@@ -110,38 +92,22 @@ const LoginPage = () => {
     </div>
 
     <div id = "loginpage">
-    <form onSubmit={(event) => {
-      console.log("Submitted");
-      if (!handleSubmit(event, b)) {
-        var instructions = document.getElementById("instructions");
-        instructions.style.color = "red";
-        instructions.innerHTML = "Password and Password confirmation should be the same.";
-      }
-    }}>
+    <form onSubmit={handleSubmit}>
       <h1>Login</h1>
-      <p id="instructions"></p>
       {/* <form onSubmit={handleSubmit}> */}
-      <div id="username">
-        <h2 id="signUph2">Team ID: </h2>
+      <div id="login">
+        <h2 id="signUph2">Team ID:    </h2>
           <input name="teamID" value = {inputValue} type="text" class="button2" placeholder="Team ID #" />
       </div>
-      <div id="password">
-        <h2 id="signUph2">Password:   </h2>
-        <input name="password" value = {inputValue} type="password" class="button2" placeholder="Password" />
-      </div>
-      <div id="confirm" style={{display: "none"}}>
-        <h2 id="signUph2">Confirm Passcode:   </h2>
-        <input name="confirm" value = {inputValue} type="password" class="button2" placeholder="Confirm Password"/>
-      </div>
-        <button id="submitButton">Submit</button>
-        <div id="forgotPassword" style={{color: "blue", textDecoration: "underline", cursor: "pointer"}} onClick={() => {
-          var password = document.getElementById("password");
-          var confirm = document.getElementById("confirm");
-          var instructions = document.getElementById("instructions");
-          confirm.style.display = "block";
-          instructions.innerHTML = "Enter your Team ID and a new password.";
-          setb(true);
-        }}>Forgot Password?</div>
+      <div id="login">
+      <h2 id="signUph2">Password:   </h2>
+          <input name="password" value = {inputValue} type="password" class="button2" placeholder="Password" />
+        </div>        
+        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+
+        <button id="submitButton" >Submit</button>
+        <p id="p"></p>
+        <div id="forgotPassword">Forgot Password? Email chantilly.612@gmail.com.</div>
     </form>
     </div>
     </>
@@ -149,5 +115,3 @@ const LoginPage = () => {
 }
 
 export default LoginPage;
-
-

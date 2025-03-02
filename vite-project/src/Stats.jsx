@@ -7,6 +7,7 @@ import './App.css';
 import Cookies from 'js-cookie';
 import { useState } from "react";
 import { Navigate, useNavigate } from 'react-router-dom';
+
 const firebaseConfig = {
     apiKey: "AIzaSyAmnVQ0fKgFbjrzKSkaAi_mHBV0Xf5tDkg",
     authDomain: "scoutingsite-9ed91.firebaseapp.com",
@@ -15,6 +16,7 @@ const firebaseConfig = {
     messagingSenderId: "707000861764",
     appId: "1:707000861764:web:8494cda0b57782c5cf2811"
 };
+
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 var pitdata = "No data";
@@ -22,6 +24,7 @@ var match1data = "No data";
 var match2data = "No data";
 var avgperformancestatistics = [];
 var number = "";
+
 const StatsPage = () => {
     const navigate = useNavigate();
     function toStandScouting() {
@@ -32,31 +35,14 @@ const StatsPage = () => {
     }
     const [pit, setPit] = useState("No data");
     const [match1, setmatch1] = useState("No data");
-    const [match2, setmatch2] = useState("No data");
+    // const [match2, setmatch2] = useState("No data");
     const [avgstatistcs, setavgstatistics] = useState("No data");
-    const [num, setnum] = useState("#");
+    // const [num, setnum] = useState("#");
     const [q, setq] = useState("");
-    async function StatsMatchesGet(query, match) {
-        // console.log("Team ID:", teamID, "Password", password);
-        const docRef = doc(db, Cookies.get('Log'), "ScoutData_" + query + "_" + match);
-        console.log(Cookies.get('Log'));
-        console.log("ScoutData_" + query + "_" + match);
-            const docSnap = await getDoc(docRef);
-            if (docSnap.exists()) {
-                // console.log(window.location.pathname);
-                console.log(docSnap);
-            } else {
-                console.log("No such document!");
-                return false;
-            }
-            console.log(docSnap.data()["AAmp"]);
-            let data = docSnap.data();
-            console.log(data);
-            return "Autonomous Amp: " + data["AAmp"] + "\nLeft Zone: " + data["ALeave"] + "\nAutonomous Speaker: " + data["ASpeaker"] + "\nMatch: " + data["Match"] + "\nTeleop Amp: " + data["TAmp"] + "\nTeleop Speaker: " + data["TSpeaker"] + "\nTeam #: " + data["Team"] + "\nTrap: " + data["trap"] + "\nClimb: " + data["climb"];
-    }
+
     async function StatsPitDataGet(query) {
-        // console.log("Team ID:", teamID, "Password", password);
         const docRef = doc(db, Cookies.get('Log'), "PitData_" + query);
+
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           // console.log(window.location.pathname);
@@ -66,14 +52,122 @@ const StatsPage = () => {
           pitdata = "No data";
           return false;
         }
-        console.log(docSnap.data()["Amp"]);
         let data = docSnap.data();
         console.log(data);
-        pitdata = "Amp: " + data["Amp"] + "\nAutonomous: " + data["Autonomous"] + "\nClimb: " + data["Climb"] + "\nCycle Time: " + data["Cycle Time"] + " lbs\nDrivetrain: " + data["Drivetrain"] + "\nDriving Skill: " + data["Driving Skill"] + "\nIntake: " + data["Intake"] + "\nOther: " + data["Other"] + "\nSpeaker: " + data["Speaker"] + "\nTeam #: " + data["Team"] + "\nTrap: " + data["Trap"] + "\nWeight: " + data["Weight"] + " lbs";
+        pitdata = "Algae Removal: " + data["Al"] + "\nAutonomous: " + data["Autonomous"] + "\nClimb: " + data["Climb"] + "\nCycle Time: " + data["Cycle Time"] + " \nDrivetrain: " + data["Drivetrain"] + "\nIntake: " + data["Intake"] + "\nOther: " + data["Other"] + "\nCoral Capability: " + data["C"] + "\nTeam #: " + data["Team"] + "\nAlgae Scoring: " + data["AS"] + "\nWeight: " + data["Weight"] + " lbs";
         console.log(pitdata);
         setPit(pitdata);
         console.log(pit);
     }
+
+    async function StatsMatchDataGet(query){
+        var allData = "";
+        var totalAlgae = 0;
+        var totalLeaveZones = 0;
+        var totalL1 = 0;
+        var totalL2 = 0;
+        var totalL3 = 0;
+        var totalL4 = 0;
+        var totalPClimb = 0;
+        var totalDClimb = 0;
+        var totalSClimb = 0;
+        var totalMatches = 0;
+        var totalRP = 0;
+
+        console.log("its happening");
+
+        for (var i = 0; i < 50; i ++){
+            console.log("ScoutData_" + query + "_" + i);
+            const docRef = doc(db, Cookies.get('Log'), "ScoutData_" + query + "_" + i);
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists()) {
+            // console.log(window.location.pathname);
+            // console.log(docSnap.data());
+                let data = docSnap.data();
+                console.log(data);
+
+                if(data["ALeave"]){
+                    totalLeaveZones += 1
+                }
+                if(data["PClimb"] === "Yes"){
+                    totalPClimb += 1
+                }
+                if(data["SClimb"] === "Yes"){
+                    totalSClimb += 1
+                }
+                if(data["DClimb"] === "Yes"){
+                    totalDClimb += 1
+                }
+
+                if(data["BP"] === "Yes"){
+                    totalRP += 1
+                }
+                if(data["CP"] === "Yes"){
+                    totalRP += 1
+                }
+                if(data["AutoRP"] === "Yes"){
+                    totalRP += 1
+                }
+                totalMatches += 1;
+                totalAlgae += (data["ASN"] + data["AAlgae"] + data["APS"]);
+                totalL1 += (data["L1AC"] + data["L1C"]);
+                totalL2 += (data["L2AC"] + data["L2C"]);
+                totalL3 += (data["L3AC"] + data["L3C"]);
+                totalL4 += (data["L4AC"] + data["L4C"]);
+            
+
+                if(data["ALeave"]){
+                    totalLeaveZones += 1
+                }
+ 
+
+
+                allData += "MATCH #" + data["Match"] + 
+                "\nL1 Coral Auto: " + data["L1AC"] +
+                "\nL2 Coral Auto: " + data["L2AC"] +
+                "\nL3 Coral Auto: " + data["L3AC"] +
+                "\nL4 Coral Auto: " + data["L4AC"] +
+                "\nL1 Coral: " + data["L1C"] +
+                "\nL2 Coral: " + data["L2C"] +
+                "\nL3 Coral: " + data["L3C"] +
+                "\nL4 Coral" + data["L4C"] +
+                "\nLeft Zone: " + data["ALeave"] + 
+
+                "\nAlgae Processor: " + data["APS"] + 
+                "\nAlgae Net: " + data["ASN"] + 
+                "\nAlgae Auto: " + data["AAlgae"] + 
+                "\nPark: " + data["PClimb"] + 
+                "\nDeep: " + data["DClimb"] + 
+                "\nShallow: " + data["SClimb"] + 
+                "\nMatch: " + data["Match"] + 
+
+
+                "\nOther: " + data["other"] + 
+                "\nPosition: " + data["position"] + 
+                "\nSkill: " + data["skill"] + 
+                "\n\n";
+
+                setmatch1(allData);
+            } 
+            else {
+                
+            }
+
+        } 
+        console.log((totalPClimb + totalDClimb + totalSClimb));
+
+        var avgdata =  
+        "Avg L1 per match: " + totalL1/totalMatches + "\n" + 
+        "Avg L2 per match: " + totalL2/totalMatches + "\n" + 
+        "Avg L3 per match: " + totalL3/totalMatches + "\n" + 
+        "Avg L4 per match: " + totalL4/totalMatches + "\n" +
+        "Avg algae per match: " + totalAlgae/totalMatches + "\n" +  
+        "Leave Zone %: " + totalLeaveZones/totalMatches + "\n" +
+        "Climb %: " + (totalPClimb + totalDClimb + totalSClimb)/totalMatches + "\n";
+        setavgstatistics(avgdata);
+    }
+
     async function handleSubmit(e) {
         // if (formJson["query"] == "" || formJson["query"] == null){
         //     return 1;
@@ -83,9 +177,7 @@ const StatsPage = () => {
         // }
         e.preventDefault();
         setmatch1("Loading...");
-        setmatch2('Loading...');
         setPit('Loading...');
-        setavgstatistics('Loading...');
         const form = e.target;
         const formData = new FormData(form);
         fetch('/some-api', { method: form.method, body: formData });
@@ -94,19 +186,22 @@ const StatsPage = () => {
             setq("\nThere is no team to search for.");
             return false;
         }
-        setq("");
-        await StatsPitDataGet(formJson["query"]);
-        if (formJson["match"] != "") {
-            var matches = await StatsMatchesGet(formJson["query"], formJson["match"]);
-            if (!matches) {
-                setmatch1("The team did not play in this match.");
-                return false;
-            }
-            setnum(formJson["match"]);
-            setmatch1(matches);
-        } else {
-            setmatch1("No match number given.");
-        }
+
+        StatsPitDataGet(formJson["query"]);
+        StatsMatchDataGet(formJson["query"]);
+        // setq("");
+        // await StatsPitDataGet(formJson["query"]);
+        // if (formJson["match"] != "") {
+        //     var matches = await StatsMatchesGet(formJson["query"], formJson["match"]);
+        //     if (!matches) {
+        //         setmatch1("The team did not play in this match.");
+        //         return false;
+        //     }
+        //     setnum(formJson["match"]);
+        //     setmatch1(matches);
+        // } else {
+        //     setmatch1("No match number given.");
+        // }
         // setmatch1(matches);
         // avgperformancestatistics = [];
         // avgperformancestatistics.push((Number(match1data.split("\n")[0].split(": ")[1]) + Number(match2data.split("\n")[0].split(": ")[1]))/2);
@@ -149,20 +244,28 @@ const StatsPage = () => {
     </div>
     <div id="statspage">
         <h1 id="scoutingHead">Stats</h1>
-        <p class = "koholo">Please enter both a valid match and a team number when you search. {q.split("\n").map((line, index) => (
+        <p class = "koholo">Please enter a team number below for pit data and all match data. {q.split("\n").map((line, index) => (
             <div style={{color: "red"}}>
                 {line}
                 <br/>
             </div>
         ))}</p>
         <form onSubmit={handleSubmit}>
-        <h2 class = "lopop">Search: <input type="text" id="searchbar" placeholder="Search" name="query"/></h2>
-        <h2 class = "lopop">Match Search: <input type="text" id="searchbar" placeholder="Search" name="match"/></h2>
+        <h2 class = "lopop">Team Search<input type="text" id="searchbar" placeholder="Search" name="query"/></h2>
+        {/* <h2 class = "lopop">Match Search: <input type="text" id="searchbar" placeholder="Search" name="match"/></h2> */}
         <button type = "submit" class = "butoj">Search</button>
         </form>
         <div className="button-container">
-            <button className="statsbutton">Match {num}</button>
+            <button className="statsbutton">Match Data</button>
             <p class = "lopop"> {match1.split("\n").map((line, index) => (
+                <div key={index} className="c">
+                    {line}
+                    <br />
+                </div>
+                ))}
+            </p>
+            <button className="statsbutton">Avg Match Stats</button>
+            <p class = "lopop"> {avgstatistcs.split("\n").map((line, index) => (
                 <div key={index} className="c">
                     {line}
                     <br />

@@ -23,46 +23,79 @@ const db = getFirestore(app);
 
 
 function App() {
-    async function SignUpDataAdd(a,b,c,d) {
+    async function SignUpDataAdd(a,b,c,d,e) {
         // // Assign pass and teamID here to the database
-        await setDoc(doc(db, a, "ScoutData_" + b + "_" +  c), {
+        await setDoc(doc(db, a, "ScoutData_" + b + "_" + c), {
           "Match": c,
           "Team": b,
+          "Scouter Name": e,
+          position: position,
           ALeave: ALeave,
-          AAmp: AAmp,
-          ASpeaker: ASpeaker,
-          TAmp: TAmp,
-          TSpeaker: TSpeaker,
-          climb: climb,
-          trap:trap,
+          L1AC: L1AC,
+          L2AC: L2AC,
+          L3AC: L3AC,
+          L4AC: L4AC,
+          AAlgae: AAlgae,
+          L1C: L1C,
+          L2C: L2C,
+          L3C: L3C,
+          L4C: L4C,
+          APS: APS,
+          ASN: ASN,
+          BP: BP,
+          CP: CP,
+          AutoRP: AutoRP,
+          DClimb: DClimb,
+          SClimb: SClimb,
+          PClimb: PClimb,
           skill: skill,
           other: d
         });
     }
 
     function SaveSS(e) {
-        console.log(ALeave);
-        console.log(AAmp);
-        console.log(ASpeaker);
-        console.log(TAmp);
-        console.log(TSpeaker);
-        console.log(climb);
-        console.log(trap);
-        console.log(skill);
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
-        fetch('/some-api', { method: form.method, body: formData });
+
+        // fetch('/some-api', { method: form.method, body: formData });
         const formJson = Object.fromEntries(formData.entries());
         console.log(formJson);
-        SignUpDataAdd(Cookies.get('Log'), formJson["team number"], formJson["match"], formJson["otherBox"]);
+        SignUpDataAdd(Cookies.get('Log'), formJson["team number"], formJson["match"], formJson["otherBox"], formJson["scouter name"]);
         // alert("Saved! Go back to main page.");
+        setSaveMessage("✅ Data Saved Successfully!");
     }
 
-    
-  const [count, setCount] = useState(0)
-  var [trap, setTrap] = useState(0)
+  const [leaveChoice, setLeaveChoice] = useState("");
+
+  const [saveMessage, setSaveMessage] = useState("");
+
   var [skill, setSkill] = useState(0)
+  const [position, setPosition] = useState("");
+  var [ALeave, setALeave] = useState(false)
+  const [L1AC, setL1AC] = useState(0);
+  const [L2AC, setL2AC] = useState(0);
+  const [L3AC, setL3AC] = useState(0);
+  const [L4AC, setL4AC] = useState(0);
+
+  const [AAlgae, setAAlgae] = useState(0);
+
+  const [L1C, setL1C] = useState(0);
+  const [L2C, setL2C] = useState(0);
+  const [L3C, setL3C] = useState(0);
+  const [L4C, setL4C] = useState(0);
+
+  const [APS, setAPS] = useState(0);
+  const [ASN, setASN] = useState(0);
+
+
+  const [BP, setBP] = useState(false);
+  const [CP, setCP] = useState(false);
+  const [AutoRP, setAutoRP] = useState("");
+  const [DClimb, setDClimb] = useState("");
+  const [SClimb, setSClimb] = useState("");
+  const [PClimb, setPClimb] = useState("");
+
   function AddOneSkill(){
     setSkill(skill+1)
   }
@@ -70,68 +103,181 @@ function App() {
     setSkill(skill-1)
   }
 
-  function AddOneTrap(){
-    setTrap(trap+1)
+  function YesAutoRP(){
+    //alert("Selected Yes");
+    setAutoRP(true)
   }
-  function MinusOneTrap(){
-    setTrap(trap-1)
-  }
-
-  var [climb, setClimb] = useState(false)
-  function YesClimb(){
-    alert("Selected Yes");
-    setClimb(true)
-  }
-  function NoClimb(){
-    alert("Selected No");
-    setClimb(false)
+  function NoAutoRP(){
+    //alert("Selected No");
+    setAutoRP(false)
   }
 
-  var [TSpeaker, setTSpeaker] = useState(0)
-  function AddOneTSpeaker(){
-    setTSpeaker(TSpeaker + 1)
+  function YesCP(){
+    //alert("Selected Yes");
+    setCP(true)
   }
-  function MinusOneTSpeaker(){
-    setTSpeaker(TSpeaker-1)
+  function NoCP(){
+    //alert("Selected No");
+    setCP(false)
   }
-
-  var [TAmp, setTAmp] = useState(0)
-  function AddOneTAmp(){
-    setTAmp(TAmp+1)
+  function YesBP(){
+    //alert("Selected Yes");
+    setBP(true)
   }
-  function MinusOneTAmp(){
-    setTAmp(TAmp-1)
-  }
-
-  var [ASpeaker, setASpeaker] = useState(0)
-  function AddOneSpeaker(){
-    setASpeaker(ASpeaker+1)
-  }
-  function MinusOneSpeaker(){
-    setASpeaker(ASpeaker-1)
+  function NoBP(){
+    //alert("Selected No");
+    setBP(false)
   }
 
-  var [AAmp, setAAmp] = useState(0)
-  function AddOneAAmp(){
-    setAAmp(AAmp+1)
-  }
-  function MinusOneAAmp(){
-    setAAmp(AAmp-1)
-  }
 
-  var [ALeave, setALeave] = useState(false)
   function YesLeave(){
-    alert("Selected Yes");
+    //alert("Selected Yes");
     setALeave(true)
   }
   function NoLeave(){
-    alert("Selected No");
+    //alert("Selected No");
     setALeave(false)
   }
 
-  function SaveAlert(){
-    alert("Saved");
+  function YesPClimb(){
+    //alert("Selected Yes");
+    setPClimb(true)
   }
+  function NoPClimb(){
+    //alert("Selected No");
+    setPClimb(false)
+  }
+  
+  function YesDClimb(){
+    //alert("Selected Yes");
+    setDClimb(true)
+  }
+  function NoDClimb(){
+    //alert("Selected No");
+    setDClimb(false)
+  }
+
+  function YesSClimb(){
+    //alert("Selected Yes");
+    setSClimb(true)
+  }
+  function NoSClimb(){
+    //alert("Selected No");
+    setSClimb(false)
+  }
+
+  function MinusOneL1AC(){
+    //alert("Selected Yes");
+    setL1AC(L1AC-1);
+  }
+  function AddOneL1AC(){
+    //alert("Selected No");
+    setL1AC(L1AC+1);
+  }
+
+  function MinusOneAlgaeA(){
+    //alert("Selected Yes");
+    setAAlgae(AAlgae-1);
+  }
+  function AddOneAlgaeA(){
+    //alert("Selected No");
+    setAAlgae(AAlgae+1);
+  }
+
+  function MinusOneL2AC(){
+    //alert("Selected Yes");
+    setL2AC(L2AC-1);
+  }
+  function AddOneL2AC(){
+    //alert("Selected No");
+    setL2AC(L2AC+1);
+  }
+
+  function MinusOneL3AC(){
+    //alert("Selected Yes");
+    setL3AC(L3AC-1);
+  }
+  function AddOneL3AC(){
+    //alert("Selected No");
+    setL3AC(L3AC+1);
+  }
+
+  function MinusOneL4AC(){
+    //alert("Selected Yes");
+    setL4AC(L4AC-1);
+  }
+  function AddOneL4AC(){
+    //alert("Selected No");
+    setL4AC(L4AC+1);
+  }
+
+
+
+
+  function MinusOneL1C(){
+    //alert("Selected Yes");
+    setL1C(L1C-1);
+  }
+  function AddOneL1C(){
+    //alert("Selected No");
+    setL1C(L1C+1);
+  }
+
+  function MinusOneL2C(){
+    //alert("Selected Yes");
+    setL2C(L2C-1);
+  }
+  function AddOneL2C(){
+    //alert("Selected No");
+    setL2C(L2C+1);
+  }
+
+  function MinusOneL3C(){
+    //alert("Selected Yes");
+    setL3C(L3C-1);
+  }
+  function AddOneL3C(){
+    //alert("Selected No");
+    setL3C(L3C+1);
+  }
+
+  function MinusOneL4C(){
+    //alert("Selected Yes");
+    setL4C(L4C-1);
+  }
+  function AddOneL4C(){
+    //alert("Selected No");
+    setL4C(L4C+1);
+  }
+
+  function MinusOneAPS(){
+    //alert("Selected Yes");
+    setAPS(APS-1);
+  }
+  function AddOneAPS(){
+    //alert("Selected No");
+    setAPS(APS+1);
+  }
+
+  function MinusOneASN(){
+    //alert("Selected Yes");
+    setASN(ASN-1);
+  }
+  function AddOneASN(){
+    //alert("Selected No");
+    setASN(ASN+1);
+  }
+
+  function SaveAlert() {
+      setSaveMessage("✅ Data Saved Successfully!");
+  }
+
+
+  function SavePosition(pos){
+    //alert("chose " + pos);
+    setPosition(pos);
+  }
+
 
   return (
     <>
@@ -176,57 +322,170 @@ function App() {
             <input type = "text" class = "button2" name="team number"></input>
         </div>
         <div>
+          <button id="button1">Scouter Name</button>
+            <input type = "text" class = "button2" name="scouter name"></input>
+        </div>
+        <div>
+        <button id="button1"> Team Position: {position}<br></br>(B: blue, R: red, closest to stands: 1, middle: 2, farthest from stands: 3)</button>
+          <button id="B1" onClick={(event) => { event.preventDefault(); SavePosition("B1"); }}>
+            B1
+          </button>
+          <button id="B2" onClick={(event) => { event.preventDefault(); SavePosition("B2"); }}>
+            B2
+          </button>
+          <button id="B3" onClick={(event) => { event.preventDefault(); SavePosition("B3"); }}>
+            B3
+          </button>
+          <button id="R1" onClick={(event) => { event.preventDefault(); SavePosition("R1"); }}>
+            R1
+          </button>
+          <button id="R2" onClick={(event) => { event.preventDefault(); SavePosition("R2"); }}>
+            R2
+          </button>
+          <button id="R3" onClick={(event) => { event.preventDefault(); SavePosition("R3"); }}>
+            R3
+          </button>
+        </div>
+        <div>
         <button id="button1">(Auto) Leave Zone</button>
-            <button id="button-24" onClick={() =>NoLeave()}>No</button>
-            <button id="button-25" onClick={() =>YesLeave()}>Yes</button>
+          <button id="button-24" onClick={(event) => { event.preventDefault(); setLeaveChoice("No"); NoLeave();}}>No</button>
+            <span style={{ margin: "0 10px", fontWeight: "bold", color: leaveChoice === "Yes" ? "green" : "red" }}>
+              {leaveChoice}
+            </span>
+            <button id="button-25" onClick={(event) => { event.preventDefault(); setLeaveChoice("Yes"); YesLeave();}}>Yes</button>
         </div>
         <div>
-        <button id="button1">(Auto) Amp</button>
-        <button id="button-24" onClick={() =>MinusOneAAmp()}>-1</button>
-           <p id = "speakerId">{AAmp}</p>
-            <button id="button-25" onClick={() =>AddOneAAmp()}>+1</button>
+        <button id="button1">(Auto) Coral L1</button>
+        <button id="button-24" onClick={(event) =>{event.preventDefault(); MinusOneL1AC();}}>-1</button>
+           <p id = "speakerId">{L1AC}</p>
+            <button id="button-25" onClick={(event) =>{event.preventDefault(); AddOneL1AC();}}>+1</button>
         </div>
         <div>
-           <button id="button1">(Auto) Speaker</button>
-           <button id="button-24" onClick={() =>MinusOneSpeaker()}>-1</button>
-           <p id = "speakerId">{ASpeaker}</p>
-            <button id="button-25" onClick={() =>AddOneSpeaker()}>+1</button>
+        <button id="button1">(Auto) Coral L2</button>
+        <button id="button-24" onClick={(event) =>{event.preventDefault(); MinusOneL2AC();}}>-1</button>
+           <p id = "speakerId">{L2AC}</p>
+            <button id="button-25" onClick={(event) =>{event.preventDefault(); AddOneL2AC();}}>+1</button>
         </div>
         <div>
-           <button id="button1">(Teleop/Engame) Amp</button>
-           <button id="button-24" onClick={() =>MinusOneTAmp()}>-1</button>
-           <p id = "speakerId">{TAmp}</p>
-            <button id="button-25" onClick={() =>AddOneTAmp()}>+1</button>
+        <button id="button1">(Auto) Coral L3</button>
+        <button id="button-24" onClick={(event) =>{event.preventDefault(); MinusOneL3AC();}}>-1</button>
+           <p id = "speakerId">{L3AC}</p>
+            <button id="button-25" onClick={(event) =>{event.preventDefault(); AddOneL3AC();}}>+1</button>
         </div>
         <div>
-           <button id="button1">(Teleop/Endgame) Speaker</button>
-           <button id="button-24" onClick={() =>MinusOneTSpeaker()}>-1</button>
-           <p id = "speakerId">{TSpeaker}</p>
-            <button id="button-25" onClick={() =>AddOneTSpeaker()}>+1</button>
+        <button id="button1">(Auto) Coral L4</button>
+        <button id="button-24" onClick={(event) =>{event.preventDefault(); MinusOneL4AC();}}>-1</button>
+           <p id = "speakerId">{L4AC}</p>
+            <button id="button-25" onClick={(event) =>{event.preventDefault(); AddOneL4AC();}}>+1</button>
         </div>
         <div>
-           <button id="button1">Climb</button>
-           <button id="button-24" onClick={() =>NoClimb()}>No</button>
-            <button id="button-25" onClick={() =>YesClimb()}>Yes</button>
+           <button id="button1">(Auto) Algae</button>
+           <button id="button-24" onClick={(event) =>{event.preventDefault();; MinusOneAlgaeA();}}>-1</button>
+           <p id = "speakerId">{AAlgae}</p>
+            <button id="button-25" onClick={(event) =>{event.preventDefault();; AddOneAlgaeA();}}>+1</button>
         </div>
         <div>
-           <button id="button1">Trap</button>
-           <button id="button-24" onClick={() =>MinusOneTrap()}>-1</button>
-           <p id = "speakerId">{trap}</p>
-            <button id="button-25" onClick={() =>AddOneTrap()}>+1</button>
+           <button id="button1">(Teleop/Engame) Coral L1</button>
+           <button id="button-24" onClick={(event) =>{event.preventDefault(); MinusOneL1C()}}>-1</button>
+           <p id = "speakerId">{L1C}</p>
+            <button id="button-25" onClick={(event) =>{event.preventDefault(); AddOneL1C()}}>+1</button>
         </div>
+        <div>
+           <button id="button1">(Teleop/Engame) Coral L2</button>
+           <button id="button-24" onClick={(event) =>{event.preventDefault(); MinusOneL2C()}}>-1</button>
+           <p id = "speakerId">{L2C}</p>
+            <button id="button-25" onClick={(event) =>{event.preventDefault(); AddOneL2C()}}>+1</button>
+        </div>
+        <div>
+           <button id="button1">(Teleop/Engame) Coral L3</button>
+           <button id="button-24" onClick={(event) =>{event.preventDefault(); MinusOneL3C()}}>-1</button>
+           <p id = "speakerId">{L3C}</p>
+            <button id="button-25" onClick={(event) =>{event.preventDefault(); AddOneL3C()}}>+1</button>
+        </div>
+        <div>
+           <button id="button1">(Teleop/Engame) Coral L4</button>
+           <button id="button-24" onClick={(event) =>{event.preventDefault(); MinusOneL4C()}}>-1</button>
+           <p id = "speakerId">{L4C}</p>
+            <button id="button-25" onClick={(event) =>{event.preventDefault(); AddOneL4C()}}>+1</button>
+        </div>
+        <div>
+           <button id="button1">(Teleop/Endgame) Algae Scored (Processor)</button>
+           <button id="button-24" onClick={(event) =>{event.preventDefault(); MinusOneAPS()}}>-1</button>
+           <p id = "speakerId">{APS}</p>
+            <button id="button-25" onClick={(event) =>{event.preventDefault();AddOneAPS()}}>+1</button>
+        </div>
+        <div>
+           <button id="button1">(Teleop/Endgame) Algae Scored (Net)</button>
+           <button id="button-24" onClick={(event) =>{event.preventDefault(); MinusOneASN()}}>-1</button>
+           <p id = "speakerId">{ASN}</p>
+            <button id="button-25" onClick={(event) =>{event.preventDefault();AddOneASN()}}>+1</button>
+        </div>
+        <div>
+           <button id="button1">Deep Climb</button>
+           <button id="button-24" onClick={(event) => { event.preventDefault(); setDClimb("No"); YesLeave();}}>No</button>
+            <span style={{ margin: "0 10px", fontWeight: "bold", color: DClimb === "Yes" ? "green" : "red" }}>
+              {DClimb}
+            </span>
+            <button id="button-25" onClick={(event) => { event.preventDefault(); setDClimb("Yes"); YesLeave();}}>Yes</button>
+        </div>
+        <div>
+           <button id="button1">Shallow Climb</button>
+           <button id="button-24" onClick={(event) => { event.preventDefault(); setSClimb("No"); YesLeave();}}>No</button>
+            <span style={{ margin: "0 10px", fontWeight: "bold", color: SClimb === "Yes" ? "green" : "red" }}>
+              {SClimb}
+            </span>
+            <button id="button-25" onClick={(event) => { event.preventDefault(); setSClimb("Yes"); YesLeave();}}>Yes</button>
+        </div>
+        <div>
+           <button id="button1">Park (Endgame)</button>
+           <button id="button-24" onClick={(event) => { event.preventDefault(); setPClimb("No"); YesLeave();}}>No</button>
+            <span style={{ margin: "0 10px", fontWeight: "bold", color: PClimb === "Yes" ? "green" : "red" }}>
+              {PClimb}
+            </span>
+            <button id="button-25" onClick={(event) => { event.preventDefault(); setPClimb("Yes"); YesLeave();}}>Yes</button>
+        </div>
+
+        <div>
+           <button id="button1">Barge RP</button>
+           <button id="button-24" onClick={(event) => { event.preventDefault(); setBP("No"); YesLeave();}}>No</button>
+            <span style={{ margin: "0 10px", fontWeight: "bold", color: BP === "Yes" ? "green" : "red" }}>
+              {BP}
+            </span>
+            <button id="button-25" onClick={(event) => { event.preventDefault(); setBP("Yes"); YesLeave();}}>Yes</button>
+        </div>
+
+        <div>
+           <button id="button1">Coral RP</button>
+           <button id="button-24" onClick={(event) => { event.preventDefault(); setCP("No"); YesLeave();}}>No</button>
+            <span style={{ margin: "0 10px", fontWeight: "bold", color: CP === "Yes" ? "green" : "red" }}>
+              {CP}
+            </span>
+            <button id="button-25" onClick={(event) => { event.preventDefault(); setCP("Yes"); YesLeave();}}>Yes</button>
+        </div>
+
+        <div>
+           <button id="button1">Auto RP</button>
+           <button id="button-24" onClick={(event) => { event.preventDefault(); setAutoRP("No"); YesLeave();}}>No</button>
+            <span style={{ margin: "0 10px", fontWeight: "bold", color: AutoRP === "Yes" ? "green" : "red" }}>
+              {AutoRP}
+            </span>
+            <button id="button-25" onClick={(event) => { event.preventDefault(); setAutoRP("Yes"); YesLeave();}}>Yes</button>
+        </div>
+
         <div>
            <button id="button1">Driving Skill (X/10)</button>
-           <button id="button-24" onClick={() =>MinusOneSkill()}>-1</button>
+           <button id="button-24" onClick={(event) =>{event.preventDefault(); MinusOneSkill()}}>-1</button>
            <p id = "speakerId">{skill}/10</p>
-            <button id="button-25" onClick={() =>AddOneSkill()}>+1</button>
+            <button id="button-25" onClick={(event) =>{event.preventDefault(); AddOneSkill()}}>+1</button>
         </div>
         <div>
         <button id="button1">Other (Robot Died, etc.)</button>
         <input type = "text" class = "button2" name="otherBox"></input>
         </div>
         <div>
-            <button type = "submit" class = "button" onClick={() =>SaveAlert()}>SAVE!</button>
+          {saveMessage && <p style={{ color: "green", fontWeight: "bold", marginTop: "10px" }}>{saveMessage}</p>}
+
+            <button type = "submit" class = "button" onClick={() => {SaveSS(); SaveAlert();}}>SAVE!</button>
         </div>
         </form>
     {/* </form>     */}

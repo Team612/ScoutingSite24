@@ -74,7 +74,7 @@ const MainScreen = () => {
             <button id = "submitButton2" onClick={toStats}>Stats</button>
         </div>
         <div>
-            <p class = "textor">Learn about 612 Robotics and our mission</p>
+            <p class = "textor">Check the performance of a certain team.</p>
         </div>
         <div id = "footer">Contact us at chantilly.612@gmail.com for help!</div>
     </div>
