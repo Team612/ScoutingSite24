@@ -21,30 +21,36 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 var cont;
 var inputValue;
-const LoginPage = () => {
+const LoginPage = () => { 
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState("");
+
   async function LogInDataGet(teamID, password) {
     // console.log("Team ID:", teamID, "Password", password);
     const docRef = doc(db, teamID, "Information");
     const docSnap = await getDoc(docRef);
     if (!docSnap.exists()) {
       cont = false;
-      navigate('/signup');
+      setErrorMessage("Incorrect Team ID or Password");
+      return;
     }
     console.log(docSnap.data()["Password"]);
     if(docSnap.data()["Password"] == password) {
       cont = true;
       console.log('Log');
       Cookies.set('Log', teamID);
+      setErrorMessage("");
     }
     else {
       cont = false;
       console.log('Not Log')
       Cookies.set('Log', null);
+      setErrorMessage("Incorrect Team ID or Password");
     }
     if (cont) {
       navigate('/mainscreen');
     }
+    
   }
   function handleSubmit(e) {
     e.preventDefault();
@@ -96,7 +102,9 @@ const LoginPage = () => {
       <div id="login">
       <h2 id="signUph2">Password:   </h2>
           <input name="password" value = {inputValue} type="password" class="button2" placeholder="Password" />
-        </div>
+        </div>        
+        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+
         <button id="submitButton" >Submit</button>
         <p id="p"></p>
         <div id="forgotPassword">Forgot Password? Email chantilly.612@gmail.com.</div>

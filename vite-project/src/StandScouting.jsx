@@ -23,11 +23,13 @@ const db = getFirestore(app);
 
 
 function App() {
-    async function SignUpDataAdd(a,b,c,d) {
+    async function SignUpDataAdd(a,b,c,d,e) {
         // // Assign pass and teamID here to the database
-        await setDoc(doc(db, a, "ScoutData_" + b + "_" +  c), {
+        await setDoc(doc(db, a, "ScoutData_" + b + "_" + c), {
           "Match": c,
           "Team": b,
+          "Scouter Name": e,
+          position: position,
           ALeave: ALeave,
           AAmp: AAmp,
           ASpeaker: ASpeaker,
@@ -41,6 +43,7 @@ function App() {
     }
 
     function SaveSS(e) {
+        console.log(position);
         console.log(ALeave);
         console.log(AAmp);
         console.log(ASpeaker);
@@ -55,14 +58,18 @@ function App() {
         fetch('/some-api', { method: form.method, body: formData });
         const formJson = Object.fromEntries(formData.entries());
         console.log(formJson);
-        SignUpDataAdd(Cookies.get('Log'), formJson["team number"], formJson["match"], formJson["otherBox"]);
+        SignUpDataAdd(Cookies.get('Log'), formJson["team number"], formJson["match"], formJson["otherBox"], formJson["scouter name"]);
         // alert("Saved! Go back to main page.");
-    }
+        setSaveMessage("✅ Data Saved Successfully!");
 
-    
+    }
+  const [climbChoice, setClimbChoice] = useState("");
+  const [leaveChoice, setLeaveChoice] = useState("");
+  const [saveMessage, setSaveMessage] = useState("");
   const [count, setCount] = useState(0)
   var [trap, setTrap] = useState(0)
   var [skill, setSkill] = useState(0)
+  const [position, setPosition] = useState("");
   function AddOneSkill(){
     setSkill(skill+1)
   }
@@ -79,11 +86,11 @@ function App() {
 
   var [climb, setClimb] = useState(false)
   function YesClimb(){
-    alert("Selected Yes");
+    //alert("Selected Yes");
     setClimb(true)
   }
   function NoClimb(){
-    alert("Selected No");
+    //alert("Selected No");
     setClimb(false)
   }
 
@@ -121,18 +128,21 @@ function App() {
 
   var [ALeave, setALeave] = useState(false)
   function YesLeave(){
-    alert("Selected Yes");
+    //alert("Selected Yes");
     setALeave(true)
   }
   function NoLeave(){
-    alert("Selected No");
+    //alert("Selected No");
     setALeave(false)
   }
 
-  function SaveAlert(){
-    alert("Saved");
+  function SaveAlert() {
+      setSaveMessage("✅ Data Saved Successfully!");
   }
-
+  function SavePosition(pos){
+    //alert("chose " + pos);
+    setPosition(pos);
+  }
   return (
     <>
     
@@ -176,57 +186,90 @@ function App() {
             <input type = "text" class = "button2" name="team number"></input>
         </div>
         <div>
+          <button id="button1">Scouter Name</button>
+            <input type = "text" class = "button2" name="scouter name"></input>
+        </div>
+        <div>
+        <button id="button1"> Team Position: {position}<br></br>(B: blue, R: red, closest to stands: 1, middle: 2, farthest from stands: 3)</button>
+          <button id="B1" onClick={(event) => { event.preventDefault(); SavePosition("B1"); }}>
+            B1
+          </button>
+          <button id="B2" onClick={(event) => { event.preventDefault(); SavePosition("B2"); }}>
+            B2
+          </button>
+          <button id="B3" onClick={(event) => { event.preventDefault(); SavePosition("B3"); }}>
+            B3
+          </button>
+          <button id="R1" onClick={(event) => { event.preventDefault(); SavePosition("R1"); }}>
+            R1
+          </button>
+          <button id="R2" onClick={(event) => { event.preventDefault(); SavePosition("R2"); }}>
+            R2
+          </button>
+          <button id="R3" onClick={(event) => { event.preventDefault(); SavePosition("R3"); }}>
+            R3
+          </button>
+        </div>
+        <div>
         <button id="button1">(Auto) Leave Zone</button>
-            <button id="button-24" onClick={() =>NoLeave()}>No</button>
-            <button id="button-25" onClick={() =>YesLeave()}>Yes</button>
+          <button id="button-24" onClick={(event) => { event.preventDefault(); setLeaveChoice("No"); NoLeave();}}>No</button>
+            <span style={{ margin: "0 10px", fontWeight: "bold", color: leaveChoice === "Yes" ? "green" : "red" }}>
+              {leaveChoice}
+            </span>
+            <button id="button-25" onClick={(event) => { event.preventDefault(); setLeaveChoice("Yes"); YesLeave();}}>Yes</button>
         </div>
         <div>
         <button id="button1">(Auto) Amp</button>
-        <button id="button-24" onClick={() =>MinusOneAAmp()}>-1</button>
+        <button id="button-24" onClick={(event) =>{event.preventDefault(); MinusOneAAmp();}}>-1</button>
            <p id = "speakerId">{AAmp}</p>
-            <button id="button-25" onClick={() =>AddOneAAmp()}>+1</button>
+            <button id="button-25" onClick={(event) =>{event.preventDefault(); AddOneAAmp();}}>+1</button>
         </div>
         <div>
            <button id="button1">(Auto) Speaker</button>
-           <button id="button-24" onClick={() =>MinusOneSpeaker()}>-1</button>
+           <button id="button-24" onClick={(event) =>{event.preventDefault();; MinusOneSpeaker();}}>-1</button>
            <p id = "speakerId">{ASpeaker}</p>
-            <button id="button-25" onClick={() =>AddOneSpeaker()}>+1</button>
+            <button id="button-25" onClick={(event) =>{event.preventDefault();; AddOneSpeaker();}}>+1</button>
         </div>
         <div>
            <button id="button1">(Teleop/Engame) Amp</button>
-           <button id="button-24" onClick={() =>MinusOneTAmp()}>-1</button>
+           <button id="button-24" onClick={(event) =>{event.preventDefault(); MinusOneTAmp()}}>-1</button>
            <p id = "speakerId">{TAmp}</p>
-            <button id="button-25" onClick={() =>AddOneTAmp()}>+1</button>
+            <button id="button-25" onClick={(event) =>{event.preventDefault(); AddOneTAmp()}}>+1</button>
         </div>
         <div>
            <button id="button1">(Teleop/Endgame) Speaker</button>
-           <button id="button-24" onClick={() =>MinusOneTSpeaker()}>-1</button>
+           <button id="button-24" onClick={(event) =>{event.preventDefault(); MinusOneTSpeaker()}}>-1</button>
            <p id = "speakerId">{TSpeaker}</p>
-            <button id="button-25" onClick={() =>AddOneTSpeaker()}>+1</button>
+            <button id="button-25" onClick={(event) =>{event.preventDefault();AddOneTSpeaker()}}>+1</button>
         </div>
         <div>
            <button id="button1">Climb</button>
-           <button id="button-24" onClick={() =>NoClimb()}>No</button>
-            <button id="button-25" onClick={() =>YesClimb()}>Yes</button>
+           <button id="button-24" onClick={(event) => { event.preventDefault(); setClimbChoice("No"); NoClimb();}}>No</button>
+            <span style={{ margin: "0 10px", fontWeight: "bold", color: climbChoice === "Yes" ? "green" : "red" }}>
+              {climbChoice}
+            </span>
+            <button id="button-25" onClick={(event) => { event.preventDefault(); setClimbChoice("Yes"); YesClimb();}}>Yes</button>
         </div>
         <div>
            <button id="button1">Trap</button>
-           <button id="button-24" onClick={() =>MinusOneTrap()}>-1</button>
+           <button id="button-24" onClick={(event) =>{event.preventDefault(); MinusOneTrap()}}>-1</button>
            <p id = "speakerId">{trap}</p>
-            <button id="button-25" onClick={() =>AddOneTrap()}>+1</button>
+            <button id="button-25" onClick={(event) =>{event.preventDefault(); AddOneTrap()}}>+1</button>
         </div>
         <div>
            <button id="button1">Driving Skill (X/10)</button>
-           <button id="button-24" onClick={() =>MinusOneSkill()}>-1</button>
+           <button id="button-24" onClick={(event) =>{event.preventDefault(); MinusOneSkill()}}>-1</button>
            <p id = "speakerId">{skill}/10</p>
-            <button id="button-25" onClick={() =>AddOneSkill()}>+1</button>
+            <button id="button-25" onClick={(event) =>{event.preventDefault(); AddOneSkill()}}>+1</button>
         </div>
         <div>
         <button id="button1">Other (Robot Died, etc.)</button>
         <input type = "text" class = "button2" name="otherBox"></input>
         </div>
         <div>
-            <button type = "submit" class = "button" onClick={() =>SaveAlert()}>SAVE!</button>
+          {saveMessage && <p style={{ color: "green", fontWeight: "bold", marginTop: "10px" }}>{saveMessage}</p>}
+
+            <button type = "submit" class = "button" onClick={() => {SaveSS(); SaveAlert();}}>SAVE!</button>
         </div>
         </form>
     {/* </form>     */}
