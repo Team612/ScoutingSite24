@@ -1,4 +1,5 @@
 import React from "react"
+import { useState } from 'react'
 import NavLink from "./NavElements.jsx";
 import './App.css';
 import { getFirestore } from "firebase/firestore";
@@ -45,10 +46,13 @@ const PitScoutingPage = () => {
         PitScoutingDataAdd(formJson);
         // alert("Saved! Go back to main page.");
     }
-    
-    function SaveAlert(){
-        alert("Saved");
+
+    const [saveMessage, setSaveMessage] = useState("");
+
+    function SaveAlert() {
+        setSaveMessage("✅ Data Saved Successfully!");
     }
+  
     return (
     <>
     {/* Montseratt Font: Headings */}
@@ -126,7 +130,8 @@ const PitScoutingPage = () => {
             <p id="inputlabel">Other:</p>
             <textarea type="text" id="textinput" name="Other"/>
         </div>
-        <button class="button" onClick={() =>SaveAlert()}>SAVE</button>
+        {saveMessage && <p style={{ color: "green", fontWeight: "bold", marginTop: "10px" }}>{saveMessage}</p>}
+        <button class="button" onClick={() => {SaveAlert();}}>SAVE</button>
         </form>
     </div>
     {/* <div id = "footer">Contact us at Chantilly.612@gmail.com for help!</div> */}
