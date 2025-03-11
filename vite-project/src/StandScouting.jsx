@@ -8,6 +8,7 @@ import { doc, setDoc } from "firebase/firestore";
 // import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 
 const firebaseConfig = {
@@ -23,6 +24,10 @@ const db = getFirestore(app);
 
 
 function App() {
+  const navigate = useNavigate();
+  if (Cookies.get('log') == null) {
+    navigate('/login')
+  }
     async function SignUpDataAdd(a,b,c,d,e) {
         // // Assign pass and teamID here to the database
         await setDoc(doc(db, a, "ScoutData_" + b + "_" + c), {
@@ -70,9 +75,9 @@ function App() {
 
   const [saveMessage, setSaveMessage] = useState("");
 
-  var [skill, setSkill] = useState(0)
+  const [skill, setSkill] = useState(0)
   const [position, setPosition] = useState("");
-  var [ALeave, setALeave] = useState(false)
+  const [ALeave, setALeave] = useState(false)
   const [L1AC, setL1AC] = useState(0);
   const [L2AC, setL2AC] = useState(0);
   const [L3AC, setL3AC] = useState(0);
@@ -96,176 +101,214 @@ function App() {
   const [SClimb, setSClimb] = useState("");
   const [PClimb, setPClimb] = useState("");
 
-  function AddOneSkill(){
-    setSkill(skill+1)
+  function AddOneSkill() {
+    setSkill(skill+1);
+    setSaveMessage("");
   }
-  function MinusOneSkill(){
-    setSkill(skill-1)
-  }
-
-  function YesAutoRP(){
-    //alert("Selected Yes");
-    setAutoRP(true)
-  }
-  function NoAutoRP(){
-    //alert("Selected No");
-    setAutoRP(false)
+  function MinusOneSkill() {
+    setSkill(skill > 0 ? skill-1 : 0);
+    setSaveMessage("");
   }
 
-  function YesCP(){
+  function YesAutoRP() {
     //alert("Selected Yes");
-    setCP(true)
+    setAutoRP(true);
+    setSaveMessage("");
   }
-  function NoCP(){
+  function NoAutoRP() {
     //alert("Selected No");
-    setCP(false)
+    setAutoRP(false);
+    setSaveMessage("");
   }
-  function YesBP(){
+
+  function YesCP() {
     //alert("Selected Yes");
-    setBP(true)
+    setCP(true);
+    setSaveMessage("");
   }
-  function NoBP(){
+  function NoCP() {
     //alert("Selected No");
-    setBP(false)
+    setCP(false);
+    setSaveMessage("");
+  }
+  function YesBP() {
+    //alert("Selected Yes");
+    setBP(true);
+    setSaveMessage("");
+  }
+  function NoBP() {
+    //alert("Selected No");
+    setBP(false);
+    setSaveMessage("");
   }
 
 
-  function YesLeave(){
+  function YesLeave() {
     //alert("Selected Yes");
-    setALeave(true)
+    setALeave(true);
+    setSaveMessage("");
   }
-  function NoLeave(){
+  function NoLeave() {
     //alert("Selected No");
-    setALeave(false)
+    setALeave(false);
+    setSaveMessage("");
   }
 
-  function YesPClimb(){
+  function YesPClimb() {
     //alert("Selected Yes");
-    setPClimb(true)
+    setPClimb(true);
+    setSaveMessage("");
   }
-  function NoPClimb(){
+  function NoPClimb() {
     //alert("Selected No");
-    setPClimb(false)
+    setPClimb(false);
+    setSaveMessage("");
   }
   
-  function YesDClimb(){
+  function YesDClimb() {
     //alert("Selected Yes");
-    setDClimb(true)
+    setDClimb(true);
+    setSaveMessage("");
   }
-  function NoDClimb(){
+  function NoDClimb() {
     //alert("Selected No");
-    setDClimb(false)
+    setDClimb(false);
+    setSaveMessage("");
   }
 
-  function YesSClimb(){
+  function YesSClimb() {
     //alert("Selected Yes");
-    setSClimb(true)
+    setSClimb(true);
+    setSaveMessage("");
   }
-  function NoSClimb(){
+  function NoSClimb() {
     //alert("Selected No");
-    setSClimb(false)
+    setSClimb(false);
+    setSaveMessage("");
   }
 
-  function MinusOneL1AC(){
+  function MinusOneL1AC() {
     //alert("Selected Yes");
-    setL1AC(L1AC-1);
+    setL1AC(L1AC > 0 ? L1AC-1 : 0);
+    setSaveMessage("");
   }
-  function AddOneL1AC(){
+  function AddOneL1AC() {
     //alert("Selected No");
     setL1AC(L1AC+1);
+    setSaveMessage("");
   }
 
-  function MinusOneAlgaeA(){
+  function MinusOneAlgaeA() {
     //alert("Selected Yes");
-    setAAlgae(AAlgae-1);
+    setAAlgae(AAlgae > 0 ? AAlgae-1 : 0);
+    setSaveMessage("");
   }
-  function AddOneAlgaeA(){
+  function AddOneAlgaeA() {
     //alert("Selected No");
     setAAlgae(AAlgae+1);
+    setSaveMessage("");
   }
 
-  function MinusOneL2AC(){
+  function MinusOneL2AC() {
     //alert("Selected Yes");
-    setL2AC(L2AC-1);
+    setL2AC(L2AC > 0 ? L2AC-1 : 0);
+    setSaveMessage("");
   }
-  function AddOneL2AC(){
+  function AddOneL2AC() {
     //alert("Selected No");
     setL2AC(L2AC+1);
+    setSaveMessage("");
   }
 
-  function MinusOneL3AC(){
+  function MinusOneL3AC() {
     //alert("Selected Yes");
-    setL3AC(L3AC-1);
+    setL3AC(L3AC > 0 ? L3AC-1 : 0);
+    setSaveMessage("");
   }
-  function AddOneL3AC(){
+  function AddOneL3AC() {
     //alert("Selected No");
     setL3AC(L3AC+1);
+    setSaveMessage("");
   }
 
-  function MinusOneL4AC(){
+  function MinusOneL4AC() {
     //alert("Selected Yes");
-    setL4AC(L4AC-1);
+    setL4AC(L4AC > 0 ? L4AC-1 : 0);
+    setSaveMessage("");
   }
-  function AddOneL4AC(){
+  function AddOneL4AC() {
     //alert("Selected No");
     setL4AC(L4AC+1);
+    setSaveMessage("");
   }
 
 
 
 
-  function MinusOneL1C(){
+  function MinusOneL1C() {
     //alert("Selected Yes");
-    setL1C(L1C-1);
+    setL1C(L1C > 0 ? L1C-1 : 0);
+    setSaveMessage("");
   }
-  function AddOneL1C(){
+  function AddOneL1C() {
     //alert("Selected No");
     setL1C(L1C+1);
+    setSaveMessage("");
   }
 
-  function MinusOneL2C(){
+  function MinusOneL2C() {
     //alert("Selected Yes");
-    setL2C(L2C-1);
+    setL2C(L2C > 0 ? L2C-1 : 0);
+    setSaveMessage("");
   }
-  function AddOneL2C(){
+  function AddOneL2C() {
     //alert("Selected No");
     setL2C(L2C+1);
+    setSaveMessage("");
   }
 
-  function MinusOneL3C(){
+  function MinusOneL3C() {
     //alert("Selected Yes");
-    setL3C(L3C-1);
+    setL3C(L3C > 0 ? L3C-1 : 0);
+    setSaveMessage("");
   }
-  function AddOneL3C(){
+  function AddOneL3C() {
     //alert("Selected No");
     setL3C(L3C+1);
+    setSaveMessage("");
   }
 
-  function MinusOneL4C(){
+  function MinusOneL4C() {
     //alert("Selected Yes");
-    setL4C(L4C-1);
+    setL4C(L4C > 0 ? L4C-1 : 0);
+    setSaveMessage("");
   }
-  function AddOneL4C(){
+  function AddOneL4C() {
     //alert("Selected No");
     setL4C(L4C+1);
+    setSaveMessage("");
   }
 
-  function MinusOneAPS(){
+  function MinusOneAPS() {
     //alert("Selected Yes");
-    setAPS(APS-1);
+    setAPS(APS > 0 ? APS-1 : 0);
+    setSaveMessage("");
   }
-  function AddOneAPS(){
+  function AddOneAPS() {
     //alert("Selected No");
     setAPS(APS+1);
+    setSaveMessage("");
   }
 
-  function MinusOneASN(){
+  function MinusOneASN() {
     //alert("Selected Yes");
-    setASN(ASN-1);
+    setASN(ASN > 0 ? ASN-1 : 0);
+    setSaveMessage("");
   }
-  function AddOneASN(){
+  function AddOneASN() {
     //alert("Selected No");
     setASN(ASN+1);
+    setSaveMessage("");
   }
 
   function SaveAlert() {
@@ -273,7 +316,7 @@ function App() {
   }
 
 
-  function SavePosition(pos){
+  function SavePosition(pos) {
     //alert("chose " + pos);
     setPosition(pos);
   }
