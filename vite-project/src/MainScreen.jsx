@@ -8,6 +8,9 @@ import { Navigate, useNavigate } from 'react-router-dom';
 const MainScreen = () => {
   var header = "Welcome, Team " + Cookies.get('Log');
   const navigate = useNavigate();
+  if (Cookies.get('Log') == null || Cookies.get('Log') == "none") {
+      navigate('/login')
+  }
   function toPitScouting() {
     navigate('/pitscouting');
   }

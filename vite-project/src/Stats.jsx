@@ -27,9 +27,9 @@ var number = "";
 
 const StatsPage = () => {
     const navigate = useNavigate();
-      if (Cookies.get('log') == null) {
+    if (Cookies.get('Log') == null || Cookies.get('Log') == "none") {
         navigate('/login')
-      }
+    }
     function toStandScouting() {
         navigate('/standscouting');
     }

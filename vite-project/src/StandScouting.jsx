@@ -25,7 +25,7 @@ const db = getFirestore(app);
 
 function App() {
   const navigate = useNavigate();
-  if (Cookies.get('log') == null) {
+  if (Cookies.get('Log') == null || Cookies.get('Log') == "none") {
     navigate('/login')
   }
     async function SignUpDataAdd(a,b,c,d,e) {
