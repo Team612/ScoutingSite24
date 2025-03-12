@@ -119,17 +119,18 @@ const StatsPage = () => {
                 "\nL1 Coral: " + data["L1C"] +
                 "\nL2 Coral: " + data["L2C"] +
                 "\nL3 Coral: " + data["L3C"] +
-                "\nL4 Coral" + data["L4C"] +
+                "\nL4 Coral: " + data["L4C"] +
                 "\nLeft Zone: " + (data["ALeave"] ? "Yes" : "No") + 
 
                 "\nAlgae Processor: " + data["APS"] + 
                 "\nAlgae Net: " + data["ASN"] + 
                 "\nAlgae Auto: " + data["AAlgae"] + 
-                "\nPark: " + (data["PClimb"] ? "Yes" : "No") + 
+                "\nPark: " + (data["Park"] ? "Yes" : "No") + 
                 "\nDeep: " + (data["DClimb"] ? "Yes" : "No") + 
                 "\nShallow: " + (data["SClimb"] ? "Yes" : "No") +  
                 "\nCoopertition Point: " + (data["coop"] ? "Yes" : "No") + 
                 "\nMatch Won: " + (data["won"] ? "Yes" : "No") + 
+                "\nTie? " + (data["tie"] ? "Yes" : "No") + 
                 "\nTotal ranking points: " + data["rankingpoints"] + 
                 "\nOther: " + data["other"] + 
                 "\nPosition: " + data["position"] + 
@@ -143,9 +144,10 @@ const StatsPage = () => {
             }
 
         } 
-        console.log((totalPClimb + totalDClimb + totalSClimb));
+        console.log((totalPark + totalDClimb + totalSClimb));
 
         var avgdata =  
+        "Total matches played so far: " + totalMatches + "\n" + 
         "Avg L1 per match: " + totalL1/totalMatches + "\n" + 
         "Avg L2 per match: " + totalL2/totalMatches + "\n" + 
         "Avg L3 per match: " + totalL3/totalMatches + "\n" + 
@@ -154,7 +156,8 @@ const StatsPage = () => {
         "Coopertition: " + totalCoop*100/totalMatches + "\n" +
         "Record: " + matchesWon + "-" + (totalMatches-matchesWon-ties) + "-" + ties + "\n" + 
         "Leave Zone: " + totalLeaveZones*100/totalMatches + "%\n" +
-        "Climb: " + (totalPClimb + totalDClimb + totalSClimb)*100/totalMatches + "%\n";
+        "Climb (Park-Shallow-Deep): " + totalPark + "-" + totalSClimb + "-" +totalDClimb + "\n";
+        console.log(avgdata);
         setavgstatistics(avgdata);
     }
 

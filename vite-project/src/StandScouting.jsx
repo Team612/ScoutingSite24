@@ -77,7 +77,7 @@ function App() {
         setSaveMessage("✅ Data Saved Successfully!");
     }
 
-  const [leaveChoice, setLeaveChoice] = useState("");
+  const [leaveChoice, setLeaveChoice] = useState(false);
 
   const [saveMessage, setSaveMessage] = useState("");
 
@@ -111,7 +111,7 @@ function App() {
   const [tie, setTie] = useState(false);
 
   function AddOneSkill() {
-    setSkill(skill+1);
+    setSkill(skill < 10 ? skill+1 : 10);
     setSaveMessage("");
   }
   function MinusOneSkill() {
@@ -401,8 +401,8 @@ function App() {
         <div>
         <button id="button1">(Auto) Leave Zone</button>
           <button id="button-24" onClick={(event) => { event.preventDefault(); setLeaveChoice("No"); NoLeave();}}>No</button>
-            <span style={{ margin: "0 10px", fontWeight: "bold", color: leaveChoice === "Yes" ? "green" : "red" }}>
-              {leaveChoice}
+            <span style={{ margin: "0 10px", fontWeight: "bold", color: leaveChoice ? "green" : "red" }}>
+              {leaveChoice ? "Yes" : "No"}
             </span>
             <button id="button-25" onClick={(event) => { event.preventDefault(); setLeaveChoice("Yes"); YesLeave();}}>Yes</button>
         </div>
@@ -470,38 +470,38 @@ function App() {
            <button id="button1">(Teleop/Endgame) Algae Scored (Net)</button>
            <button id="button-24" onClick={(event) =>{event.preventDefault(); MinusOneASN()}}>-1</button>
            <p id = "speakerId">{ASN}</p>
-            <button id="button-25" onClick={(event) =>{event.preventDefault();AddOneASN()}}>+1</button>
+            <button id="button-25" onClick={(event) =>{event.preventDefault(); AddOneASN()}}>+1</button>
         </div>
         <div>
            <button id="button1">Deep Climb</button>
            <button id="button-24" onClick={(event) => { event.preventDefault(); setDClimb(false); YesLeave();}}>No</button>
-            <span style={{ margin: "0 10px", fontWeight: "bold", color: DClimb === "Yes" ? "green" : "red" }}>
-              {DClimb}
+            <span style={{ margin: "0 10px", fontWeight: "bold", color: DClimb ? "green" : "red" }}>
+              {DClimb ? "Yes" : "No"}
             </span>
-            <button id="button-25" onClick={(event) => { event.preventDefault(); setDClimb(true); YesLeave();}}>Yes</button>
+            <button id="button-25" onClick={(event) => { event.preventDefault(); setDClimb(true); setSClimb(false); setPClimb(false); YesLeave();}}>Yes</button>
         </div>
         <div>
            <button id="button1">Shallow Climb</button>
            <button id="button-24" onClick={(event) => { event.preventDefault(); setSClimb(false); YesLeave();}}>No</button>
-            <span style={{ margin: "0 10px", fontWeight: "bold", color: SClimb === "Yes" ? "green" : "red" }}>
-              {SClimb}
+            <span style={{ margin: "0 10px", fontWeight: "bold", color: SClimb ? "green" : "red" }}>
+              {SClimb ? "Yes" : "No"}
             </span>
-            <button id="button-25" onClick={(event) => { event.preventDefault(); setSClimb(true); YesLeave();}}>Yes</button>
+            <button id="button-25" onClick={(event) => { event.preventDefault(); setSClimb(!DClimb); setPClimb(false); YesLeave();}}>Yes</button>
         </div>
         <div>
            <button id="button1">Park (Endgame)</button>
            <button id="button-24" onClick={(event) => { event.preventDefault(); setPClimb(false); YesLeave();}}>No</button>
             <span style={{ margin: "0 10px", fontWeight: "bold", color: PClimb ? "green" : "red" }}>
-              {PClimb}
+              {PClimb ? "Yes" : "No"}
             </span>
-            <button id="button-25" onClick={(event) => { event.preventDefault(); setPClimb(true); YesLeave();}}>Yes</button>
+            <button id="button-25" onClick={(event) => { event.preventDefault(); setPClimb(!(DClimb || SClimb)); YesLeave();}}>Yes</button>
         </div>
 
         <div>
            <button id="button1">Barge RP</button>
            <button id="button-24" onClick={(event) => { event.preventDefault(); setBP(false); YesLeave();}}>No</button>
             <span style={{ margin: "0 10px", fontWeight: "bold", color: BP ? "green" : "red" }}>
-              {BP}
+              {BP ? "Yes" : "No"}
             </span>
             <button id="button-25" onClick={(event) => { event.preventDefault(); setBP(true); YesLeave();}}>Yes</button>
         </div>
@@ -510,7 +510,7 @@ function App() {
            <button id="button1">Coral RP</button>
            <button id="button-24" onClick={(event) => { event.preventDefault(); setCP(false); YesLeave();}}>No</button>
             <span style={{ margin: "0 10px", fontWeight: "bold", color: CP ? "green" : "red" }}>
-              {CP}
+              {CP ? "Yes" : "No"}
             </span>
             <button id="button-25" onClick={(event) => { event.preventDefault(); setCP(true); YesLeave();}}>Yes</button>
         </div>
@@ -519,7 +519,7 @@ function App() {
            <button id="button1">Auto RP</button>
            <button id="button-24" onClick={(event) => { event.preventDefault(); setAutoRP(false); YesLeave();}}>No</button>
             <span style={{ margin: "0 10px", fontWeight: "bold", color: AutoRP ? "green" : "red" }}>
-              {AutoRP}
+              {AutoRP ? "Yes" : "No"}
             </span>
             <button id="button-25" onClick={(event) => { event.preventDefault(); setAutoRP(true); YesLeave();}}>Yes</button>
         </div>
@@ -528,7 +528,7 @@ function App() {
            <button id="button1">Coopertition Point</button>
            <button id="button-24" onClick={(event) => { event.preventDefault(); setCoop(false); YesLeave();}}>No</button>
             <span style={{ margin: "0 10px", fontWeight: "bold", color: coop ? "green" : "red" }}>
-              {AutoRP}
+              {coop ? "Yes" : "No"}
             </span>
             <button id="button-25" onClick={(event) => { event.preventDefault(); setCoop(true); YesLeave();}}>Yes</button>
         </div>
@@ -537,7 +537,7 @@ function App() {
            <button id="button1">Did the team win?</button>
            <button id="button-24" onClick={(event) => { event.preventDefault(); setWon(false); YesLeave();}}>No</button>
             <span style={{ margin: "0 10px", fontWeight: "bold", color: won ? "green" : "red" }}>
-              {AutoRP}
+              {won ? "Yes" : "No"}
             </span>
             <button id="button-25" onClick={(event) => { event.preventDefault(); setWon(true); YesLeave();}}>Yes</button>
         </div>
@@ -545,7 +545,7 @@ function App() {
            <button id="button1">Did the team tie?</button>
            <button id="button-24" onClick={(event) => { event.preventDefault(); setTie(false); YesLeave();}}>No</button>
             <span style={{ margin: "0 10px", fontWeight: "bold", color: tie ? "green" : "red" }}>
-              {AutoRP}
+              {tie ? "Yes" : "No"}
             </span>
             <button id="button-25" onClick={(event) => { event.preventDefault(); setTie(true); setWon(false); YesLeave();}}>Yes</button>
         </div>
