@@ -22,7 +22,9 @@ const db = getFirestore(app);
 const PitScoutingPage = () => {
     const navigate = useNavigate();
     if (Cookies.get('Log') == null || Cookies.get('Log') == "none") {
-        navigate('/login')
+        useEffect(() => {
+            navigate('/login')
+        })
     }
     async function PitScoutingDataAdd(array1) {
         console.log(Cookies.get('Log'));
