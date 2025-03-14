@@ -1,8 +1,8 @@
 import React from "react";
 import { initializeApp } from 'firebase/app';
 import NavLink from "./NavElements.jsx";
-import { getFirestore } from "firebase/firestore";
-import {doc, getDoc} from "firebase/firestore";
+import { getFirestore, queryEqual } from "firebase/firestore";
+import {doc, getDoc, collection, query, where, getDocs} from "firebase/firestore";
 import './App.css';
 import Cookies from 'js-cookie';
 import { useState } from "react";
@@ -27,6 +27,7 @@ var number = "";
 
 const StatsPage = () => {
     const navigate = useNavigate();
+    var log = Cookies.get('Log');
     if (Cookies.get('Log') == null || Cookies.get('Log') == "none") {
         useEffect(() => {
             navigate('/login')
@@ -65,7 +66,7 @@ const StatsPage = () => {
         console.log(pit);
     }
 
-    async function StatsMatchDataGet(query){
+    async function StatsMatchDataGet(q){
         var allData = "";
         var totalAlgae = 0;
         var totalLeaveZones = 0;
@@ -81,12 +82,21 @@ const StatsPage = () => {
         var totalCoop = 0;
         var matchesWon = 0;
         var ties = 0;
+        var allteamsrankingpoints = new Object();
+        // const querySnapshot = await getDocs(query(collection(db, "612"), where("Team", "!=", "")));
+        // querySnapshot.forEach((doc) => {
+        //     // doc.data() is never undefined for query doc snapshots
+        //     console.log(doc.id, " => ", doc.data());
+        // });
+        const snapshot = await getDocs(query(collection(db, log)));
+        var allDocs = snapshot.docs.map(doc => doc.id);
+        console.log(allDocs);
 
         console.log("its happening");
 
         for (var i = 0; i < 100; i ++){
-            console.log("ScoutData_" + query + "_" + i);
-            const docRef = doc(db, Cookies.get('Log'), "ScoutData_" + query + "_" + i);
+            console.log("ScoutData_" + q + "_" + i);
+            const docRef = doc(db, Cookies.get('Log'), "ScoutData_" + q + "_" + i);
             const docSnap = await getDoc(docRef);
 
             if (docSnap.exists()) {
