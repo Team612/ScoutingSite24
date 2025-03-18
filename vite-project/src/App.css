@@ -152,7 +152,7 @@
     line-height: 16px;
     min-height: 40px;
     outline: 0;
-    padding: 12px 14px;
+    padding: 12px 20px;
     text-align: center;
     text-rendering: geometricprecision;
     text-transform: none;
@@ -187,7 +187,7 @@
     line-height: 16px;
     min-height: 40px;
     outline: 0;
-    padding: 12px 14px;
+    padding: 12px 20px;
     text-align: center;
     text-rendering: geometricprecision;
     text-transform: none;
@@ -785,3 +785,26 @@
     align-items: left;
     /* color:red; */
   }
+    
+  #posButton{
+    appearance:  text;
+    backface-visibility: hidden;
+    background-color: black;
+    /* border-radius: 6px; */
+    border-width: 0;
+    /* box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0; */
+    /* box-sizing: border-box; */
+    color: white;
+    cursor: pointer;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    font-size: 100%;
+    margin: 5%;
+    padding:3px;
+    width:9%;
+    margin-left:0;
+    margin-top:2%;
+}
+#backHome {
+  float:none;
+  height: 8vh;
+}

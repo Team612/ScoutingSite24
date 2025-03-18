@@ -8,6 +8,9 @@ import { doc, setDoc } from "firebase/firestore";
 // import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import Cookies from 'js-cookie';
+import { getDoc } from "firebase/firestore";
+import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 const firebaseConfig = {
@@ -49,7 +52,8 @@ function App() {
           SClimb: SClimb,
           PClimb: PClimb,
           skill: skill,
-          other: d
+          other: d,
+          coopertitionPoint: coopertitionPoint
         });
     }
 
@@ -69,6 +73,8 @@ function App() {
   const [leaveChoice, setLeaveChoice] = useState("");
 
   const [saveMessage, setSaveMessage] = useState("");
+
+  var [coopertitionPoint, setCoopPoint] = useState("");
 
   var [skill, setSkill] = useState(0)
   const [position, setPosition] = useState("");
@@ -95,6 +101,11 @@ function App() {
   const [DClimb, setDClimb] = useState("");
   const [SClimb, setSClimb] = useState("");
   const [PClimb, setPClimb] = useState("");
+  
+  const matchRef = useRef();
+  const teamRef = useRef();
+  const navigate = useNavigate();
+
 
   function AddOneSkill(){
     setSkill(skill+1)
@@ -278,6 +289,41 @@ function App() {
     setPosition(pos);
   }
 
+  function SaveCoopPoint(bool) {
+    setCoopPoint(bool);
+  }
+
+  async function LoadScoutingData(collectionName, team, match) {
+    const docRef = doc(db, collectionName, "ScoutData_" + team + "_" + match);
+    const docSnap = await getDoc(docRef);
+  
+    if (docSnap.exists()) {
+      const data = docSnap.data();
+      setPosition(data.position);
+      setALeave(data.ALeave);
+      setL1AC(data.L1AC);
+      setL2AC(data.L2AC);
+      setL3AC(data.L3AC);
+      setL4AC(data.L4AC);
+      setAAlgae(data.AAlgae);
+      setL1C(data.L1C);
+      setL2C(data.L2C);
+      setL3C(data.L3C);
+      setL4C(data.L4C);
+      setAPS(data.APS);
+      setASN(data.ASN);
+      setBP(data.BP);
+      setCP(data.CP);
+      setAutoRP(data.AutoRP);
+      setDClimb(data.DClimb);
+      setSClimb(data.SClimb);
+      setPClimb(data.PClimb);
+      setSkill(data.skill);
+      setCoopPoint(data.coopertitionPoint);
+      // idk if I forgot anything
+    }
+  }
+  
 
   return (
     <>
@@ -315,36 +361,64 @@ function App() {
         <form onSubmit={SaveSS}>
         <div>
         <button id="button1">Match Number</button>
-            <input type = "text" class = "button2" name="match"></input>
+          <input type="text" className="button2" name="match" ref={matchRef} />
         </div>
         <div>
           <button id="button1">Team Number</button>
-            <input type = "text" class = "button2" name="team number"></input>
+            <input type="text" className="button2" name="team number" ref={teamRef} />
         </div>
         <div>
           <button id="button1">Scouter Name</button>
             <input type = "text" class = "button2" name="scouter name"></input>
         </div>
+
         <div>
-        <button id="button1"> Team Position: {position}<br></br>(B: blue, R: red, closest to stands: 1, middle: 2, farthest from stands: 3)</button>
-          <button id="B1" onClick={(event) => { event.preventDefault(); SavePosition("B1"); }}>
-            B1
+          <button
+            id="posButton"
+            onClick={(event) => {
+              event.preventDefault();
+              const match = matchRef.current.value;
+              const team = teamRef.current.value;
+              if (match && team) {
+                LoadScoutingData(Cookies.get("Log"), team, match);
+              } else {
+                alert("Please enter both team number and match number to load data");
+              }
+            }}
+          >
+            Load Previous
           </button>
-          <button id="B2" onClick={(event) => { event.preventDefault(); SavePosition("B2"); }}>
-            B2
+
+        </div>
+
+        <div>
+          <button id="0">
+            Team Position: {position}
+            <br />
+            
           </button>
-          <button id="B3" onClick={(event) => { event.preventDefault(); SavePosition("B3"); }}>
-            B3
-          </button>
-          <button id="R1" onClick={(event) => { event.preventDefault(); SavePosition("R1"); }}>
-            R1
-          </button>
-          <button id="R2" onClick={(event) => { event.preventDefault(); SavePosition("R2"); }}>
-            R2
-          </button>
-          <button id="R3" onClick={(event) => { event.preventDefault(); SavePosition("R3"); }}>
-            R3
-          </button>
+          <div style={{ marginTop: '8px' }}>
+            <button id="posButton" onClick={(event) => { event.preventDefault(); SavePosition("B1"); }}>
+              B1
+            </button>
+            <button id="posButton" onClick={(event) => { event.preventDefault(); SavePosition("B2"); }}>
+              B2
+            </button>
+            <button id="posButton" onClick={(event) => { event.preventDefault(); SavePosition("B3"); }}>
+              B3
+            </button>
+          </div>
+          <div style={{ marginTop: '4px' }}>
+            <button id="posButton" onClick={(event) => { event.preventDefault(); SavePosition("R1"); }}>
+              R1
+            </button>
+            <button id="posButton" onClick={(event) => { event.preventDefault(); SavePosition("R2"); }}>
+              R2
+            </button>
+            <button id="posButton" onClick={(event) => { event.preventDefault(); SavePosition("R3"); }}>
+              R3
+            </button>
+          </div>
         </div>
         <div>
         <button id="button1">(Auto) Leave Zone</button>
@@ -473,6 +547,15 @@ function App() {
         </div>
 
         <div>
+           <button id="button1">Cooperition Point</button>
+           <button id="button-24" onClick={(event) => { event.preventDefault(); setCoopPoint("No"); YesLeave();}}>No</button>
+            <span style={{ margin: "0 10px", fontWeight: "bold", color: coopertitionPoint === "Yes" ? "green" : "red" }}>
+              {coopertitionPoint}
+            </span>
+            <button id="button-25" onClick={(event) => { event.preventDefault(); setCoopPoint("Yes"); YesLeave();}}>Yes</button>
+        </div>
+
+        <div>
            <button id="button1">Driving Skill (X/10)</button>
            <button id="button-24" onClick={(event) =>{event.preventDefault(); MinusOneSkill()}}>-1</button>
            <p id = "speakerId">{skill}/10</p>
@@ -487,6 +570,10 @@ function App() {
 
             <button type = "submit" class = "button" onClick={() => {SaveSS(); SaveAlert();}}>SAVE!</button>
         </div>
+        <NavLink to="/mainscreen" activeStyle id="backHome">
+                <img id="imagehome" src="/images/home.jpg"/>
+            </NavLink>
+
         </form>
     {/* </form>     */}
             {/* <div id = "footer">Contact us at Chantilly.612@gmail.com for help!</div> */}
