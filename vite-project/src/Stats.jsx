@@ -1,11 +1,10 @@
 import React from "react";
 import { initializeApp } from 'firebase/app';
 import NavLink from "./NavElements.jsx";
-import { getFirestore, queryEqual } from "firebase/firestore";
-import {doc, getDoc, collection, query, where, getDocs} from "firebase/firestore";
+import {getFirestore, queryEqual, doc, getDoc, collection, query, where, getDocs} from "firebase/firestore";
 import './App.css';
 import Cookies from 'js-cookie';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navigate, useNavigate } from 'react-router-dom';
 
 const firebaseConfig = {
@@ -66,6 +65,15 @@ const StatsPage = () => {
         console.log(pit);
     }
 
+    function findinarray(array, number) {
+        let temp = [];
+        array.forEach((e) => {
+            temp.push(e[0]);
+        });
+        console.log(temp);
+        return temp.indexOf(number.toString()) + 1;
+    }
+
     async function StatsMatchDataGet(q){
         var allData = "";
         var totalAlgae = 0;
@@ -82,7 +90,6 @@ const StatsPage = () => {
         var totalCoop = 0;
         var matchesWon = 0;
         var ties = 0;
-        var allteamsrankingpoints = new Object();
         // const querySnapshot = await getDocs(query(collection(db, "612"), where("Team", "!=", "")));
         // querySnapshot.forEach((doc) => {
         //     // doc.data() is never undefined for query doc snapshots
@@ -91,10 +98,35 @@ const StatsPage = () => {
         const snapshot = await getDocs(query(collection(db, log)));
         var allDocs = snapshot.docs.map(doc => doc.id);
         console.log(allDocs);
+        var scoutDocs = new Object();
+        allDocs.forEach((e, i) => {
+            if (e.includes("Scout")) {
+                var rankingpoints = snapshot.docs.map(doc => doc.data())[i]["rankingpoints"];
+                if (rankingpoints != undefined) { // contingency for data reported before the changes
+                    scoutDocs[e] = rankingpoints;
+                }
+            }
+        });
+        console.log(scoutDocs);
+        const rankedlist = Object.entries(scoutDocs).sort((a, b) => {
+            return b[1] - a[1];
+        });
+        var teamsrankingpointsobj = new Object();
+        rankedlist.forEach((e) => {
+            teamsrankingpointsobj[e[0].split("_")[1]] = (isNaN(teamsrankingpointsobj[e[0].split("_")[1]]) ? 0 : teamsrankingpointsobj[e[0].split("_")[1]]) + e[1];
+        });
+        console.log(rankedlist);
+        console.log(teamsrankingpointsobj);
+        const teamsrankingpoints = Object.entries(teamsrankingpointsobj).sort((a, b) => {
+            return b[1] - a[1];
+        });
+        console.log(teamsrankingpoints);
+        console.log(findinarray(teamsrankingpoints, q));
+        allData = "TEAM RANKING: " + findinarray(teamsrankingpoints, q);
 
         console.log("its happening");
 
-        for (var i = 0; i < 100; i ++){
+        for (var i = 0; i < 100; i ++) {
             console.log("ScoutData_" + q + "_" + i);
             const docRef = doc(db, Cookies.get('Log'), "ScoutData_" + q + "_" + i);
             const docSnap = await getDoc(docRef);
@@ -118,10 +150,8 @@ const StatsPage = () => {
                 totalCoop += data["coop"] ? 1 : 0;
                 matchesWon = data["won"] ? 1 : 0;
                 ties += data["tie"] ? 1 : 0;
- 
 
-
-                allData += "MATCH #" + data["Match"] + 
+                allData += "\nMATCH #" + data["Match"] + 
                 "\nL1 Coral Auto: " + data["L1AC"] +
                 "\nL2 Coral Auto: " + data["L2AC"] +
                 "\nL3 Coral Auto: " + data["L3AC"] +
@@ -157,6 +187,7 @@ const StatsPage = () => {
         console.log((totalPark + totalDClimb + totalSClimb));
 
         var avgdata =  
+        "Avg Ranking Points: " + teamsrankingpointsobj[q]/totalMatches + "\n" + 
         "Total matches played so far: " + totalMatches + "\n" + 
         "Avg L1 per match: " + totalL1/totalMatches + "\n" + 
         "Avg L2 per match: " + totalL2/totalMatches + "\n" + 

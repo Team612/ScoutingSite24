@@ -60,7 +60,8 @@ function App() {
           won: won,
           tie: tie,
           rankingpoints: (AutoRP ? 1 : 0) + (BP ? 1 : 0) + (CP ? 1 : 0) + (won ? 3 : 0),
-          other: d
+          other: d,
+          Scout: true
         });
     }
 

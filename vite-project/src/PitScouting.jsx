@@ -1,5 +1,5 @@
 import React from "react"
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import NavLink from "./NavElements.jsx";
 import './App.css';
 import { getFirestore } from "firebase/firestore";
@@ -39,7 +39,8 @@ const PitScoutingPage = () => {
             "AS": array1["AS"],
             "Weight": array1["Weight"],
             "Cycle Time": array1["Cycle Time"],
-            "Other": array1["Other"]
+            "Other": array1["Other"],
+            "Scout": false
           });
     }
     function handleSubmit(e) {
