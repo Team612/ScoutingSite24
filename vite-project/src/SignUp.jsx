@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import NavLink from "./NavElements.jsx";
 import { initializeApp } from "firebase/app";
@@ -129,7 +129,7 @@ const SignUpPage = () => {
             <h1 id="scoutingHead">Sign Up</h1>
             <div class="signup">
               <h2 id="signUph2">Create Team ID:</h2>
-              <input name = "myInput1" type="text" class="button2" placeholder="Team ID #" />
+              <input name = "myInput1" type="number" class="button2" placeholder="Team ID #" />
             </div>
         
             

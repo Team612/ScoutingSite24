@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import NavLink from "./NavElements.jsx";
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -26,6 +26,12 @@ const db = getFirestore(app);
 
 
 function App() {
+  const navigate = useNavigate();
+  if (Cookies.get('Log') == null || Cookies.get('Log') == "none") {
+    useEffect(() => {
+      navigate('/login')
+    })
+  }
     async function SignUpDataAdd(a,b,c,d,e) {
         // // Assign pass and teamID here to the database
         await setDoc(doc(db, a, "ScoutData_" + b + "_" + c), {
@@ -50,10 +56,14 @@ function App() {
           AutoRP: AutoRP,
           DClimb: DClimb,
           SClimb: SClimb,
-          PClimb: PClimb,
+          Park: PClimb,
           skill: skill,
+          coop: coop,
+          won: won,
+          tie: tie,
+          rankingpoints: (AutoRP ? 1 : 0) + (BP ? 1 : 0) + (CP ? 1 : 0) + (won ? 3 : 0),
           other: d,
-          coopertitionPoint: coopertitionPoint
+          Scout: true
         });
     }
 
@@ -70,15 +80,17 @@ function App() {
         setSaveMessage("✅ Data Saved Successfully!");
     }
 
-  const [leaveChoice, setLeaveChoice] = useState("");
+  const [leaveChoice, setLeaveChoice] = useState(false);
 
   const [saveMessage, setSaveMessage] = useState("");
 
   var [coopertitionPoint, setCoopPoint] = useState("");
 
-  var [skill, setSkill] = useState(0)
+  var [coopertitionPoint, setCoopPoint] = useState("");
+
+  const [skill, setSkill] = useState(0)
   const [position, setPosition] = useState("");
-  var [ALeave, setALeave] = useState(false)
+  const [ALeave, setALeave] = useState(false)
   const [L1AC, setL1AC] = useState(0);
   const [L2AC, setL2AC] = useState(0);
   const [L3AC, setL3AC] = useState(0);
@@ -97,186 +109,227 @@ function App() {
 
   const [BP, setBP] = useState(false);
   const [CP, setCP] = useState(false);
-  const [AutoRP, setAutoRP] = useState("");
-  const [DClimb, setDClimb] = useState("");
-  const [SClimb, setSClimb] = useState("");
-  const [PClimb, setPClimb] = useState("");
+  const [AutoRP, setAutoRP] = useState(false);
+  const [DClimb, setDClimb] = useState(false);
+  const [SClimb, setSClimb] = useState(false);
+  const [PClimb, setPClimb] = useState(false);
+  const [coop, setCoop] = useState(false);
+  const [won, setWon] = useState(false);
+  const [tie, setTie] = useState(false);
   
   const matchRef = useRef();
   const teamRef = useRef();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
 
-  function AddOneSkill(){
-    setSkill(skill+1)
+  function AddOneSkill() {
+    setSkill(skill < 10 ? skill+1 : 10);
+    setSaveMessage("");
   }
-  function MinusOneSkill(){
-    setSkill(skill-1)
+  function MinusOneSkill() {
+    setSkill(skill > 0 ? skill-1 : 0);
+    setSaveMessage("");
   }
 
-  function YesAutoRP(){
+  function YesAutoRP() {
     //alert("Selected Yes");
-    setAutoRP(true)
+    setAutoRP(true);
+    setSaveMessage("");
   }
-  function NoAutoRP(){
+  function NoAutoRP() {
     //alert("Selected No");
-    setAutoRP(false)
+    setAutoRP(false);
+    setSaveMessage("");
   }
 
-  function YesCP(){
+  function YesCP() {
     //alert("Selected Yes");
-    setCP(true)
+    setCP(true);
+    setSaveMessage("");
   }
-  function NoCP(){
+  function NoCP() {
     //alert("Selected No");
-    setCP(false)
+    setCP(false);
+    setSaveMessage("");
   }
-  function YesBP(){
+  function YesBP() {
     //alert("Selected Yes");
-    setBP(true)
+    setBP(true);
+    setSaveMessage("");
   }
-  function NoBP(){
+  function NoBP() {
     //alert("Selected No");
-    setBP(false)
+    setBP(false);
+    setSaveMessage("");
   }
 
 
-  function YesLeave(){
+  function YesLeave() {
     //alert("Selected Yes");
-    setALeave(true)
+    setALeave(true);
+    setSaveMessage("");
   }
-  function NoLeave(){
+  function NoLeave() {
     //alert("Selected No");
-    setALeave(false)
+    setALeave(false);
+    setSaveMessage("");
   }
 
-  function YesPClimb(){
+  function YesPClimb() {
     //alert("Selected Yes");
-    setPClimb(true)
+    setPClimb(true);
+    setSaveMessage("");
   }
-  function NoPClimb(){
+  function NoPClimb() {
     //alert("Selected No");
-    setPClimb(false)
+    setPClimb(false);
+    setSaveMessage("");
   }
   
-  function YesDClimb(){
+  function YesDClimb() {
     //alert("Selected Yes");
-    setDClimb(true)
+    setDClimb(true);
+    setSaveMessage("");
   }
-  function NoDClimb(){
+  function NoDClimb() {
     //alert("Selected No");
-    setDClimb(false)
+    setDClimb(false);
+    setSaveMessage("");
   }
 
-  function YesSClimb(){
+  function YesSClimb() {
     //alert("Selected Yes");
-    setSClimb(true)
+    setSClimb(true);
+    setSaveMessage("");
   }
-  function NoSClimb(){
+  function NoSClimb() {
     //alert("Selected No");
-    setSClimb(false)
+    setSClimb(false);
+    setSaveMessage("");
   }
 
-  function MinusOneL1AC(){
+  function MinusOneL1AC() {
     //alert("Selected Yes");
-    setL1AC(L1AC-1);
+    setL1AC(L1AC > 0 ? L1AC-1 : 0);
+    setSaveMessage("");
   }
-  function AddOneL1AC(){
+  function AddOneL1AC() {
     //alert("Selected No");
     setL1AC(L1AC+1);
+    setSaveMessage("");
   }
 
-  function MinusOneAlgaeA(){
+  function MinusOneAlgaeA() {
     //alert("Selected Yes");
-    setAAlgae(AAlgae-1);
+    setAAlgae(AAlgae > 0 ? AAlgae-1 : 0);
+    setSaveMessage("");
   }
-  function AddOneAlgaeA(){
+  function AddOneAlgaeA() {
     //alert("Selected No");
     setAAlgae(AAlgae+1);
+    setSaveMessage("");
   }
 
-  function MinusOneL2AC(){
+  function MinusOneL2AC() {
     //alert("Selected Yes");
-    setL2AC(L2AC-1);
+    setL2AC(L2AC > 0 ? L2AC-1 : 0);
+    setSaveMessage("");
   }
-  function AddOneL2AC(){
+  function AddOneL2AC() {
     //alert("Selected No");
     setL2AC(L2AC+1);
+    setSaveMessage("");
   }
 
-  function MinusOneL3AC(){
+  function MinusOneL3AC() {
     //alert("Selected Yes");
-    setL3AC(L3AC-1);
+    setL3AC(L3AC > 0 ? L3AC-1 : 0);
+    setSaveMessage("");
   }
-  function AddOneL3AC(){
+  function AddOneL3AC() {
     //alert("Selected No");
     setL3AC(L3AC+1);
+    setSaveMessage("");
   }
 
-  function MinusOneL4AC(){
+  function MinusOneL4AC() {
     //alert("Selected Yes");
-    setL4AC(L4AC-1);
+    setL4AC(L4AC > 0 ? L4AC-1 : 0);
+    setSaveMessage("");
   }
-  function AddOneL4AC(){
+  function AddOneL4AC() {
     //alert("Selected No");
     setL4AC(L4AC+1);
+    setSaveMessage("");
   }
 
 
 
 
-  function MinusOneL1C(){
+  function MinusOneL1C() {
     //alert("Selected Yes");
-    setL1C(L1C-1);
+    setL1C(L1C > 0 ? L1C-1 : 0);
+    setSaveMessage("");
   }
-  function AddOneL1C(){
+  function AddOneL1C() {
     //alert("Selected No");
     setL1C(L1C+1);
+    setSaveMessage("");
   }
 
-  function MinusOneL2C(){
+  function MinusOneL2C() {
     //alert("Selected Yes");
-    setL2C(L2C-1);
+    setL2C(L2C > 0 ? L2C-1 : 0);
+    setSaveMessage("");
   }
-  function AddOneL2C(){
+  function AddOneL2C() {
     //alert("Selected No");
     setL2C(L2C+1);
+    setSaveMessage("");
   }
 
-  function MinusOneL3C(){
+  function MinusOneL3C() {
     //alert("Selected Yes");
-    setL3C(L3C-1);
+    setL3C(L3C > 0 ? L3C-1 : 0);
+    setSaveMessage("");
   }
-  function AddOneL3C(){
+  function AddOneL3C() {
     //alert("Selected No");
     setL3C(L3C+1);
+    setSaveMessage("");
   }
 
-  function MinusOneL4C(){
+  function MinusOneL4C() {
     //alert("Selected Yes");
-    setL4C(L4C-1);
+    setL4C(L4C > 0 ? L4C-1 : 0);
+    setSaveMessage("");
   }
-  function AddOneL4C(){
+  function AddOneL4C() {
     //alert("Selected No");
     setL4C(L4C+1);
+    setSaveMessage("");
   }
 
-  function MinusOneAPS(){
+  function MinusOneAPS() {
     //alert("Selected Yes");
-    setAPS(APS-1);
+    setAPS(APS > 0 ? APS-1 : 0);
+    setSaveMessage("");
   }
-  function AddOneAPS(){
+  function AddOneAPS() {
     //alert("Selected No");
     setAPS(APS+1);
+    setSaveMessage("");
   }
 
-  function MinusOneASN(){
+  function MinusOneASN() {
     //alert("Selected Yes");
-    setASN(ASN-1);
+    setASN(ASN > 0 ? ASN-1 : 0);
+    setSaveMessage("");
   }
-  function AddOneASN(){
+  function AddOneASN() {
     //alert("Selected No");
     setASN(ASN+1);
+    setSaveMessage("");
   }
 
   function SaveAlert() {
@@ -284,7 +337,7 @@ function App() {
   }
 
 
-  function SavePosition(pos){
+  function SavePosition(pos) {
     //alert("chose " + pos);
     setPosition(pos);
   }
@@ -423,8 +476,8 @@ function App() {
         <div>
         <button id="button1">(Auto) Leave Zone</button>
           <button id="button-24" onClick={(event) => { event.preventDefault(); setLeaveChoice("No"); NoLeave();}}>No</button>
-            <span style={{ margin: "0 10px", fontWeight: "bold", color: leaveChoice === "Yes" ? "green" : "red" }}>
-              {leaveChoice}
+            <span style={{ margin: "0 10px", fontWeight: "bold", color: leaveChoice ? "green" : "red" }}>
+              {leaveChoice ? "Yes" : "No"}
             </span>
             <button id="button-25" onClick={(event) => { event.preventDefault(); setLeaveChoice("Yes"); YesLeave();}}>Yes</button>
         </div>
@@ -492,58 +545,67 @@ function App() {
            <button id="button1">(Teleop/Endgame) Algae Scored (Net)</button>
            <button id="button-24" onClick={(event) =>{event.preventDefault(); MinusOneASN()}}>-1</button>
            <p id = "speakerId">{ASN}</p>
-            <button id="button-25" onClick={(event) =>{event.preventDefault();AddOneASN()}}>+1</button>
+            <button id="button-25" onClick={(event) =>{event.preventDefault(); AddOneASN()}}>+1</button>
         </div>
         <div>
            <button id="button1">Deep Climb</button>
-           <button id="button-24" onClick={(event) => { event.preventDefault(); setDClimb("No"); YesLeave();}}>No</button>
-            <span style={{ margin: "0 10px", fontWeight: "bold", color: DClimb === "Yes" ? "green" : "red" }}>
-              {DClimb}
+           <button id="button-24" onClick={(event) => { event.preventDefault(); setDClimb(false); YesLeave();}}>No</button>
+            <span style={{ margin: "0 10px", fontWeight: "bold", color: DClimb ? "green" : "red" }}>
+              {DClimb ? "Yes" : "No"}
             </span>
-            <button id="button-25" onClick={(event) => { event.preventDefault(); setDClimb("Yes"); YesLeave();}}>Yes</button>
+            <button id="button-25" onClick={(event) => { event.preventDefault(); setDClimb(true); setSClimb(false); setPClimb(false); YesLeave();}}>Yes</button>
         </div>
         <div>
            <button id="button1">Shallow Climb</button>
-           <button id="button-24" onClick={(event) => { event.preventDefault(); setSClimb("No"); YesLeave();}}>No</button>
-            <span style={{ margin: "0 10px", fontWeight: "bold", color: SClimb === "Yes" ? "green" : "red" }}>
-              {SClimb}
+           <button id="button-24" onClick={(event) => { event.preventDefault(); setSClimb(false); YesLeave();}}>No</button>
+            <span style={{ margin: "0 10px", fontWeight: "bold", color: SClimb ? "green" : "red" }}>
+              {SClimb ? "Yes" : "No"}
             </span>
-            <button id="button-25" onClick={(event) => { event.preventDefault(); setSClimb("Yes"); YesLeave();}}>Yes</button>
+            <button id="button-25" onClick={(event) => { event.preventDefault(); setSClimb(!DClimb); setPClimb(false); YesLeave();}}>Yes</button>
         </div>
         <div>
            <button id="button1">Park (Endgame)</button>
-           <button id="button-24" onClick={(event) => { event.preventDefault(); setPClimb("No"); YesLeave();}}>No</button>
-            <span style={{ margin: "0 10px", fontWeight: "bold", color: PClimb === "Yes" ? "green" : "red" }}>
-              {PClimb}
+           <button id="button-24" onClick={(event) => { event.preventDefault(); setPClimb(false); YesLeave();}}>No</button>
+            <span style={{ margin: "0 10px", fontWeight: "bold", color: PClimb ? "green" : "red" }}>
+              {PClimb ? "Yes" : "No"}
             </span>
-            <button id="button-25" onClick={(event) => { event.preventDefault(); setPClimb("Yes"); YesLeave();}}>Yes</button>
+            <button id="button-25" onClick={(event) => { event.preventDefault(); setPClimb(!(DClimb || SClimb)); YesLeave();}}>Yes</button>
         </div>
 
         <div>
            <button id="button1">Barge RP</button>
-           <button id="button-24" onClick={(event) => { event.preventDefault(); setBP("No"); YesLeave();}}>No</button>
-            <span style={{ margin: "0 10px", fontWeight: "bold", color: BP === "Yes" ? "green" : "red" }}>
-              {BP}
+           <button id="button-24" onClick={(event) => { event.preventDefault(); setBP(false); YesLeave();}}>No</button>
+            <span style={{ margin: "0 10px", fontWeight: "bold", color: BP ? "green" : "red" }}>
+              {BP ? "Yes" : "No"}
             </span>
-            <button id="button-25" onClick={(event) => { event.preventDefault(); setBP("Yes"); YesLeave();}}>Yes</button>
+            <button id="button-25" onClick={(event) => { event.preventDefault(); setBP(true); YesLeave();}}>Yes</button>
         </div>
 
         <div>
            <button id="button1">Coral RP</button>
-           <button id="button-24" onClick={(event) => { event.preventDefault(); setCP("No"); YesLeave();}}>No</button>
-            <span style={{ margin: "0 10px", fontWeight: "bold", color: CP === "Yes" ? "green" : "red" }}>
-              {CP}
+           <button id="button-24" onClick={(event) => { event.preventDefault(); setCP(false); YesLeave();}}>No</button>
+            <span style={{ margin: "0 10px", fontWeight: "bold", color: CP ? "green" : "red" }}>
+              {CP ? "Yes" : "No"}
             </span>
-            <button id="button-25" onClick={(event) => { event.preventDefault(); setCP("Yes"); YesLeave();}}>Yes</button>
+            <button id="button-25" onClick={(event) => { event.preventDefault(); setCP(true); YesLeave();}}>Yes</button>
         </div>
 
         <div>
            <button id="button1">Auto RP</button>
-           <button id="button-24" onClick={(event) => { event.preventDefault(); setAutoRP("No"); YesLeave();}}>No</button>
-            <span style={{ margin: "0 10px", fontWeight: "bold", color: AutoRP === "Yes" ? "green" : "red" }}>
-              {AutoRP}
+           <button id="button-24" onClick={(event) => { event.preventDefault(); setAutoRP(false); YesLeave();}}>No</button>
+            <span style={{ margin: "0 10px", fontWeight: "bold", color: AutoRP ? "green" : "red" }}>
+              {AutoRP ? "Yes" : "No"}
             </span>
-            <button id="button-25" onClick={(event) => { event.preventDefault(); setAutoRP("Yes"); YesLeave();}}>Yes</button>
+            <button id="button-25" onClick={(event) => { event.preventDefault(); setAutoRP(true); YesLeave();}}>Yes</button>
+        </div>
+
+        <div>
+           <button id="button1">Coopertition Point</button>
+           <button id="button-24" onClick={(event) => { event.preventDefault(); setCoop(false); YesLeave();}}>No</button>
+            <span style={{ margin: "0 10px", fontWeight: "bold", color: coop ? "green" : "red" }}>
+              {coop ? "Yes" : "No"}
+            </span>
+            <button id="button-25" onClick={(event) => { event.preventDefault(); setCoop(true); YesLeave();}}>Yes</button>
         </div>
 
         <div>
@@ -555,6 +617,31 @@ function App() {
             <button id="button-25" onClick={(event) => { event.preventDefault(); setCoopPoint("Yes"); YesLeave();}}>Yes</button>
         </div>
 
+        <div>
+           <button id="button1">Cooperition Point</button>
+           <button id="button-24" onClick={(event) => { event.preventDefault(); setCoopPoint("No"); YesLeave();}}>No</button>
+            <span style={{ margin: "0 10px", fontWeight: "bold", color: coopertitionPoint === "Yes" ? "green" : "red" }}>
+              {coopertitionPoint}
+            </span>
+            <button id="button-25" onClick={(event) => { event.preventDefault(); setCoopPoint("Yes"); YesLeave();}}>Yes</button>
+        </div>
+
+        <div>
+           <button id="button1">Did the team win?</button>
+           <button id="button-24" onClick={(event) => { event.preventDefault(); setWon(false); YesLeave();}}>No</button>
+            <span style={{ margin: "0 10px", fontWeight: "bold", color: won ? "green" : "red" }}>
+              {won ? "Yes" : "No"}
+            </span>
+            <button id="button-25" onClick={(event) => { event.preventDefault(); setWon(true); YesLeave();}}>Yes</button>
+        </div>
+        <div>
+           <button id="button1">Did the team tie?</button>
+           <button id="button-24" onClick={(event) => { event.preventDefault(); setTie(false); YesLeave();}}>No</button>
+            <span style={{ margin: "0 10px", fontWeight: "bold", color: tie ? "green" : "red" }}>
+              {tie ? "Yes" : "No"}
+            </span>
+            <button id="button-25" onClick={(event) => { event.preventDefault(); setTie(true); setWon(false); YesLeave();}}>Yes</button>
+        </div>
         <div>
            <button id="button1">Driving Skill (X/10)</button>
            <button id="button-24" onClick={(event) =>{event.preventDefault(); MinusOneSkill()}}>-1</button>

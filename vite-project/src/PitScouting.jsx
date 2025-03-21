@@ -1,5 +1,5 @@
 import React from "react"
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import NavLink from "./NavElements.jsx";
 import './App.css';
 import { getFirestore } from "firebase/firestore";
@@ -20,6 +20,12 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const PitScoutingPage = () => {
+    const navigate = useNavigate();
+    if (Cookies.get('Log') == null || Cookies.get('Log') == "none") {
+        useEffect(() => {
+            navigate('/login')
+        })
+    }
     async function PitScoutingDataAdd(array1) {
         console.log(Cookies.get('Log'));
         await setDoc(doc(db, Cookies.get('Log'), "PitData_" + array1["Team"]), {
@@ -33,7 +39,8 @@ const PitScoutingPage = () => {
             "AS": array1["AS"],
             "Weight": array1["Weight"],
             "Cycle Time": array1["Cycle Time"],
-            "Other": array1["Other"]
+            "Other": array1["Other"],
+            "Scout": false
           });
     }
     function handleSubmit(e) {
