@@ -187,7 +187,7 @@ const StatsPage = () => {
         console.log((totalPark + totalDClimb + totalSClimb));
 
         var avgdata =  
-        "Avg Ranking Points: " + teamsrankingpointsobj[q]/totalMatches + "\n" + 
+        // "Avg Ranking Points: " + teamsrankingpointsobj[q]/totalMatches + "\n" + 
         "Total matches played so far: " + totalMatches + "\n" + 
         "Avg L1 per match: " + totalL1/totalMatches + "\n" + 
         "Avg L2 per match: " + totalL2/totalMatches + "\n" + 
